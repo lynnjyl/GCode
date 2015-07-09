@@ -8,15 +8,21 @@ int main(int argc, char * argv[])
 {
 	FILE * fp;
 	fp = fopen("20081023025304.plt", "r+");
-	double lat, longt, time;
-	char str[80];
+	float lat, longt, time;
+	char str[200], date[30];
 	int p1, p2;
 
-	for(int i;i < 8; i++)
+	for(int i = 0; i < 6; i++)
 	{
-		fscanf(fp,"%f,%f,%i,%i,%f,%c\n", &lat, &longt, &p1, &p2, &time, str);
-		printf("%f,%f,%i,%i,%f,%c\n", lat, longt, p1, p2, time, str);
+        fscanf(fp, "%*[^\n]%*c");
 	}
+    fscanf(fp,"%s\n", str);
+    printf("%s\n", str);
+    sscanf(str, "%f,%f,%i,%i,%f,%s", &lat, &longt, &p1, &p2, &time, date);
+    cout << "latitude: " << lat << endl;
+    cout << "longitude: " << longt << endl;
+    cout << "time: " << time << endl;
+
 	fclose(fp);
 
 	return 0;
