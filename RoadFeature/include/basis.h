@@ -17,6 +17,7 @@ struct GPSPoint
     double lat;
     double lng;
     double time;
+    int gid;
 };
 
 struct Edges
@@ -30,4 +31,17 @@ struct Edges
 
 double wallclock();
 
+
+void DisplayAnEdge(Edges edge)
+{
+	printf("============An Edge============\n");
+	printf("  Edge ID		%i\n",edge.eid);
+	printf("  Start_vid		%i\n", edge.start_vid);
+	printf("  End_vid		%i\n", edge.end_vid);
+	printf("  Grid ID		%i", edge.gid[0]);
+	if(edge.gid.size() > 1)
+		printf(" %i\n", edge.gid[1]);	
+	printf("==========End display==========\n");
+
+}
 #endif
