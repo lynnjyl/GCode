@@ -24,9 +24,10 @@ struct Edges
 {
     int eid;
     int start_vid, end_vid;
-    GPSPoint start, end;
-    std::vector <GPSPoint> features;
-    std::vector <int> gid;
+    //GPSPoint start, end;
+    //GPSPoint features[4];
+    int NumofFeature;
+   // int gid[4];
 };
 
 double wallclock();
@@ -38,9 +39,9 @@ void DisplayAnEdge(Edges edge)
 	printf("  Edge ID		%i\n",edge.eid);
 	printf("  Start_vid		%i\n", edge.start_vid);
 	printf("  End_vid		%i\n", edge.end_vid);
-	printf("  Grid ID		%i", edge.gid[0]);
-	if(edge.gid.size() > 1)
-		printf(" %i\n", edge.gid[1]);	
+	//printf("  Grid ID		%i", edge.gid[0]);
+	//if(edge.gid.size() > 1)
+	//	printf(" %i\n", edge.gid[1]);
 	printf("==========End display==========\n");
 
 }

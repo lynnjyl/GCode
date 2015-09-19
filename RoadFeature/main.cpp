@@ -24,14 +24,14 @@ int GetGID(double lat, double lng)
 {
 	//the map is divided into 10x10 grids
 	int x, y;
-	x = (lat - minlat)/0.07 + 1;
-	y = (lng - minlng)/0.13;
+	x = (lat - minlat)/0.17 + 1;
+	y = (lng - minlng)/0.23;
 	return 10*y+x;
 }
 
 void ReadVertices(GPSPoint vertices[])
 {
-    printf("hell function\n");
+    printf("hello function\n");
     FILE * fp;
     fp = fopen("./roadnetwork/vertices.txt", "r+");
     //char str[200];
@@ -42,7 +42,7 @@ void ReadVertices(GPSPoint vertices[])
         fscanf(fp,"%i %lf %lf", &vid, &lat, &lng);
         vertices[vid].lat = lat;
         vertices[vid].lng = lng;
-	vertices[vid].gid = GetGID(lat, lng);
+        vertices[vid].gid = GetGID(lat, lng);
 	//cout << lat << " " << lng << " " << vertices[eid].gid << endl;
     }
 }
@@ -60,11 +60,11 @@ void ReadEdges(Edges edge[], GPSPoint vertices[])
 		edge[eid].eid = eid;
 		edge[eid].start_vid = start_vid;	
 		edge[eid].end_vid = end_vid;
-		edge[eid].start = vertices[start_vid];
-		edge[eid].end = vertices[end_vid];
-		edge[eid].gid.push_back(edge[eid].start.gid);
-		if(edge[eid].start.gid != edge[eid].end.gid)
-			edge[eid].gid.push_back(edge[eid].end.gid);
+		//edge[eid].start = vertices[start_vid];
+		//edge[eid].end = vertices[end_vid];
+		//edge[eid].gid.push_back(edge[eid].start.gid);
+		//if(edge[eid].start.gid != edge[eid].end.gid)
+			//edge[eid].gid.push_back(edge[eid].end.gid);
 	}
 
 }
@@ -72,10 +72,12 @@ int main(int argc, char * argv[])
 {
 	//Read vertices file;
     	//double t1 = wallclock();
-    	GPSPoint vertices[NumofVer+1];
-    	Edges edge[NumofEdge+1];
-	ReadVertices(vertices);
-	ReadEdges(edge, vertices);
+    cout << "Hello main!" << endl;
+  //  GPSPoint vertices[NumofVer+1];
+    Edges edge[NumofEdge+1];
+ //   cout << "Begin to read!" << endl;
+//	ReadVertices(vertices);
+	//ReadEdges(edge, vertices);
 	printf("Finish Reading\n");
-	DisplayAnEdge(edge[1]);
+	//DisplayAnEdge(edge[1]);
 }
