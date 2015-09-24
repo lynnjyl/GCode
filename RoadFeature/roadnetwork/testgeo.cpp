@@ -49,10 +49,6 @@ void GetInfo(string str, int &eid, set <int> gid)
         gid.insert(gid_temp);
     }
     
-    //cout << "=================================" << endl;
-    //cout << "set size : " << gid.size() << endl;
-    //set<int>::iterator it; //定义前向迭代器
-    //中序遍历集合中的所有元素
     
     ofstream offs("edge_grid.txt", ios::out|ios::app);
     offs << eid;
