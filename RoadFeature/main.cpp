@@ -60,23 +60,12 @@ void ReadEdges(Edges edge[], GPSPoint vertices[])
 		edge[eid].eid = eid;
 		edge[eid].start_vid = start_vid;	
 		edge[eid].end_vid = end_vid;
-		//edge[eid].start = vertices[start_vid];
-		//edge[eid].end = vertices[end_vid];
-		//edge[eid].gid.push_back(edge[eid].start.gid);
-		//if(edge[eid].start.gid != edge[eid].end.gid)
-			//edge[eid].gid.push_back(edge[eid].end.gid);
 	}
-
 }
 int main(int argc, char * argv[])
 {
-	//Read vertices file;
-    	//double t1 = wallclock();
-    cout << "Hello main!" << endl;
-  //  GPSPoint vertices[NumofVer+1];
-    Edges edge[NumofEdge+1];
- //   cout << "Begin to read!" << endl;
-//	ReadVertices(vertices);
+	Edges edge[NumofEdge+1];
+	ReadVertices(vertices);
 	//ReadEdges(edge, vertices);
 	printf("Finish Reading\n");
 	//DisplayAnEdge(edge[1]);

@@ -6,7 +6,7 @@
 //
 //
 
-#include "Points.hpp"
+#include "Points.h"
 #include "stdafx.h"
 
 ///////////////////Point Class Begin//////////////////////
