@@ -17,15 +17,17 @@
 using namespace std;
 const int NumofVer = 171504;
 const int NumofEdge = 433391;
-double minlat = 39.4;
-double minlng = 115.3;
-double maxlat = 41.1;
-double maxlng = 117.6;
+const double minlat = 39.4;
+const double minlng = 115.3;
+const double maxlat = 41.1;
+const double maxlng = 117.6;
+const double differ = 0.05;
+const int size = ((maxlng - minlng)/differ + 1)*((maxlat - minlat)/differ + 1);
 //GPSPoint vertices[NumofVer];
 Edge edges[NumofEdge+1];
 Point vertices[NumofVer+1];
-
-
+Grid grids[size];
+/*
 int GetGID(double lat, double lng)
 {
 	//the map is divided into 10x10 grids
@@ -72,14 +74,17 @@ void ReadEdges(Edge edges[], Point vertices[])
 		edges[eid].end = vertices[end_vid];
 	}
 }
+*/
 int main(int argc, char * argv[])
 {
 //	Edge edges[NumofEdge+1];
 //	Edge edges[NumofEdge+1];
 //	Point vertices[NumofVer+1];
+	SetGrid(grids);
+	printf("there are %d grids\n", size);
 	printf("begin to read\n");
-	ReadVertices(vertices);
-	ReadEdges(edges, vertices);
+	ReadVertices(vertices, NumofVer);
+	ReadEdges(edges, vertices, NumofEdge);
 	printf("Finish Reading\n");
 	DisplayAnEdge(edges[1]);
 }

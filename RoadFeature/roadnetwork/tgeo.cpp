@@ -10,7 +10,7 @@ using namespace std;
 int main(int argc, char * argv[])
 {
 	int count = atoi(argv[1]);
-	ifstream ifs("edge_grid.txt");
+	ifstream ifs(argv[2]);
 	string str;
 	vector < vector <int> > gid_eid(count+1);
 //	memset(gid_eid, 0, 4*count);
@@ -44,7 +44,7 @@ int main(int argc, char * argv[])
 	}
 	cout << "ok" << endl;
 	int j;
-	ofstream ofs("grid_edge.txt", ios::out);
+	ofstream ofs(argv[3], ios::out);
 	cout << "write file" << endl;
 	for(int i = 1; i < count+1; i++)
 	{

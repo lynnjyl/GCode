@@ -1,6 +1,7 @@
 // test the maximum number of features of one edges
 
-//#include <stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -11,14 +12,16 @@ double minlat = 39.4;
 double minlng = 115.3;
 double maxlat = 41.1;
 double maxlng = 117.6;
-
+double differ = 0.05;
+string differstr = "0.05";
 int GetGID(double lat, double lng)
 {
-    //the map is divided into 10x10 grids
-    int x, y;
-    x = (lat - minlat)/0.17 + 1;
-    y = (lng - minlng)/0.23;
-    return 10*y+x;
+        //the map is divided into grids
+        int para = (maxlat - minlat)/differ + 1;
+        int x, y;
+        x = (lat - minlat)/differ + 1;
+        y = (lng - minlng)/differ;
+        return para*y+x;
 }
 
 void GetInfo(string str, int &eid, set <int> gid)
@@ -48,9 +51,9 @@ void GetInfo(string str, int &eid, set <int> gid)
         //cout << "gid = " << gid_temp << endl;
         gid.insert(gid_temp);
     }
-    
-    
-    ofstream offs("edge_grid.txt", ios::out|ios::app);
+       
+	string name = "edge_grid_" + differstr + ".txt";
+    ofstream offs(name.c_str(), ios::out|ios::app);
     offs << eid;
     
     for(it = gid.begin(); it != gid.end(); it++)
@@ -59,7 +62,7 @@ void GetInfo(string str, int &eid, set <int> gid)
         offs << " " << i;
         idstr << i;
         string filename = "./geos/geos_" + idstr.str();
-        cout << filename << endl;
+       // cout << filename << endl;
         ofstream ofs(filename.c_str(), ios::out|ios::app);
         ofs << str;
         ofs.close();
@@ -94,7 +97,8 @@ int main(int argc, char * argv[])
     string str;
     set <int> gid;
     int eid;
-    
+	int size = ((maxlat - minlat)/differ + 1) * ((maxlng - minlng)/differ + 1);
+	cout << "there are " << size << " grids" << endl;    
     for (int i = 0; i < 433391; i++)
     {
         getline(ifs, str, '\n');
