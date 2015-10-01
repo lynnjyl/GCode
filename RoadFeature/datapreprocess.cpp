@@ -93,5 +93,10 @@ void SetGrid(Grid grids[])
 		}
 		y++;	
 	}
+	
+	//set the vector eids
+	//read grid_edge file
+	ifstream ifs(argv[1]);
+	
 
 }

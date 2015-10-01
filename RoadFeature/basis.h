@@ -33,6 +33,7 @@ struct Grid
 {
 	Point ld, ru;
 	int gid;
+	vector <int> eids;
 };
 
 double wallclock();
