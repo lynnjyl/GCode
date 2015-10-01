@@ -10,7 +10,7 @@
 #define Points_hpp
 
 #include <stdio.h>
-
+#include "stdafx.h"
 
 const double eps = 1e-18;
 //define the earth radius
@@ -24,8 +24,17 @@ inline int dcmp(double x){return (x > eps) - (x < -eps);}
 template <class T>
 T SQR(T x) {return x*x;}
 
+/*
+struct GeoPoint
+{
+	double latitude,longitude;
+	Date date;
+	GeoPoint(double lat,double lon,Date dat):latitude(lat),longitude(lon),date(dat){}
+};
+*/
+
 // class Points
-class Points
+class Point
 {
 private:
     //get radian of a degree
@@ -42,7 +51,7 @@ public:
     
     Point(const Point& p):x(p.x),y(p.y),z(p.z),id(p.id){}
     
-    Point(const GeoPoint& p);
+   // Point(const GeoPoint& p);
     
     Point( double _lon, double _lat);
     
@@ -87,6 +96,6 @@ public:
     //return the longitude of the point;
     double getLon();
     
-}
+};
 
 #endif /* Points_hpp */

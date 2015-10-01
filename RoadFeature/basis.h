@@ -8,7 +8,7 @@
 
 #ifndef _basis_h
 #define _basis_h
-
+#include "Point.h"
 #include "stdafx.h"
 /*
 struct GPSPoint

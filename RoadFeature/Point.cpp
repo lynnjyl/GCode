@@ -6,7 +6,7 @@
 //
 //
 
-#include "Points.h"
+#include "Point.h"
 #include "stdafx.h"
 
 ///////////////////Point Class Begin//////////////////////
@@ -29,7 +29,7 @@ double Point::getDeg(double rad)
 //construct
 Point::Point():x(0),y(0),z(0){}
 
-
+/*
 Point::Point(const GeoPoint& p)
 {
     double lon = getRad(p.longitude);
@@ -39,7 +39,7 @@ Point::Point(const GeoPoint& p)
     z = sin(lat);
 }
 
-
+*/
 Point::Point(double _x, double _y, int _id):id(_id)
 {
     double lon = getRad(_x);
@@ -109,8 +109,8 @@ Point Point::operator / (const double& ratio)
     if(ratio == 0)
     {
         fprintf(stderr,"vector devided by zero!\n");
-        system("pause");
-        exit(-1);
+//        system("pause");
+//        exit(-1);
     }
     return Point(this->x/ratio,this->y/ratio,this->z/ratio);
 }

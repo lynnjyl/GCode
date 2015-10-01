@@ -6,12 +6,14 @@
 //
 //maxlat = 41.083333 minlat = 39.416667
 //maxlng = 115.37500 minlng = 117.50000
-
+/*
 #include <stdio.h>
 #include <string>
 #include <iostream>
-#include <stdlib.h>
-#include "include/basis.h"
+#include <stdlib.h>*/
+#include "stdafx.h"
+#include "basis.h"
+#include "Point.h"
 using namespace std;
 const int NumofVer = 171504;
 const int NumofEdge = 433391;
@@ -20,6 +22,10 @@ double minlng = 115.3;
 double maxlat = 41.1;
 double maxlng = 117.6;
 //GPSPoint vertices[NumofVer];
+Edge edges[NumofEdge+1];
+Point vertices[NumofVer+1];
+
+
 int GetGID(double lat, double lng)
 {
 	//the map is divided into 10x10 grids
@@ -29,7 +35,7 @@ int GetGID(double lat, double lng)
 	return 10*y+x;
 }
 
-void ReadVertices(GPSPoint vertices[])
+void ReadVertices(Point vertices[])
 {
     printf("hello function\n");
     FILE * fp;
@@ -40,14 +46,16 @@ void ReadVertices(GPSPoint vertices[])
     for(int i = 0; i < NumofVer; i++)
     {
         fscanf(fp,"%i %lf %lf", &vid, &lat, &lng);
-        vertices[vid].lat = lat;
-        vertices[vid].lng = lng;
-        vertices[vid].gid = GetGID(lat, lng);
+	Point pt(lng,lat);
+	vertices[vid] = pt;
+        //vertices[vid].lat = lat;
+        //vertices[vid].lng = lng;
+        //vertices[vid].gid = GetGID(lat, lng);
 	//cout << lat << " " << lng << " " << vertices[eid].gid << endl;
     }
 }
 
-void ReadEdges(Edges edge[], GPSPoint vertices[])
+void ReadEdges(Edge edges[], Point vertices[])
 {
 	printf("Hello Reading Edges!!\n");
 	FILE * fp;
@@ -57,16 +65,21 @@ void ReadEdges(Edges edge[], GPSPoint vertices[])
 	for(int i = 0; i < NumofEdge; i++)
 	{
 		fscanf(fp, "%i %i %i", &eid, &start_vid, &end_vid);
-		edge[eid].eid = eid;
-		edge[eid].start_vid = start_vid;	
-		edge[eid].end_vid = end_vid;
+		edges[eid].eid = eid;
+		edges[eid].start_vid = start_vid;	
+		edges[eid].end_vid = end_vid;
+		edges[eid].start = vertices[start_vid];
+		edges[eid].end = vertices[end_vid];
 	}
 }
 int main(int argc, char * argv[])
 {
-	Edges edge[NumofEdge+1];
+//	Edge edges[NumofEdge+1];
+//	Edge edges[NumofEdge+1];
+//	Point vertices[NumofVer+1];
+	printf("begin to read\n");
 	ReadVertices(vertices);
-	//ReadEdges(edge, vertices);
+	ReadEdges(edges, vertices);
 	printf("Finish Reading\n");
-	//DisplayAnEdge(edge[1]);
+	DisplayAnEdge(edges[1]);
 }
