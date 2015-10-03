@@ -26,7 +26,7 @@ const int size = ((maxlng - minlng)/differ + 1)*((maxlat - minlat)/differ + 1);
 //GPSPoint vertices[NumofVer];
 Edge edges[NumofEdge+1];
 Point vertices[NumofVer+1];
-Grid grids[size];
+Grid *grids;
 /*
 int GetGID(double lat, double lng)
 {
@@ -80,11 +80,16 @@ int main(int argc, char * argv[])
 //	Edge edges[NumofEdge+1];
 //	Edge edges[NumofEdge+1];
 //	Point vertices[NumofVer+1];
-	SetGrid(grids);
+    std::string grid_edge = argv[1];
+    grids = new Grid[size];
+    SetGrid(grids, grid_edge);
+    DisplayAGrid(grids[5]);
+    DisplayAGrid(grids[41]);
 	printf("there are %d grids\n", size);
-	printf("begin to read\n");
+	/*
+    printf("begin to read\n");
 	ReadVertices(vertices, NumofVer);
 	ReadEdges(edges, vertices, NumofEdge);
 	printf("Finish Reading\n");
-	DisplayAnEdge(edges[1]);
+	DisplayAnEdge(edges[1]);*/
 }
