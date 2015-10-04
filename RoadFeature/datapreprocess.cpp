@@ -1,17 +1,20 @@
 #include "stdafx.h"
 #include "Point.h"
 #include "basis.h"
-const double minlat = 39.4;
-const double minlng = 115.3;
-const double maxlat = 41.1;
-const double maxlng = 117.6;
-const double differ = 0.05;
+extern double minlat;
+extern double minlng;
+extern double maxlat;
+extern double maxlng;
+extern double differ;
+extern int rows;
+extern int columns;
 
 
 void DisplayAPoint(Point pt)
 {
     printf("============A Point============\n");
-    printf("  Point x y z :               %lf, %lf, %lf\n", pt.x, pt.y, pt.z);
+    printf("  Point x y z : %lf, %lf, %lf\n", pt.x, pt.y, pt.z);
+    printf("     Grid ID  : %i\n", pt.gid);
     printf("==========End display==========\n");
 }
 
@@ -44,12 +47,13 @@ void DisplayAGrid(Grid grid)
 
 int GetGID(double lat, double lng)
 {
+    //printf("lat lng : %lf, %lf\n", lat, lng);
         //the map is divided into grids
-    int para = (maxlat - minlat)/differ + 1;
+    //int para = (maxlat - minlat)/differ + 1;    //printf("para: %i\n", para);
     int x, y;
-        x = (lat - minlat)/differ + 1;
-        y = (lng - minlng)/differ;
-        return para*y+x;
+    x = (lat - minlat)/differ + 1;          //printf("x: %i\n", x);
+    y = (lng - minlng)/differ;              //printf("y: %i\n", y);
+        return columns*y+x;
 }
 
 
@@ -64,12 +68,8 @@ void ReadVertices(Point vertices[], int NumofVer)
     for(int i = 0; i < NumofVer; i++)
     {
         fscanf(fp,"%i %lf %lf", &vid, &lat, &lng);
-        Point pt(lng,lat);
+        Point pt(lat,lng);
         vertices[vid] = pt;
-        //vertices[vid].lat = lat;
-        //vertices[vid].lng = lng;
-        //vertices[vid].gid = GetGID(lat, lng);
-        //cout << lat << " " << lng << " " << vertices[eid].gid << endl;
     }
 }
 
@@ -79,7 +79,7 @@ void ReadEdges(Edge edges[], Point vertices[], int NumofEdge)
         FILE * fp;
         fp = fopen("./roadnetwork/edges.txt", "r+");
         int eid, start_vid, end_vid;
-        printf("file open\n");
+        //printf("file open\n");
         for(int i = 0; i < NumofEdge; i++)
         {
                 fscanf(fp, "%i %i %i", &eid, &start_vid, &end_vid);
@@ -93,23 +93,29 @@ void ReadEdges(Edge edges[], Point vertices[], int NumofEdge)
 
 void SetGrid(Grid grids[], std::string grid_edge)
 {
-
-	int lngbound = (maxlng - minlng)/differ + 1;
-	int latbound = (maxlat - minlat)/differ + 1;
+	//int lngbound = (maxlng - minlng)/differ + 1;
+	//int latbound = (maxlat - minlat)/differ + 1;
+    printf("rows : %i\n", rows);
+    printf("columns : %i\n", columns);
 	int x, y;
 	x = y = 0;
 	int index;
 	
-	while(y < lngbound)
+	while(y < rows)
 	{
-		while(x < latbound)
+        x = 0;
+		while(x < columns)
 		{	
-			index = x + y*latbound;
+			index = x + y*columns;
 			Point ld(minlat + x*differ, minlng + y*differ);
-        		Point ru(minlat + (x+1)*differ, minlng + (y+1)*differ);
+            Point ru(minlat + (x+1)*differ, minlng + (y+1)*differ);
+            Point lu(minlat + (x+1)*differ, minlng + y*differ);
+            Point rd(minlat + x*differ, minlng + (y+1)*differ);
 
-			grids[index].ld = ld;
-			grids[index].ru = ru;
+			grids[index].corner[0] = lu;
+			grids[index].corner[1] = ru;
+            grids[index].corner[2] = rd;
+            grids[index].corner[3] = ld;
 			grids[index].gid = index;
 			x++;
 		}

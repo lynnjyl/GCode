@@ -45,17 +45,17 @@ private:
     
 public:
     double x,y,z;//transfer a geometry point into one 3-d point
-    int id;
+    int gid;
     //default
     Point();
     
-    Point(const Point& p):x(p.x),y(p.y),z(p.z),id(p.id){}
-    
+    //Point(const Point& p):x(p.x),y(p.y),z(p.z),id(p.id){}
+    Point(const Point& p):x(p.x),y(p.y),z(p.z),gid(p.gid){}
    // Point(const GeoPoint& p);
     
-    Point( double _lon, double _lat);
+    Point( double _lat, double _lng);
     
-    Point(double _x, double _y, int _id);
+    //Point(double _x, double _y, int _id);
     
     Point(const double& _x,const double& _y,const double& _z);
     
@@ -97,5 +97,7 @@ public:
     double getLon();
     
 };
+Point pToseg(Point p,Point begin,Point end);
+double dispToseg(Point p,Point a,Point b);
 
 #endif /* Points_hpp */

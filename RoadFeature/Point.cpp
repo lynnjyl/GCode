@@ -8,6 +8,7 @@
 
 #include "Point.h"
 #include "stdafx.h"
+#include "basis.h"
 
 ///////////////////Point Class Begin//////////////////////
 
@@ -40,6 +41,7 @@ Point::Point(const GeoPoint& p)
 }
 
 */
+/*
 Point::Point(double _x, double _y, int _id):id(_id)
 {
     double lon = getRad(_x);
@@ -48,14 +50,16 @@ Point::Point(double _x, double _y, int _id):id(_id)
     y = cos(lat)*sin(lon);
     z = sin(lat);
 }
-
-Point::Point(double lon,double lat)
+*/
+Point::Point(double _lat,double _lon)
 {
-    lon = getRad(lon);
-    lat = getRad(lat);
-    x = cos(lat)*cos(lon);
-    y = cos(lat)*sin(lon);
-    z = sin(lat);
+    gid = GetGID(_lat,_lon);
+    _lon = getRad(_lon);
+    _lat = getRad(_lat);
+    //printf("gid : %i\n", gid);
+    x = cos(_lat)*cos(_lon);
+    y = cos(_lat)*sin(_lon);
+    z = sin(_lat);
 }
 
 
@@ -141,6 +145,7 @@ Point pToseg(Point p,Point begin,Point end){
     double dz = begin.z - end.z;
     if(fabs(dx) < eps && fabs(dy) < eps && fabs(dz) < eps )
     {
+        //printf("one\n");
         retVal = begin;
         return retVal;
     }
@@ -149,6 +154,7 @@ Point pToseg(Point p,Point begin,Point end){
     double v2 = ((p-end)*(begin-end));
     if(  v1*v2  < 0)
     {
+        //printf("two\n");
         return p.EucDisTo(begin) < p.EucDisTo(end)?begin:end;
     }
     
@@ -159,11 +165,15 @@ Point pToseg(Point p,Point begin,Point end){
     
     retVal.x = begin.x + u*dx;
     retVal.y = begin.y + u*dy;  
-    retVal.z = begin.z + u*dz;  
+    retVal.z = begin.z + u*dz;
+    //printf("three\n");
     return retVal;  
 }
 
-double dispToseg(Point p,Point a,Point b){
+double dispToseg(Point p,Point a,Point b)
+{
+    //printf("disptoseg\n");
     Point tmp = pToseg(p,a,b);
+    //DisplayAPoint(tmp);
     return p.EucDisTo(tmp);
 }
