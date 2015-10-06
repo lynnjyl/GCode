@@ -27,14 +27,16 @@ int main(int argc, char * argv[])
 	{
 	//	cout << "hello!" << i << endl;
 		getline(ifs, str, '\n');
-	//	cout << str << endl;
+		cout << str << endl;
 		p1 = str.find(' ', 0);
 		eid = atoi(str.substr(0, p1++).c_str());
+        cout << eid << endl;
 		ncount = 0;	
 		while(p2 > 0)
 		{
 			p2 = str.find(' ', p1);
 			temp = atoi(str.substr(p1, p2-p1).c_str());
+            cout << temp << endl;
 			gid_eid[temp].push_back(eid);
 			p1 = p2 + 1;	
 			ncount++;
@@ -43,13 +45,13 @@ int main(int argc, char * argv[])
 		
 	}
 	cout << "ok" << endl;
-	int j;
+	//int j;
 	ofstream ofs(argv[3], ios::out);
 	cout << "write file" << endl;
 	for(int i = 1; i < count+1; i++)
 	{
 		ofs << i;
-		for(int j; j < gid_eid[i].size(); j++)
+		for(int j = 0; j < gid_eid[i].size(); j++)
 			ofs << " " << gid_eid[i][j];
 		ofs << endl;
 	}

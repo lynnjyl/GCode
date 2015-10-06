@@ -15,7 +15,6 @@
 #include "basis.h"
 #include "Point.h"
 
-
 const int NumofVer = 171504;
 const int NumofEdge = 433391;
 int Max = 92645;
@@ -29,7 +28,7 @@ int rows = (maxlat - minlat)/differ + 1;
 int size = columns*rows;
 //GPSPoint vertices[NumofVer];
 Edge *edges = new Edge[NumofEdge+1];
-Point *vertices = new Poing[NumofVer+1];
+Point *vertices = new Point[NumofVer+1];
 Grid *grids = new Grid[size];
 std::vector <Point> traj;
 //Trajectory mapped_traj;
@@ -38,22 +37,27 @@ int main(int argc, char * argv[])
 {
     std::string grid_edge_file = argv[1];
     std::string trajectoryfile = argv[2];
+    //std::string directory = argv[2];
+    
     /*data pre-process.*/
     // step 1: set grid information.
     SetGrid(grids, grid_edge_file);
-    printf("there are %d grids\n", size);
+    //printf("there are %d grids\n", size);
 	// step 2: read vertices file & set them.
-    printf("begin to read\n");
+    //printf("begin to read\n");
 	ReadVertices(vertices, NumofVer);
     // step 3: read edge file & set them
 	ReadEdges(edges, vertices, NumofEdge);
-	printf("Finish Reading\n");
-    DisplayAnEdge(edges[1]);
+	//printf("Finish Reading\n");
+    //ßDisplayAnEdge(edges[1]);
     
     //map-matching part
     // step 1: read one trajectory;
     ReadTrajectory(trajectoryfile, traj);
-    printf("end reading\n");
-    MapTrajectory(traj);
+    //printf("end reading\n");
+    //step 2: map it top the map
+    MapTrajectory(traj, trajectoryfile);
+
+    
     
 }

@@ -125,13 +125,13 @@ double Point::length()
 
 double Point::getLat()
 {
-    assert(z >=-1 && z <= 1);
+    //assert(z >=-1 && z <= 1);
     return getDeg(asin(z));
 }
 
 double Point::getLon()
 {
-    assert(fabs(x) > eps);
+    //assert(fabs(x) > eps);
     return getDeg(atan(y/x));
 }
 ///////////////////Point Class End//////////////////////

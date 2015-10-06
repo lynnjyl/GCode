@@ -17,11 +17,11 @@ string differstr = "0.05";
 int GetGID(double lat, double lng)
 {
         //the map is divided into grids
-        int para = (maxlat - minlat)/differ + 1;
+        int para = (maxlng - minlng)/differ + 1;
         int x, y;
-        x = (lat - minlat)/differ + 1;
-        y = (lng - minlng)/differ;
-        return para*y+x;
+        x = (lat - minlat)/differ;
+        y = (lng - minlng)/differ + 1;
+        return para*x+y;
 }
 
 void GetInfo(string str, int &eid, set <int> gid)

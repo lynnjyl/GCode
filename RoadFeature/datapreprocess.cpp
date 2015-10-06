@@ -59,7 +59,7 @@ int GetGID(double lat, double lng)
 
 void ReadVertices(Point vertices[], int NumofVer)
 {
-    printf("hello function\n");
+    //printf("hello function\n");
     FILE * fp;
     fp = fopen("./roadnetwork/vertices.txt", "r+");
     //char str[200];
@@ -75,7 +75,7 @@ void ReadVertices(Point vertices[], int NumofVer)
 
 void ReadEdges(Edge edges[], Point vertices[], int NumofEdge)
 {
-        printf("Hello Reading Edges!!\n");
+        //printf("Hello Reading Edges!!\n");
         FILE * fp;
         fp = fopen("./roadnetwork/edges.txt", "r+");
         int eid, start_vid, end_vid;
@@ -95,8 +95,8 @@ void SetGrid(Grid grids[], std::string grid_edge)
 {
 	//int lngbound = (maxlng - minlng)/differ + 1;
 	//int latbound = (maxlat - minlat)/differ + 1;
-    printf("rows : %i\n", rows);
-    printf("columns : %i\n", columns);
+    //printf("rows : %i\n", rows);
+    //printf("columns : %i\n", columns);
 	int x, y;
 	x = y = 0;
 	int index;
