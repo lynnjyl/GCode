@@ -50,7 +50,6 @@ int main(int argc, char * argv[])
 	ReadEdges(edges, vertices, NumofEdge);
 	//printf("Finish Reading\n");
     //ßDisplayAnEdge(edges[1]);
-    
     //map-matching part
     // step 1: read one trajectory;
     ReadTrajectory(trajectoryfile, traj);
