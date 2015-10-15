@@ -53,13 +53,23 @@ Point::Point(double _x, double _y, int _id):id(_id)
 */
 Point::Point(double _lat,double _lon)
 {
-    gid = GetGID(_lat,_lon);
-    _lon = getRad(_lon);
-    _lat = getRad(_lat);
-    //printf("gid : %i\n", gid);
-    x = cos(_lat)*cos(_lon);
-    y = cos(_lat)*sin(_lon);
-    z = sin(_lat);
+    if(_lat == 0 && _lon == 0)
+    {
+        gid = 0;
+        _lon = 0;
+        _lat = 0;
+        x = y = z =0;
+    }
+    else
+    {
+        gid = GetGID(_lat,_lon);
+        _lon = getRad(_lon);
+        _lat = getRad(_lat);
+        //printf("gid : %i\n", gid);
+        x = cos(_lat)*cos(_lon);
+        y = cos(_lat)*sin(_lon);
+        z = sin(_lat);
+    }
 }
 
 

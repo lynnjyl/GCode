@@ -51,9 +51,9 @@ int GetGID(double lat, double lng)
         //the map is divided into grids
     //int para = (maxlat - minlat)/differ + 1;    //printf("para: %i\n", para);
     int x, y;
-    x = (lat - minlat)/differ + 1;          //printf("x: %i\n", x);
-    y = (lng - minlng)/differ;              //printf("y: %i\n", y);
-        return columns*y+x;
+    x = (lat - minlat)/differ;          //printf("x: %i\n", x);
+    y = (lng - minlng)/differ + 1;              //printf("y: %i\n", y);
+        return x*columns + y;
 }
 
 

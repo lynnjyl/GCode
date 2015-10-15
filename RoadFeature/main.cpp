@@ -56,6 +56,7 @@ int main(int argc, char * argv[])
     //printf("end reading\n");
     //step 2: map it top the map
     MapTrajectory(traj, trajectoryfile);
+    
 
     
     
