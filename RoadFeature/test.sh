@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for ((k=10;k<11;k++))
+for ((k=11;k<100;k++))
 do
     path="./result/0${k}"
     cd $path
@@ -15,6 +15,23 @@ do
 
 
 done
+
+for ((k=101;k<182;k++))
+do
+    path="./result/${k}"
+    cd $path
+    filelist=$(ls)
+    cd ../..
+    for kfile in $filelist
+    do
+        echo $path
+        echo $kfile
+        ./main ./roadnetwork/grid_edge_0.05.txt $path"/"$kfile
+    done
+
+
+done
+
 
 #path=$1
 #cd $path
