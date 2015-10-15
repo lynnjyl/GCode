@@ -1,14 +1,23 @@
 #!/bin/sh
-path=$1
-cd $path
-filelist=$(ls)
-cd ../..
-for kfile in $filelist
-do
-    echo $path
-    echo $kfile
-    ./main ./roadnetwork/grid_edge_0.05.txt $path"/"$kfile
 
+for ((k=10;k<11;k++))
+do
+    path="./result/0${k}"
+    cd $path
+    filelist=$(ls)
+    cd ../..
+    for kfile in $filelist
+    do
+        echo $path
+        echo $kfile
+        ./main ./roadnetwork/grid_edge_0.05.txt $path"/"$kfile
+    done
+
+
+done
+
+#path=$1
+#cd $path
 
 #	tmp=`basename $kfile`
 #	if [ $tmp == "test.sh" ];then

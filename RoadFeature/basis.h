@@ -53,6 +53,8 @@ void SetGridofEid(std::string str, Grid grids[]);
 void SetGrid(Grid grids[], std::string grid_edge);
 
 //mapmatching.cpp
+bool IsSatisifyied(double min, double max, double num);
+bool IsinBJ(Point pt);
 double partscore(Point pi, Point pj, Edge edge, bool flag);
 void ReadTrajectory(std::string filename, std::vector <Point> &traj);
 void GetCandidateGrid(Point pt, std::vector <int> &cadtGrid);
