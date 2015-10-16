@@ -1,0 +1,40 @@
+# depslib dependency file v1.0
+1444991034 source:/home/yl10/codes/GCode/RoadFeature/DeleteError/main.cpp
+	"stdafx.h"
+	"basis.h"
+	"Point.h"
+
+1444979118 /home/yl10/codes/GCode/RoadFeature/DeleteError/stdafx.h
+	<stdio.h>
+	<iostream>
+	<fstream>
+	<vector>
+	<map>
+	<string>
+	<time.h>
+	<queue>
+	<assert.h>
+	<utility>
+	<thread>
+	<stdlib.h>
+	<math.h>
+	<set>
+
+1444983446 /home/yl10/codes/GCode/RoadFeature/DeleteError/basis.h
+	"Point.h"
+	"stdafx.h"
+
+1444979079 /home/yl10/codes/GCode/RoadFeature/DeleteError/Point.h
+	<stdio.h>
+	"stdafx.h"
+
+1444979053 source:/home/yl10/codes/GCode/RoadFeature/DeleteError/Point.cpp
+	"Point.h"
+	"stdafx.h"
+	"basis.h"
+
+1444990802 source:/home/yl10/codes/GCode/RoadFeature/DeleteError/datapreprocess.cpp
+	"stdafx.h"
+	"Point.h"
+	"basis.h"
+

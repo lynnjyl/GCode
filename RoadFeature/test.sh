@@ -1,8 +1,8 @@
 #!/bin/sh
 
-for ((k=11;k<100;k++))
+for ((k=10;k<100;k++))
 do
-    path="./result/0${k}"
+    path="./result/00${k}"
     cd $path
     filelist=$(ls)
     cd ../..

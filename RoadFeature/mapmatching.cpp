@@ -1,6 +1,6 @@
 //
 //  mapmatching.cpp
-//  
+//
 //
 //  Created by XoX on 15/10/3.
 //
@@ -39,7 +39,7 @@ void    ReadTrajectory(std::string filename, std::vector <Point> &traj)
     fp = fopen(filename.c_str(), "r");
     double lat, lng, time;
     int i = 0;
-    
+
     while (fscanf(fp, "%lf %lf %lf\n", &lat, &lng, &time) != EOF)
     {
         Point pt(lat,lng);
@@ -63,7 +63,7 @@ void    WriteMatchedTrajectory(std::string filename, std::vector <int> mapped_ed
     int p1, p2;
     Point pttemp;
     double lat, lng;
-    
+
     p1 = filename.find_first_of("/\\", 0);
     p1++;
     p2 = filename.find_first_of("/\\", p1);
@@ -73,16 +73,17 @@ void    WriteMatchedTrajectory(std::string filename, std::vector <int> mapped_ed
     p2++;
     name = filename.substr(p2, length-p2);
     printf("%s\n", name.c_str());
-    
+
     filetraj = "./matched/" + name + "_traj.txt";
     fileedge = "./matched/" + name + "_edge.txt";
-    
+
     fpedge = fopen(fileedge.c_str(), "w");
     fptraj = fopen(filetraj.c_str(), "w");
     //fp = fopen(name.c_str(), "w");
     //printf("%s\n", name.c_str());
-    std::cout << "ok here" << std::endl;
+    //std::cout << "ok here" << std::endl;
     //write edges & traj points
+    std::cout << mapped_edge.size() << std::endl;
     for (int i = 0; i < mapped_edge.size(); i++)
     {
         pttemp = mapped_traj[i];
@@ -98,7 +99,7 @@ void    WriteMatchedTrajectory(std::string filename, std::vector <int> mapped_ed
             fprintf(fptraj, "%lf %lf\n", lat, lng);
         //}
     }
-    
+
     fclose(fpedge);
     fclose(fptraj);
 }
@@ -116,7 +117,7 @@ bool IsinBJ(Point pt)
     bool flag = true;
     double lat = pt.getLat();
     double lng = pt.getLon();
-    
+
     if(IsSatisifyied(minlat, maxlat, lat) && IsSatisifyied(minlng, maxlng, lng))
         return true;
     else
@@ -127,22 +128,23 @@ void    MapTrajectory(std::vector <Point> traj, std::string filename)
 {
     //printf("map function\n");
     int size = traj.size();
-    std::vector <Point> mapped_traj(size);
-    std::vector <int> mapped_edge(size);
+    std::vector <Point> mapped_traj;
+    std::vector <int> mapped_edge;
     Point mapped_point;
     Point nomatched(0,0);
     double score, maxscore;
     int lastedgeindex = 0, edgeindex = 0;
     bool matched = false;
-    
-    
+
+
     std::vector <int> cadtGrid, cadtEdge;
-    
+
     //double dist =
-    
+
+    std::cout <<size <<std::endl;
     for (int i = 0; i < size; i++)
     {
-        
+
         if (IsinBJ(traj[i]))
         {
             GetCandidateGrid(traj[i], cadtGrid);
@@ -150,7 +152,7 @@ void    MapTrajectory(std::vector <Point> traj, std::string filename)
             maxscore = 0;
             lastedgeindex = edgeindex;
             edgeindex = 0;
-            
+
             if (cadtEdge.size() == 0)
             {
                 mapped_edge.push_back(0);
@@ -165,18 +167,18 @@ void    MapTrajectory(std::vector <Point> traj, std::string filename)
                         score = partscore(traj[i], traj[i], edges[cadtEdge[k]], true);
                     else
                         score = partscore(traj[i-1], traj[i], edges[cadtEdge[k]], false);
-                    
+
                     if(score > maxscore)
                     {
                         maxscore = score;
                         edgeindex = cadtEdge[k];
                     }
                 }
-                
+
                 mapped_edge.push_back(edgeindex);
                 mapped_point = pToseg(traj[i], edges[edgeindex].start, edges[edgeindex].end);
                 mapped_traj.push_back(mapped_point);
-                
+
             }
             cadtGrid.clear();
             cadtEdge.clear();
@@ -187,8 +189,10 @@ void    MapTrajectory(std::vector <Point> traj, std::string filename)
             mapped_edge.push_back(0);
             mapped_traj.push_back(nomatched);
         }
+
+        std::cout << mapped_edge.size() <<std::endl;
     }
-    
+
     if (matched)
     {
         printf("Matching succeed!\n");
@@ -196,7 +200,7 @@ void    MapTrajectory(std::vector <Point> traj, std::string filename)
     }
     else
         printf("****************************************Matching Failed!\n");
-    
+
 }
 //get all the candidate grids
 void    GetCandidateGrid(Point pt, std::vector <int> &cadtGrid)
@@ -207,14 +211,14 @@ void    GetCandidateGrid(Point pt, std::vector <int> &cadtGrid)
     double dist[4]; //0:up, 1:right, 2:down, 3:left
     int tempindex[4] = {pt.gid+columns, pt.gid+1, pt.gid-columns, pt.gid-1};
     cadtGrid.push_back(pt.gid);
-    
+
     //distance to the four lines of the grid
     dist[0] = dispToseg(pt, center.corner[0], center.corner[1]);
     dist[1] = dispToseg(pt, center.corner[1], center.corner[2]);
     dist[2] = dispToseg(pt, center.corner[2], center.corner[3]);
     dist[3] = dispToseg(pt, center.corner[3], center.corner[0]);
-    
-    
+
+
     //std::cout << "grid height is " << dispToseg(center.corner[2], center.corner[0], center.corner[1]) << std::endl;
     //std::cout << "grid width is " << dispToseg(center.corner[2], center.corner[0], center.corner[3]) << std::endl;
     /*
@@ -235,7 +239,7 @@ void    GetCandidateGrid(Point pt, std::vector <int> &cadtGrid)
         else
             flag[i] = false;
     }
-    
+
     //get all the index of the candidate grids
     if(flag[0]&&flag[1])
         cadtGrid.push_back(pt.gid+columns+1);
@@ -259,7 +263,7 @@ void    GetCandidateEdge(Point pt, std::vector <int> &cadtGrid, std::vector <int
     int gridid, eid;
     double dist;
     int size;
-    
+
     //std::cout << "there are " << cadtGrid.size() << " candidate grids" << std::endl;
     for (int i = 0; i < cadtGrid.size(); i++)
     {
@@ -269,29 +273,29 @@ void    GetCandidateEdge(Point pt, std::vector <int> &cadtGrid, std::vector <int
         AllCandidate.insert(grids[gridid].eids.begin(), grids[gridid].eids.end());
     }
     //std::cout << "There are " << AllCandidate.size() << " candidate edges" << std::endl;
-    
+
     if(AllCandidate.size() == 0)
         return;
     dist = dispToseg(pt, edges[273467].start, edges[273467].end);
     //std::cout << "distance to the first edge 273467: " << std::endl;
     //std::cout << "----------------" << dist << "----------------" << std::endl;
-    
+
     for (std::set <int>::iterator it = AllCandidate.begin(); it != AllCandidate.end(); it++)
     {
         eid = *it;
         dist = dispToseg(pt, edges[eid].start, edges[eid].end);
         if (dist < threshold)
             Q.push(std::make_pair(dist, eid));
-        
+
         if (Q.size() > NumofCadt)
             Q.pop();
     }
-    
+
     size = Q.size();
     //std::cout << "cadt edges in priority queue" << std::endl;
     for (int i = 0; i < size; i++)
     {
-        
+
         //std::cout << Q.top().second << " " << Q.top().first << std::endl;
         cadtEdge.push_back(Q.top().second);
         Q.pop();
@@ -304,30 +308,30 @@ double  partscore(Point pi, Point pj, Edge edge, bool flag)
     double CosofAngle;
     double dist;
     Point VecofPoint, VecofEdge;
-    
+
     dist = dispToseg(pj, edge.start, edge.end);
-    
-    
+
+
     //sd = ud - a / pow(dist, nd);
     sd = para1 * multipler * 1/dist;
     //std::cout << "distance :" << dist << std::endl;
     //std::cout << "distance score : " << sd << std::endl;
-    
+
     /**added 10.13 set a distance threshold**/
 //    if (dist > 100)
 //    {
 //        return -1;
 //    }
-    
+
     /**/
     if (flag)
         return sd;
-    
+
     VecofPoint = pj - pi;
     VecofEdge = edge.end - edge.start;
     CosofAngle = VecofEdge * VecofPoint/(VecofPoint.length() * VecofEdge.length());
     CosofAngle = fabs(CosofAngle);
-    
+
     //sa = ua*pow(CosofAngle, na);
     sa = para2 * CosofAngle;
     //std::cout << "angle score : " << sa << std::endl;
@@ -342,12 +346,12 @@ double GetScore(int i)
     double score;
     double maxscore = 0;
     int bound;
-    
+
     std::vector <int> cadtGrid, cadtEdge;
     GetCandidateGrid(pi, cadtGrid);
     GetCandidateEdge(pi, cadtGrid, cadtEdge);
-    
-    
+
+
     if (i == traj.size()-2)
     {
         for (int k = 0; k < cadtEdge.size(); k++)
@@ -373,7 +377,7 @@ double GetScore(int i)
                 score  = GetScore(i)
             }
         }
-       
+
     }
 
 }
@@ -382,15 +386,15 @@ void GetBestMatching(int i, int size)
     std::vector <int> cadtGrid, cadtEdge;
     int bound;
     double score;
-    
+
     GetCandidateGrid(traj[0], cadtGrid);
     GetCandidateEdge(traj[0], cadtGrid, cadtEdge);
-    
+
     if ((i+5) < size)
         bound = i+5;
     else
         bound = size;
-    
+
     for (int j = 0; j < cadtEdge.size(); j++)
     {
         for (int k = i+1; k < bound; k++)
@@ -398,8 +402,8 @@ void GetBestMatching(int i, int size)
             score += GetScore(p)
         }
     }
-    
-    
+
+
 
 
 }
