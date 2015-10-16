@@ -16,7 +16,7 @@ do
 
 done
 
-for ((k=101;k<182;k++))
+for ((k=101;k<101;k++))
 do
     path="./result/${k}"
     cd $path

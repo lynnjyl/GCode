@@ -60,14 +60,19 @@ void    WriteMatchedTrajectory(std::string filename, std::vector <int> mapped_ed
     printf("%s\n", filename.c_str());
     int length = filename.length();
     std::string name, filetraj, fileedge;
-    int pos;
+    int p1, p2;
     Point pttemp;
     double lat, lng;
     
-    pos = filename.find_last_of("/\\");
+    p1 = filename.find_first_of("/\\", 0);
+    p1++;
+    p2 = filename.find_first_of("/\\", p1);
+    //std::cout << "p2: " << p2 << std::endl;
+
     //printf("%d\n", pos);
-    pos++;
-    name = filename.substr(pos, length-pos);
+    p2++;
+    name = filename.substr(p2, length-p2);
+    printf("%s\n", name.c_str());
     
     filetraj = "./matched/" + name + "_traj.txt";
     fileedge = "./matched/" + name + "_edge.txt";
@@ -76,7 +81,7 @@ void    WriteMatchedTrajectory(std::string filename, std::vector <int> mapped_ed
     fptraj = fopen(filetraj.c_str(), "w");
     //fp = fopen(name.c_str(), "w");
     //printf("%s\n", name.c_str());
-    
+    std::cout << "ok here" << std::endl;
     //write edges & traj points
     for (int i = 0; i < mapped_edge.size(); i++)
     {
