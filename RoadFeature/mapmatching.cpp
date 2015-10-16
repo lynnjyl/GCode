@@ -83,7 +83,7 @@ void    WriteMatchedTrajectory(std::string filename, std::vector <int> mapped_ed
     //printf("%s\n", name.c_str());
     //std::cout << "ok here" << std::endl;
     //write edges & traj points
-    std::cout << mapped_edge.size() << std::endl;
+//    std::cout << mapped_edge.size() << std::endl;
     for (int i = 0; i < mapped_edge.size(); i++)
     {
         pttemp = mapped_traj[i];
@@ -141,7 +141,7 @@ void    MapTrajectory(std::vector <Point> traj, std::string filename)
 
     //double dist =
 
-    std::cout <<size <<std::endl;
+ //   std::cout <<size <<std::endl;
     for (int i = 0; i < size; i++)
     {
 
@@ -190,7 +190,7 @@ void    MapTrajectory(std::vector <Point> traj, std::string filename)
             mapped_traj.push_back(nomatched);
         }
 
-        std::cout << mapped_edge.size() <<std::endl;
+ //       std::cout << mapped_edge.size() <<std::endl;
     }
 
     if (matched)
