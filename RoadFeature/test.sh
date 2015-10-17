@@ -16,6 +16,7 @@ do
 
 done
 
+:<<BLOCK
 for ((k=10;k<100;k++))
 do
     path="./result/0${k}"
@@ -29,8 +30,8 @@ do
         ./main ./roadnetwork/grid_edge_0.05.txt $path"/"$kfile
     done
 
-
 done
+
 for ((k=101;k<182;k++))
 do
     path="./result/${k}"
@@ -47,7 +48,7 @@ do
 
 done
 
-
+BLOCK
 #path=$1
 #cd $path
 
