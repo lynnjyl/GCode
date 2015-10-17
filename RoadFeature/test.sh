@@ -1,5 +1,5 @@
 #!/bin/sh
-
+:<<BLOCK
 for ((k=0;k<10;k++))
 do
     path="./result/00${k}"
@@ -16,8 +16,8 @@ do
 
 done
 
-:<<BLOCK
-for ((k=10;k<100;k++))
+BLOCK
+for ((k=10;k<40;k++))
 do
     path="./result/0${k}"
     cd $path
@@ -31,7 +31,7 @@ do
     done
 
 done
-
+:<<BLOCK
 for ((k=101;k<182;k++))
 do
     path="./result/${k}"
