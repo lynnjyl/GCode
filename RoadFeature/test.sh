@@ -17,7 +17,7 @@ do
 done
 
 BLOCK
-for ((k=10;k<20;k++))
+for ((k=20;k<100;k++))
 do
     path="./result/0${k}"
     cd $path

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-for ((k=0;k<10;k++))
+for ((k=100;k<182;k++))
 do
-    name="./matched/00${k}"
+    name="./matched/${k}"
     mkdir $name
 done
