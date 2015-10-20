@@ -52,7 +52,7 @@ void SetGrid(Grid grids[], std::string grid_edge);
 bool IsSatisifyied(double min, double max, double num);
 bool IsinBJ(Point pt);
 double partscore(Point pi, Point pj, Edge edge, bool flag);
-void ReadTrajectory(std::string filename, std::vector <Point> &traj);
+void ReadTrajectory(std::string filename, std::vector <Point> &traj, std::vector <string> &time);
 void GetCandidateGrid(Point pt, std::vector <int> &cadtGrid);
 void GetCandidateEdge(Point pt, std::vector <int> &cadtGrid, std::vector <int> &cadtEdge);
 void MapTrajectory(std::vector <Point> traj, std::string filename);

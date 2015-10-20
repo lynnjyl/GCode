@@ -62,21 +62,24 @@ void ReadVertices(Point vertices[], int NumofVer)
     printf("hello function\n");
     FILE * fp;
     fp = fopen("../roadnetwork/vertices.txt", "r");
+    std::cout << "open finished!" << std::endl;
     //char str[200];
     int vid;
     double lat, lng;
     for(int i = 0; i < NumofVer; i++)
     {
         fscanf(fp,"%i %lf %lf", &vid, &lat, &lng);
+        //std::cout << vid << " " << lat << " " << lng << std::endl;
         Point pt(lat,lng);
         vertices[vid] = pt;
     }
+    std::cout << "read vertices finished" << std::endl;
     fclose(fp);
 }
 
 void ReadEdges(Edge edges[], Point vertices[], int NumofEdge)
 {
-        //printf("Hello Reading Edges!!\n");
+        printf("Hello Reading Edges!!\n");
         FILE * fp;
         fp = fopen("../roadnetwork/edges.txt", "r");
         int eid, start_vid, end_vid;
@@ -137,7 +140,7 @@ void SetGrid(Grid grids[], std::string grid_edge)
 
 void SetGridofEid(std::string str, Grid grids[])
 {
-    int p1, p2;
+    int p1, p2 = 0;
     int gid, eid;
 
     p1 = str.find(' ', 0);
@@ -155,17 +158,23 @@ void SetGridofEid(std::string str, Grid grids[])
     }
 }
 
-void    ReadTrajectory(std::string filename, std::vector <Point> &traj)
+void    ReadTrajectory(std::string filename, std::vector <Point> &traj, std::vector <string> &time)
 {
     FILE *fp;
     fp = fopen(filename.c_str(), "r");
-    double lat, lng, time;
+    double lat, lng;
+    char t[20];
+    string ttemp;
     int i = 0;
 
-    while (fscanf(fp, "%lf %lf %lf\n", &lat, &lng, &time) != EOF)
+    while (fscanf(fp, "%lf %lf %s\n", &lat, &lng, t) != EOF)
     {
         //cout << lat << " " << lng << endl;
         Point pt(lat,lng);
+        ttemp = string(t);
+        time.push_back(ttemp);
+        //cout << ttemp << endl;
+        //cout << t << endl;
         //DisplayAPoint(pt);
         traj.push_back(pt);
         i++;
