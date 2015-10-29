@@ -37,17 +37,19 @@ void    ReadTrajectory(std::string filename, std::vector <Point> &traj)
 {
     FILE *fp;
     fp = fopen(filename.c_str(), "r");
-    double lat, lng, time;
+    double lat, lng;
+    char  time[20];
     int i = 0;
 
-    while (fscanf(fp, "%lf %lf %lf\n", &lat, &lng, &time) != EOF)
+    printf("read trajectory in func\n");
+    while (fscanf(fp, "%lf %lf %s\n", &lat, &lng, time) != EOF)
     {
         Point pt(lat,lng);
         //DisplayAPoint(pt);
         traj.push_back(pt);
         i++;
     }
-    //printf("trajectory size : %d\n", i);
+    printf("trajectory size : %d\n", i);
     traj.resize(i);
     //DisplayAPoint(pt);
     //DisplayAPoint(traj[0]);

@@ -1,5 +1,5 @@
 #!/bin/sh
-:<<BLOCK
+
 for ((k=1;k<10;k++))
 do
     path="../result/00${k}"
@@ -15,14 +15,14 @@ do
 
 
 done
-BLOCK
+:<<BLOCK
 
-for ((k=10;k<20;k++))
+for ((k=20;k<30;k++))
 do
-    path="../result/0${k}"
+    path="./result/0${k}"
     cd $path
     filelist=$(ls)
-    cd ../../RoadFeature
+    cd ../..
     for kfile in $filelist
     do
         echo $path
@@ -31,7 +31,7 @@ do
     done
 
 done
-:<<BLOCK
+#:<<BLOCK
 for ((k=101;k<182;k++))
 do
     path="./result/${k}"

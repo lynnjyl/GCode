@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  
+//
 //
 //  Created by XoX on 15/9/17.
 //
@@ -38,26 +38,27 @@ int main(int argc, char * argv[])
     std::string grid_edge_file = argv[1];
     std::string trajectoryfile = argv[2];
     //std::string directory = argv[2];
-    
+
     /*data pre-process.*/
     // step 1: set grid information.
     SetGrid(grids, grid_edge_file);
-    //printf("there are %d grids\n", size);
+    printf("there are %d grids\n", size);
 	// step 2: read vertices file & set them.
     //printf("begin to read\n");
 	ReadVertices(vertices, NumofVer);
+	printf("end reading vertices\n");
     // step 3: read edge file & set them
 	ReadEdges(edges, vertices, NumofEdge);
-	//printf("Finish Reading\n");
-    //ßDisplayAnEdge(edges[1]);
+	printf("Finish Reading edges\n");
+    //DisplayAnEdge(edges[1]);
     //map-matching part
     // step 1: read one trajectory;
     ReadTrajectory(trajectoryfile, traj);
-    //printf("end reading\n");
+    printf("end reading trajectory \n");
     //step 2: map it top the map
     MapTrajectory(traj, trajectoryfile);
-    
 
-    
-    
+
+
+
 }
