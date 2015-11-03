@@ -160,13 +160,19 @@ void SetGridofEid(std::string str, Grid grids[])
 
 void    ReadTrajectory(std::string filename, std::vector <Point> &traj, std::vector <string> &time)
 {
+    printf("hello from ReadTrajectory\n");
     FILE *fp;
     fp = fopen(filename.c_str(), "r");
+    if(fp == NULL)
+        cout  <<  ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.Could not open the file "  << filename << endl;
     double lat, lng;
     char t[20];
     string ttemp;
     int i = 0;
+   // fscanf(fp, "%lf %lf %s\n", &lat, &lng, t);
+    //cout << lat << " " << lng << endl;
 
+   // cout <<"file opened" << endl;
     while (fscanf(fp, "%lf %lf %s\n", &lat, &lng, t) != EOF)
     {
         //cout << lat << " " << lng << endl;
@@ -179,7 +185,7 @@ void    ReadTrajectory(std::string filename, std::vector <Point> &traj, std::vec
         traj.push_back(pt);
         i++;
     }
-    //printf("trajectory size : %d\n", i);
+    printf("trajectory size : %d\n", i);
     traj.resize(i);
     //DisplayAPoint(pt);
     //DisplayAPoint(traj[0]);

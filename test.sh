@@ -1,5 +1,5 @@
 #!/bin/sh
-
+:<<BLOCK
 for ((k=0;k<10;k++))
 do
     path="GeolifeTrajectories1.3/Data/00${k}/Trajectory"
@@ -24,8 +24,8 @@ do
         ./g $path"/"$kfile
     done
 done
-
-for ((k=101;k<182;k++))
+BLOCK
+for ((k=100;k<101;k++))
 do
     path="GeolifeTrajectories1.3/Data/${k}/Trajectory"
     cd $path

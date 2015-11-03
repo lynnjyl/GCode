@@ -1,0 +1,46 @@
+# depslib dependency file v1.0
+1446187834 source:/home/yl10/codes/GCode/RoadFeature/CreateTensor/datapreprocess.cpp
+	"stdafx.h"
+	"Point.h"
+	"basis.h"
+
+1444105396 /home/yl10/codes/GCode/RoadFeature/CreateTensor/stdafx.h
+	<stdio.h>
+	<iostream>
+	<fstream>
+	<vector>
+	<map>
+	<string>
+	<time.h>
+	<queue>
+	<assert.h>
+	<utility>
+	<thread>
+	<stdlib.h>
+	<math.h>
+	<set>
+
+1444105341 /home/yl10/codes/GCode/RoadFeature/CreateTensor/Point.h
+	<stdio.h>
+	"stdafx.h"
+
+1446195247 /home/yl10/codes/GCode/RoadFeature/CreateTensor/basis.h
+	"Point.h"
+	"stdafx.h"
+
+1444976996 source:/home/yl10/codes/GCode/RoadFeature/CreateTensor/Point.cpp
+	"Point.h"
+	"stdafx.h"
+	"basis.h"
+
+1446198350 source:/home/yl10/codes/GCode/RoadFeature/CreateTensor/createtensor.cpp
+	"stdafx.h"
+	"Point.h"
+	"basis.h"
+
+1446195078 source:/home/yl10/codes/GCode/RoadFeature/CreateTensor/main.cpp
+	<iostream>
+	"stdafx.h"
+	"basis.h"
+	"Point.h"
+

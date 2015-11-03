@@ -42,19 +42,19 @@ int main(int argc, char * argv[])
     /*data pre-process.*/
     // step 1: set grid information.
     SetGrid(grids, grid_edge_file);
-    printf("there are %d grids\n", size);
+    //printf("there are %d grids\n", size);
 	// step 2: read vertices file & set them.
     //printf("begin to read\n");
 	ReadVertices(vertices, NumofVer);
-	printf("end reading vertices\n");
+	//printf("end reading vertices\n");
     // step 3: read edge file & set them
 	ReadEdges(edges, vertices, NumofEdge);
-	printf("Finish Reading edges\n");
+	//printf("Finish Reading edges\n");
     //DisplayAnEdge(edges[1]);
     //map-matching part
     // step 1: read one trajectory;
     ReadTrajectory(trajectoryfile, traj);
-    printf("end reading trajectory \n");
+    //printf("end reading trajectory \n");
     //step 2: map it top the map
     MapTrajectory(traj, trajectoryfile);
 

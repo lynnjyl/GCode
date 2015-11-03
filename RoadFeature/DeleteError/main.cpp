@@ -40,6 +40,8 @@ void ReadMatchedEdge(string MatchedEdgeFile, vector <int> &MatchedEID)
     cout << "Hello From ReadMatchedEdge!" << endl;
     cout << MatchedEdgeFile << endl;
     FILE *fp = fopen(MatchedEdgeFile.c_str(), "r");
+    if(fp == NULL)
+        cout  <<  ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.Could not open the file "  << MatchedEdgeFile << endl;
     int eid, index = 0;
     vector <int> DetectEID;
     vector <int> DetectIdx;
@@ -68,6 +70,8 @@ void ReadMatchedEdge(string MatchedEdgeFile, vector <int> &MatchedEID)
 //    }
 
     cout << "size is " << size << endl;
+    if(size < 3)
+        return;
     for(i = 0;  i < size-2; i++)
     {
         front = DetectIdx[i+1] - DetectIdx[i];
@@ -79,7 +83,7 @@ void ReadMatchedEdge(string MatchedEdgeFile, vector <int> &MatchedEID)
 
         //cout << i << " " <<  front << " " << middle << " " << back << endl;
 
-        if(DetectEID[i] == DetectEID[i+2] && front > middle && back > middle && DetectEID[i] != 0)
+        if(DetectEID[i] == DetectEID[i+2] && front > middle && back > middle && DetectEID[i] != 0&&middle < 10)
         {
             cout << "At Line " << DetectIdx[i+1] << " change " << middle << " numbers of " << DetectEID[i+1] << " ---------> " << DetectEID[i] <<endl;
             for(int k =0; k < middle; k++)
@@ -89,7 +93,7 @@ void ReadMatchedEdge(string MatchedEdgeFile, vector <int> &MatchedEID)
         }
     }
 
-    cout << "ok here" << endl;
+   //cout << "ok here" << endl;
 //    for(i = 0; i < index; i++)
 //        cout << MatchedEID[i] << endl;
 
@@ -108,13 +112,13 @@ void GetTime(vector <string> time)
         temp = time[i].substr(0, p);
         index = atoi(temp.c_str());
         timeindex.push_back(index);
-        cout <<index << endl;
+        //cout <<index << endl;
     }
 
 }
 void DetectError(string MatchedTrajFile, string MatchedEdgeFile)
 {
-    cout << "Hello From DetectError!" << endl;
+    //cout << "Hello From DetectError!" << endl;
     vector <int> MatchedEID;
     vector <Point> MatchedTraj;
     Point nomatched(0,0);
@@ -150,7 +154,7 @@ void DetectError(string MatchedTrajFile, string MatchedEdgeFile)
             //cout << lat << " " << lng << endl;
         }
 
-        fprintf(fpedge, "%d %d\n", MatchedEID[i], timeindex[i]);
+        fprintf(fpedge, "%d %s\n", MatchedEID[i], ptime[i].c_str());
         fprintf(fptraj, "%lf %lf\n", lat, lng);
     }
     fclose(fpedge);
@@ -166,20 +170,20 @@ int main(int argc, char * argv[])
     cout << trajectoryfile << endl;
 
     GetMatchedFileName(trajectoryfile.c_str(), MatchedTrajFile, MatchedEdgeFile);
-    cout << MatchedEdgeFile << endl;
-    cout << MatchedTrajFile << endl;
+    //cout << MatchedEdgeFile << endl;
+    //cout << MatchedTrajFile << endl;
 
     //step one : read vertices file
 	ReadVertices(vertices, NumofVer);
     // step two: read edge file & set them
 	ReadEdges(edges, vertices, NumofEdge);
-	std::cout << "read two file finished!" << std::endl;
+	//std::cout << "read two file finished!" << std::endl;
     // step three： read raw gps file
 	ReadTrajectory(trajectoryfile.c_str(), traj, ptime);
 	//DisplayAPoint(traj[0]);
 	//cout << traj[0].getLat() << " " << traj[0].getLon() << endl;
 	//cout << traj[1].getLat() << " " << traj[1].getLon() << endl;
-	std::cout << "read trajectory succeed!" << std::endl;
+	//std::cout << "read trajectory succeed!" << std::endl;
 	// step 4: read matched edges
 	DetectError(MatchedTrajFile, MatchedEdgeFile);
 
