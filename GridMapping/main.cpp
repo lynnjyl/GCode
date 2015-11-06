@@ -226,7 +226,6 @@ int main(int argc, char * argv[])
         for(int j = StartIndex[i]; j < EndIndex[i]; j++)
         {
             fprintf(fp, "%lf %lf %s\n", traj[j].Latitude, traj[j].Longitude, traj[j].Time.c_str());
-
         }
         a++;
     }
