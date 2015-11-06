@@ -135,7 +135,7 @@ void DetectRegion(double D, double T, double Time, vector <GPSlog> & traj, vecto
     int size = traj.size();
     double Time_sec = Time*60;
     double TimeGap;
-
+/*
     for(i = 0; i < size-1; i++)
     {
         TimeGap = timebetween(traj[i], traj[i+1]);
@@ -145,8 +145,8 @@ void DetectRegion(double D, double T, double Time, vector <GPSlog> & traj, vecto
             EndIndex.push_back(i);
         }
     }
-
-    cout << "detect" << endl;
+*/
+    //cout << "detect" << endl;
     start = 1;
 	m = 0;
     while(m < size)
@@ -172,8 +172,8 @@ void DetectRegion(double D, double T, double Time, vector <GPSlog> & traj, vecto
 				start++;
 			//start--;
 
-            cout << "start: " << m << endl;
-            cout << "end: " << start << endl;
+           // cout << "start: " << m << endl;
+            //cout << "end: " << start << endl;
 			EndIndex.push_back(m);
 			StartIndex.push_back(start);
 
@@ -186,7 +186,7 @@ void DetectRegion(double D, double T, double Time, vector <GPSlog> & traj, vecto
 		}
 		//cout << "ok " << endl;
 	}
-    cout << "here" << endl;
+   // cout << "here" << endl;
 	EndIndex.push_back(size-1);
 }
 
@@ -210,13 +210,15 @@ int main(int argc, char * argv[])
 
     cout << "begin to write" << endl;
     parts = StartIndex.size();
-    cout << "There are(is) " << parts << " part(s) in this trajectory" << endl;
+    cout << "There is(are)  " << parts << " part(s) in this trajectory" << endl;
 
     fstart = input.find_last_of('/');
     fend = input.find_last_of('.');
     //cout << fstart << " " << fend << endl;
     filename = input.substr(fstart, fend-fstart);
     cout << filename << endl;
+/*
+    //split one trajectory into several trajectories
     for(i = 0; i < parts; i++)
     {
         output = "./trajectory" + filename +"_" + a + ".txt";
@@ -229,7 +231,15 @@ int main(int argc, char * argv[])
         }
         a++;
     }
-
+    */
+    //still in one trajectory file, but delete the stay regions.
+    output = "./trajectory" + filename + ".txt";
+    FILE *fp = fopen(output.c_str(), "w");
+    for(i = 0; i < parts; i++)
+    {
+        for(int j = StartIndex[i]; j < EndIndex[i]; j++)
+                fprintf(fp, "%lf %lf %s\n", traj[j].Latitude, traj[j].Longitude, traj[j].Time.c_str());
+    }
 
 
 }
