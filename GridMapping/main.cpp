@@ -1,11 +1,3 @@
-/*
-        Get all stay points in the dataset
-	input parameter:
-		[1] Number	: file name in ../Geolife Trajectories 1.3/Data/
-		[2]	D		: distance threshold
-		[3] T		: time threshold
-*/
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -190,6 +182,15 @@ void DetectRegion(double D, double T, double Time, vector <GPSlog> & traj, vecto
 	EndIndex.push_back(size-1);
 }
 
+void GetGridID(vector <GPSlog> traj, vector <int> &gridids)
+{
+    //uniform grids: latitude(0.01)*longitude(0.01)
+
+
+    //dynamic grids: the densier, the smaller
+
+}
+
 int main(int argc, char * argv[])
 {
     string input = argv[1];
@@ -232,6 +233,8 @@ int main(int argc, char * argv[])
         a++;
     }
     */
+
+
     //still in one trajectory file, but delete the stay regions.
     output = "./trajectory" + filename + ".txt";
     FILE *fp = fopen(output.c_str(), "w");

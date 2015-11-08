@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1446964971 source:/home/yl10/codes/GCode/Analysis/main.cpp
+	<iostream>
+	<string>
+	<vector>
+	<fstream>
+
