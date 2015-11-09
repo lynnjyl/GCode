@@ -182,14 +182,7 @@ void DetectRegion(double D, double T, double Time, vector <GPSlog> & traj, vecto
 	EndIndex.push_back(size-1);
 }
 
-void GetGridID(vector <GPSlog> traj, vector <int> &gridids)
-{
-    //uniform grids: latitude(0.01)*longitude(0.01)
 
-
-    //dynamic grids: the densier, the smaller
-
-}
 
 int main(int argc, char * argv[])
 {
