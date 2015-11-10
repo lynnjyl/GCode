@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11    CMakeFiles/dbqlsh_test.dir/dbqlsh_test.cpp.o  -o ../bin/linux/dbqlsh_test -rdynamic 
