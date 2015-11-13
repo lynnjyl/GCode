@@ -26,7 +26,7 @@
  *
  * @brief Example of using Random Bits Sampling LSH index for L2 distance.
  */
-#include <lshbox.h>
+#include "lshbox.h"
 int main(int argc, char const *argv[])
 {
     std::cout << "Example of using Random Bits Sampling LSH" << std::endl << std::endl;

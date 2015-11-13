@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
     std::mt19937 rng(unsigned(std::time(0)));
     std::ofstream out_u("unsigned.data", std::ios::binary);
     unsigned bytes_u(sizeof(unsigned)), size_u(1000000), dim_u(10);
+    std::cout << "bytes_u = " << bytes_u << std::endl;
     out_u.write((char *)&bytes_u, bytes_u);
     out_u.write((char *)&size_u, bytes_u);
     out_u.write((char *)&dim_u, bytes_u);

@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-/// Copyright (C) 2015 Gefu Tang <tanggefu@gmail.com> & Yang Long <20288ly@sina.cn>.
+/// Copyright (C) 2015 Gefu Tang "tanggefu@gmail.com" & Yang Long <20288ly@sina.cn>.
 /// All Rights Reserved.
 ///
 /// This file is part of LSHBOX.
@@ -15,7 +15,7 @@
 /// more details.
 ///
 /// You should have received a copy of the GNU General Public License along
-/// with LSHBOX. If not, see <http://www.gnu.org/licenses/>.
+/// with LSHBOX. If not, see "http://www.gnu.org/licenses/".
 ///
 /// @version 0.1
 /// @author Gefu Tang , Yang Long & Zhifeng Xiao
@@ -29,16 +29,16 @@
  *
  * You only need to include this file to use the most functionalities of LSHBOX.
  */
-#include <lshbox/basis.h>
-#include <lshbox/matrix.h>
-#include <lshbox/metric.h>
-#include <lshbox/topk.h>
-#include <lshbox/eval.h>
-#include <lshbox/rbslsh.h>
-#include <lshbox/rhplsh.h>
-#include <lshbox/thlsh.h>
-#include <lshbox/psdlsh.h>
-#include <lshbox/shlsh.h>
-#include <lshbox/itqlsh.h>
-#include <lshbox/dbqlsh.h>
-#include <lshbox/kdbqlsh.h>
+#include "lshbox/basis.h"
+#include "lshbox/matrix.h"
+#include "lshbox/metric.h"
+#include "lshbox/topk.h"
+#include "lshbox/eval.h"
+#include "lshbox/rbslsh.h"
+#include "lshbox/rhplsh.h"
+#include "lshbox/thlsh.h"
+#include "lshbox/psdlsh.h"
+#include "lshbox/shlsh.h"
+#include "lshbox/itqlsh.h"
+#include "lshbox/dbqlsh.h"
+#include "lshbox/kdbqlsh.h"

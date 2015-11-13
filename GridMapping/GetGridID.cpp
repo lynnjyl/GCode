@@ -11,16 +11,30 @@ double minlng = 115.36;
 double maxlat = 41.09;
 double maxlng = 117.51;
 double differ = 0.01;
+double dif1 = 0.0005;
+double dif2 = 0.001;
 int columns = (maxlng - minlng)/differ + 1;
 int rows = (maxlat - minlat)/differ + 1;
 int size = columns*rows;
-
+/*layer1*/
+double minlat_l1 = minlat + differ*45;
+double minlng_l1 = minlng + differ*90;
+double maxlng_l1 = minlng + differ*120;
+double maxlat_l1 = minlat + differ*65;
+/*layer2*/
+double minlat_l2 = minlat + differ*25;
+double minlng_l2 = minlng + differ*80;
+double maxlng_l2 = minlng + differ*130;
+double maxlat_l2 = minlat + differ*80;
 
 int GetFirstGID(double lat, double lng)
 {
     //printf("lat lng : %lf, %lf\n", lat, lng);
         //the map is divided into grids
     //int para = (maxlat - minlat)/differ + 1;    //printf("para: %i\n", para);
+    if(lat < minlat || lat > maxlat || lng < minlng || lng > maxlng)
+        return 0;
+
     int x, y;
     x = (lat - minlat)/differ;          //printf("x: %i\n", x);
     y = (lng - minlng)/differ+1;                          //printf("y: %i\n", y);
@@ -28,14 +42,17 @@ int GetFirstGID(double lat, double lng)
 }
 
 
-int GetLayer(int FirstID)
+int GetLayer(double lat, double lng)
 {
     int Layer;
-    int x, y;
-    x = FirstID/columns;
-    y = FirstID%columns;
+    //int x, y;
+    //x = FirstID/columns;
+    //y = FirstID%columns;
 
-    if(x <= 65 && x > 45 && y <= 120 && y > 90)
+    /*if(FirstID == 0)
+        return 0;*/
+
+    /*if(x <= 65 && x > 45 && y <= 120 && y > 90)
         Layer = 1;
     else
     {
@@ -43,33 +60,50 @@ int GetLayer(int FirstID)
             Layer = 2;
         else
             Layer = 3;
+    }*/
+
+    if(lat < minlat || lat > maxlat || lng < minlng || lng > maxlng)
+        return 0;
+
+    if(lat <= maxlat_l1 && lat > minlat_l1 && lng <= maxlng_l1 && lng > minlng_l1)
+        Layer = 1;
+    else
+    {
+        if(lat <= maxlat_l2 && lat > minlat_l2 && lng <= maxlng_l2 && lng > maxlng_l2)
+            Layer = 2;
+        else
+            Layer = 3;
     }
     return Layer;
 }
-int GetGridID(double lat, double lng, int FirstID)
+int GetGridID(double lat, double lng)
 {
     int GridID;
     int x, y;
-    double dif1, dif2;
+    //double dif1, dif2;
     int presum;
-    double minlat_l1, minlng_l1, maxlng_l1;
-    double minlat_l2, minlng_l2, maxlng_l2;
+    //double minlat_l1, minlng_l1, maxlng_l1;
+    //double minlat_l2, minlng_l2, maxlng_l2;
     int x_l1, x_l2, y_l1, y_l2;
     int columns_l1, columns_l2, gridid_l1, gridid_l2;
 
-    dif1 = 0.0005;
-    dif2 = 0.001;
+    //dif1 = 0.0005;
+    //dif2 = 0.001;
+    int FirstID = GetFirstGID(lat, lng);
     x = FirstID/columns;
     y = FirstID%columns;
 
-    int layer = GetLayer(FirstID);
+    int layer = GetLayer(lat, lng);
     switch(layer)
     {
+        case 0:
+            GridID = 0;
+            break;
         case 1:
             presum = 248538;
-            minlat_l1 = minlat + differ*45;
+            /*minlat_l1 = minlat + differ*45;
             minlng_l1 = minlng + differ*90;
-            maxlng_l1 = minlng + differ*120;
+            maxlng_l1 = minlng + differ*120;*/
             x_l1 = (lat - minlat_l1)/dif1;
             y_l1 = (lng - minlng_l1)/dif1+1;
             columns_l1 = (maxlng_l1 - minlng_l1)/dif1+1;
@@ -78,9 +112,9 @@ int GetGridID(double lat, double lng, int FirstID)
             break;
         case 2:
             presum = 33538;
-            minlat_l2 = minlat + differ*25;
+           /* minlat_l2 = minlat + differ*25;
             minlng_l2 = minlng + differ*80;
-            maxlng_l2 = minlng + differ*130;
+            maxlng_l2 = minlng + differ*130;*/
             x_l2 = (lat - minlat_l2)/dif2;
             y_l2 = (lng - minlng_l2)/dif2+1;
             columns_l2 = (maxlng_l2 - minlng_l2)/dif2+1;
@@ -129,19 +163,27 @@ int main(int argc, char *argv[])
     int num = atoi(argv[2]);
     FILE *fp;
     fp = fopen(argv[1], "r");
+   //int maxGid = 0;
 
     set <int> grid_of_traj;
     set <int> ::iterator it;
 
     while(fscanf(fp, "%lf %lf %s\n", &lat, &lng, time) != EOF)
     {
-        FirstID = GetFirstGID(lat, lng);
-        GridID = GetGridID(lat, lng, FirstID);
+        //FirstID = GetFirstGID(lat, lng);
+        //GridID = GetGridID(lat, lng, FirstID);
+        GridID = GetGridID(lat, lng);
 
-//        cout << "(lat, lng) : " << lat << " " << lng << endl;
-//        cout << "FirstID :" << FirstID << endl;
-//        cout << "GridID : " << GridID << endl;
+       /*cout << "(lat, lng) : " << lat << " " << lng << endl;
+       cout << "FirstID :" << FirstID << endl;
+       cout << "GridID : " << GridID << endl;*/
         grid_of_traj.insert(GridID);
+        if(GridID > 488538)
+        {
+            int a;
+            cin >> a;
+        }
+
     }
     fclose(fp);
 
@@ -150,7 +192,16 @@ int main(int argc, char *argv[])
 
     for(it = grid_of_traj.begin(); it != grid_of_traj.end(); it++)
     {
-        fprintf(fp2, "%d %d\n", num, *it);
+        if(*it != 0)
+            fprintf(fp2, "%d %d\n", num, *it);
+      /*  if(*it > 488538)
+        {
+            cout << *it << endl;
+            int a; 
+            cin >> a;
+
+        }*/
+
     }
 
     fclose(fp2);

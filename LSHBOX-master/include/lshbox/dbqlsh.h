@@ -34,7 +34,7 @@
 #include <random>
 #include <iostream>
 #include <functional>
-#include <eigen/Eigen/Dense>
+#include "../eigen/Eigen/Dense"
 namespace lshbox
 {
 /**
