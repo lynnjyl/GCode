@@ -23,6 +23,8 @@ int main()
 		}
 	}
 
+
+
 	std::cout << maxid << std::endl;
 	rbsLsh mylsh;
 	Parameter param;
