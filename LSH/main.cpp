@@ -2,11 +2,11 @@
 #include <fstream>
 #include <vector>
 #include <cstring>
-#include "lsh.h"
+//#include "lsh.h"
 
 int main()
 {
-	FILE *fp = fopen("matrix.txt", "r");
+	/*FILE *fp = fopen("matrix.txt", "r");
 	int TrajID, GridID;
 	int Dim = 488600;;
 	int maxid = 0, num = 0;;
@@ -40,10 +40,10 @@ int main()
 
     for(i = 0; i < matrix.size(); i++)
     {
-    	std::cout << "Trajectory ID: " << i << std::endl;
+    	//std::cout << "Trajectory ID: " << i << std::endl;
     	memset(data, 0, Dim);
-    	std::cout << "memory set" << std::endl;
-    	std::cout << "matrix[i].size: " << matrix[i].size() << std::endl;
+    	//std::cout << "memory set" << std::endl;
+    	//std::cout << "matrix[i].size: " << matrix[i].size() << std::endl;
     	for(k = 0; k < matrix[i].size(); k++)
     	{
     		index = matrix[i][k];
@@ -51,8 +51,30 @@ int main()
     		data[index] = 1;
     	}
     	
-    	//mylsh.insert(i, data);
+    	mylsh.insert(i, data, Dim);
     }
+
+    mylsh.query(data);*/
+
+
+    //random shuffle
+
+    int a[10];
+    int i(0), r(0), temp(0);
+    for(i = 0; i < 10; i++)
+        a[i] = i;
+
+    for(i = 0; i < 10; i++)
+    {
+        r = rand()%10;
+        temp = a[i];
+        a[i] = a[r];
+        a[r] = temp; 
+    }
+
+    for(i = 0; i < 10; i++)
+        std::cout << a[i] << " ";
+    std::cout << std::endl;
 	
 
 

@@ -4,6 +4,7 @@
 #include <map>
 #include <algorithm>
 #include <ctime>
+#include <set>
 
 
 struct Parameter
@@ -18,79 +19,6 @@ struct Parameter
     unsigned N;
     /// The Difference between upper and lower bound of each dimension
     unsigned C;
-};
-
-template <typename ACCESSOR>
-class Scanner
-{
-public:
-    typedef typename ACCESSOR::Value Value;
-    typedef typename ACCESSOR::DATATYPE DATATYPE;
-    /**
-     * Constructor for this class.
-     *
-     * @param accessor The scanner use accessor to retrieva values from keys.
-     * @param metric The distance metric.
-     * @param K Value used to reset internal Topk class.
-     * @param R Value used to reset internal Topk class.
-     */
-    Scanner(
-        const ACCESSOR &accessor,
-        const Metric<DATATYPE> &metric,
-        unsigned K,
-        float R = std::numeric_limits<float>::max()
-    ): accessor_(accessor), metric_(metric), K_(K), R_(R), cnt_(0) {}
-    /**
-      * Reset the query, this function should be invoked before each query.
-      */
-    void reset(Value query)
-    {
-        query_ = query;
-        accessor_.reset();
-        topk_.reset(K_, R_);
-        cnt_ = 0;
-    }
-    /**
-     * Number of points scanned for the current query.
-     */
-    unsigned cnt() const
-    {
-        return cnt_;
-    }
-    /**
-     * TopK results.
-     */
-    const Topk &topk() const
-    {
-        return topk_;
-    }
-    /**
-     * TopK results.
-     */
-    Topk &topk()
-    {
-        return topk_;
-    }
-    /**
-     * Update the current query by scanning key, this is normally invoked by the LSH
-     * index structure.
-     */
-    void operator () (unsigned key)
-    {
-        if (accessor_.mark(key))
-        {
-            ++cnt_;
-            topk_.push(key, metric_.dist(query_, accessor_(key)));
-        }
-    }
-private:
-    ACCESSOR accessor_;
-    Metric<DATATYPE> metric_;
-    Topk topk_;
-    Value query_;
-    unsigned K_;
-    float R_;
-    unsigned cnt_;
 };
 
 
@@ -149,7 +77,7 @@ public:
      * @param key   The sequence number of vector
      * @param domin The pointer to the vector
      */
-    void insert(unsigned key, unsigned *domin)
+    /*void insert(unsigned key, unsigned *domin)
     {
         for (unsigned i = 0; i != param.L; ++i)
         {
@@ -167,7 +95,29 @@ public:
                 ++seq;
             }
             unsigned hashVal = sum % param.M;
-            std::cout <<"hash value: " << hashVal << std::endl;
+            //std::cout <<"hash value: " << hashVal << std::endl;
+            tables[i][hashVal].push_back(key);
+        }
+    }*/
+    void insert(unsigned key, unsigned *domin, int Dim)
+    {
+        for (unsigned i = 0; i != param.L; ++i)
+        {
+            unsigned sum(0), seq(0);
+            for (unsigned k = 0; k != )
+            {
+                if ((*it % param.C) <= unsigned(domin[*it / param.C]))
+                {
+                    //std::cout << *it/param.C << std::endl;
+                    //std::cout << domin[*it / param.C]<< std::endl;
+                    //int a;
+                    //std::cin >> a;
+                    sum += rndArray[i][seq];
+                }
+                ++seq;
+            }
+            unsigned hashVal = sum % param.M;
+            //std::cout <<"hash value: " << hashVal << std::endl;
             tables[i][hashVal].push_back(key);
         }
     }
@@ -177,7 +127,7 @@ public:
      * @param domin   The pointer to the vector
      * @param scanner Top-K scanner, use for scan the approximate nearest neighborholds
      */
-    template <typename SCANNER>
+    /*template <typename SCANNER>
     void query(unsigned *domin, SCANNER &scanner)
     {
         for (unsigned i = 0; i != param.L; ++i)
@@ -200,6 +150,38 @@ public:
                 }
             }
         }
+    }*/
+    void query(unsigned *domin)
+    {
+        //for each hash table
+        std::set <unsigned> candidates;
+        for(unsigned i = 0; i != param.L; ++i)      
+        {
+            unsigned sum(0), seq(0);
+            for(std::vector<unsigned>::iterator it = rndBits[i].begin(); it != rndBits[i].end(); it++)
+            {
+                if ((*it % param.C) <= unsigned(domin[*it / param.C]))
+                {
+                    sum += rndArray[i][seq];
+                }
+                ++seq;
+            }
+            unsigned hashVal = sum % param.M;
+            if (tables[i].find(hashVal) != tables[i].end())
+            {
+                unsigned num(0);
+                for (std::vector<unsigned>::iterator iter = tables[i][hashVal].begin(); iter != tables[i][hashVal].end(); ++iter)
+                {
+                    //std::cout << *iter << " ";
+                    candidates.insert(*iter);
+                    num++;
+                }
+                //std::cout << std::endl;
+                std::cout << "There are " << candidates.size() << std::endl;                
+                std::cout << "There are " << candidates.size() << " candidate for the trajectory" << std::endl;
+            }
+        }
+
     }
 
 };
