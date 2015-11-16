@@ -106,17 +106,20 @@ double DTW(vector<GPSpoint> traj1, vector<GPSpoint> traj2)
 	return dtw[size1-1][size2-1];
 }
 
-void GetAllFilenames(/*vector <int> &fileids, */vector <string> &filenames)
+void GetAllFilenames(/*vector <int> &fileids, */string *filenames)
 {
 	FILE *fp = fopen("index.txt", "r");
 	char name[30];
 	int id;
 
-	while(fscanf(fp, "%d %c\n", &id, name) != EOF)
+	cout << "here" << endl;
+	while(fscanf(fp, "%d %s\n", &id, name) != EOF)
 	{	
 			//fileids.push_back(id);
-			filenames.push_back(string(name));
+			//cout << name << endl;
+			filenames[id-1] = string(name);
 	}
+	fclose(fp);
 	return;
 }
 
@@ -131,19 +134,21 @@ int main(int argc, char* argv[])
 	vector<GPSpoint> traj1;
 	vector<GPSpoint> traj2;
 	string queryfile = argv[1];
-	vector <string> filenames;
+	//vector <string> filenames;
+	string filenames[18670];
 	string name;
 	//vector <int> fileids;
 	double dist, max_dist;
 	int num = atoi(argv[2]);
 	candidate *cant = new candidate[num];
 	candidate cant_temp;
-	int i, j, id;
+	int i, j, id, k(0);
 	char filename[30];
 
 	cout << "begin to read" << endl;
 	
-	//GetAllFilenames(filenames);
+	GetAllFilenames(filenames);
+	//cout << filenames[0] << endl;
 	ReadFile(queryfile, traj1);
 
 	cout << "read finished" << endl;
@@ -151,22 +156,25 @@ int main(int argc, char* argv[])
 	for(i = 0; i < 18670; i++)
 	{
 		//cout << filenames[i] << endl;
-		fscanf(fp, "%d %s\n", &id, filename);
-		cout << filename << endl;
+		//fscanf(fp, "%d %s\n", &id, filename);
+		cout << i << " " <<  filenames[i] << endl;
 
-		if(string(filename) != queryfile)
+		if(string(filenames[i]) != queryfile)
 		{	
-			name = "../result/" + string(filename);
+			//cout << "not the same" << endl;
+			name = "../result/" + string(filenames[i]);
 			
-			cout << name << endl;
+			//cout << name << endl;
 			ReadFile(name, traj2);
+			cout << "get distance" << endl;
 			dist = DTW(traj1, traj2);
-			cout << dist << endl;
+			//cout << dist << endl;
 			cant_temp.id = i+1;
 			cant_temp.dist = dist;
-			if(i < num)
+			if(k < num)
 			{
-				cant[i] = cant_temp;
+				cant[k++] = cant_temp;
+				//cout << cant[i].id << " " << cant[i].dist << endl;
 			}
 			else
 			{
@@ -178,14 +186,17 @@ int main(int argc, char* argv[])
 					cant[num-1] = cant_temp;
 				}
 			}
-			/*for(j = 0; j < num; j++)
+			/*
+			for(j = 0; j < num; j++)
 				cout << cant[j].id << " " << cant[j].dist << endl;
 			cout << "**************************" << endl;*/
 			traj2.clear();
 		}
+		
 	}
-
-	string output = "candidateof" + queryfile;
+	//cout << cant[0].id << " " << cant[0].dist << endl;
+ 
+	string output = "candidate_" + queryfile;
 	FILE *fp2 = fopen(output.c_str(), "w");
 
 	for(j = 0; j < num; j++)
@@ -195,7 +206,7 @@ int main(int argc, char* argv[])
 	fclose(fp2);
 	fclose(fp);
 
-	
+
 	//ReadFile(file2, traj2);
 
 	//cout << "read finished" << endl;
