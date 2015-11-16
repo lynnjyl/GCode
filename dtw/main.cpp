@@ -14,6 +14,8 @@ int nTRAC1, nTRAC2;
 char f1[] = "20081023025304.plt";
 char f2[] = "20090413213935.plt";
 
+double m = 99999999;
+
 double* DP;
 
 double dist(int i,int j){
@@ -27,10 +29,11 @@ double DWT(){
 	//double* DP =(double*) malloc(sizeof(double)*nTRAC1*nTRAC2);
 	int i, j;
 	double a, b, c;
-	for (j = 0; j < nTRAC2; j++)
+	for (j = 1; j < nTRAC2; j++)
 		*(DP + j) = 0;
-	for (i = 0; i < nTRAC1; i++)
+	for (i = 1; i < nTRAC1; i++)
 		*(DP + nTRAC2*i) = 0;
+	// *(DP) = 0;
 
 	for (i = 1; i < nTRAC1; i++)
 		for (j = 1; j < nTRAC2; j++)
@@ -44,7 +47,6 @@ double DWT(){
 			//system("pause");
 			
 			//printf("%lf\n", *(DP + nTRAC2*i + j));
-			//
 		}
 	double ans = *(DP + nTRAC2*(nTRAC1 - 1) + nTRAC2 - 1);
 	//free(DP);
