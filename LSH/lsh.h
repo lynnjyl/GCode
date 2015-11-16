@@ -77,7 +77,7 @@ public:
      * @param key   The sequence number of vector
      * @param domin The pointer to the vector
      */
-    /*void insert(unsigned key, unsigned *domin)
+    void insert(unsigned key, std::vector <unsigned> domin)
     {
         for (unsigned i = 0; i != param.L; ++i)
         {
@@ -98,7 +98,8 @@ public:
             //std::cout <<"hash value: " << hashVal << std::endl;
             tables[i][hashVal].push_back(key);
         }
-    }*/
+    }
+    /*
     void insert(unsigned key, unsigned *domin, int Dim)
     {
         for (unsigned i = 0; i != param.L; ++i)
@@ -121,6 +122,7 @@ public:
             tables[i][hashVal].push_back(key);
         }
     }
+    */
     /**
      * Query the approximate nearest neighborholds.
      *
@@ -151,7 +153,7 @@ public:
             }
         }
     }*/
-    void query(unsigned *domin)
+    std::set<unsigned> query(std::vector <unsigned> domin)
     {
         //for each hash table
         std::set <unsigned> candidates;
@@ -177,10 +179,13 @@ public:
                     num++;
                 }
                 //std::cout << std::endl;
-                std::cout << "There are " << candidates.size() << std::endl;                
-                std::cout << "There are " << candidates.size() << " candidate for the trajectory" << std::endl;
+                //std::cout << "There are " << candidates.size() << std::endl;                
+                //std::cout << "There are " << candidates.size() << " candidate for the trajectory" << std::endl;
             }
+            else
+                std::cout << "no matched" << std::endl;
         }
+        return candidates;
 
     }
 
