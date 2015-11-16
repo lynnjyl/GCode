@@ -83,22 +83,10 @@ int main(int argc, char * argv[])
 	for(j = 0; j < NumofTraj; j++)
 		vector <int>().swap(matrix[i]);
 
-	//apply the signature matrix to rbslsh.
-/*
-	for(j = 0; j < SigSize; j++)
-	{
-		cout << Sigmatrix[1][j] << " ";
-	}
-	cout << endl;
-	for(j = 0; j < SigSize; j++)
-	{
-		cout << Sigmatrix[10][j] << " ";
-	}
-	cout << endl;
-*/
+/*	// rbslsh
 	rbsLsh mylsh;
-	Parameter param;
-	param.M = 1024;              // Hash table size
+	Parameter_rbslsh param;
+	param.M = 521;              // Hash table size
     param.L = 5;                // Number of hash tables
     param.D = SigSize;    		// Dimension of the vector, it can be obtained from the instance of Matrix
     param.C = Dim; //×î´óÖµ       // The Difference between upper and lower bound of each dimension
@@ -106,9 +94,6 @@ int main(int argc, char * argv[])
     mylsh.reset(param);
     std::cout << "Success" << std::endl;
 
-    //unsigned int data[Dim];	
-    //int index, i, k;
-   //memset(data, 0, Dim);
 
     for(i = 0; i < NumofTraj; i++)
     {
@@ -123,60 +108,32 @@ int main(int argc, char * argv[])
     	cout << "traj " << i << "has " << candidates.size() << " candidates." << endl;
     	candidates.clear();
     }
+*/
 
-
-/*
-
-	std::cout << maxid << std::endl;
-	rbsLsh mylsh;
-	Parameter param;
-	param.M = 521;              // Hash table size
-    param.L = 5;                // Number of hash tables
-    param.D = Dim;    		// Dimension of the vector, it can be obtained from the instance of Matrix
-    param.C = 2; //×î´óÖµ       // The Difference between upper and lower bound of each dimension
-    param.N = 20;               // Binary code bytes
-    mylsh.reset(param);
+    //psdlsh
+    psdLsh psdlsh;
+    Parameter_psdlsh param_psd;
+    param_psd.M = 521;
+    param_psd.L = 5;
+    param_psd.D = SigSize;
+    param_psd.T = GAUSSIAN;
+    param_psd.W = 0.5;
+    psdlsh.reset(param_psd);
     std::cout << "Success" << std::endl;
 
-    unsigned int data[Dim];	
-    int index, i, k;
-   //memset(data, 0, Dim);
-
-    for(i = 0; i < matrix.size(); i++)
+    for(i = 0; i < NumofTraj; i++)
     {
-    	//std::cout << "Trajectory ID: " << i << std::endl;
-    	memset(data, 0, Dim);
-    	//std::cout << "memory set" << std::endl;
-    	//std::cout << "matrix[i].size: " << matrix[i].size() << std::endl;
-    	for(k = 0; k < matrix[i].size(); k++)
-    	{
-    		index = matrix[i][k];
-    		//std::cout << k << " " << index << std::endl;
-    		data[index] = 1;
-    	}
-    	
-    	mylsh.insert(i, data, Dim);
+    	psdlsh.insert(i, Sigmatrix[i]);
     }
+    cout << "ok" << endl;
 
-    mylsh.query(data);
-
-*/
-    //random shuffle
-
-    
-	
-
-
-
-    //printf("%d\n", matrix[TrajID].size());
-
-   /* std::cout << matrix[TrajID][1] << " ";
-    for(int i = 0; i < matrix[TrajID].size(); i++)
+    set <unsigned> candidates;
+    for(i = 0; i < NumofTraj; i++)
     {
-    	std::cout << matrix[TrajID][i] << " ";
-    	index = matrix[TrajID][i];
-    	data[index] = 1;
-    }*/
+    	candidates = psdlsh.query(Sigmatrix[i]);
+    	cout << "traj " << i << "has " << candidates.size() << " candidates." << endl;
+    	candidates.clear();
+    }
 
 	return 0;
 }
