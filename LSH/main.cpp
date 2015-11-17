@@ -128,10 +128,14 @@ int main(int argc, char * argv[])
     cout << "ok" << endl;
 
     set <unsigned> candidates;
-    for(i = 0; i < NumofTraj; i++)
+    for(i = 0; i < 1; i++)
     {
     	candidates = psdlsh.query(Sigmatrix[i]);
     	cout << "traj " << i << "has " << candidates.size() << " candidates." << endl;
+    	
+    	FILE *fp = fopen("cant.txt", "w");
+    	for(set <unsigned>::iterator it = candidates.begin(); it != candidates.end(); ++it)
+    		fprintf(fp, "%d\n", *it);
     	candidates.clear();
     }
 
