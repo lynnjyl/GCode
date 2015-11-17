@@ -145,7 +145,7 @@ int main(int argc, char* argv[])
 	string queryfile = argv[1];
 	string cantfile = argv[2];
 	int tid = atoi(argv[3]);
-	int mode = atoi(argv[4]);
+	//int mode = atoi(argv[4]);
 	//vector <string> filenames;
 	string filenames[18671];
 	string name;
@@ -161,8 +161,6 @@ int main(int argc, char* argv[])
 
 	ReadFile(queryfile, traj1);
 
-	if(mode == 1)
-	{	
 		/*cout << "begin to read" << endl;
 	
 		//GetAllFilenames(filenames);
@@ -172,15 +170,16 @@ int main(int argc, char* argv[])
 		cout << "read finished" << endl;
 */
 
-		if(queryfile != cantfile)
-		{
-			ReadFile(cantfile, traj2);
-			dist = DTW(traj1, traj2);
-			string output = "candidate_" + queryfile;
-			FILE *fp2 = fopen(output.c_str(), "a");
-			fprintf(fp2, "%d %lf\n", tid, dist);
-		}
+	if(queryfile != cantfile)
+	{
+		ReadFile(cantfile, traj2);
+		dist = DTW(traj1, traj2);
+		string output = "candidate_" + queryfile;
+		FILE *fp2 = fopen(output.c_str(), "a");
+		fprintf(fp2, "%d %lf\n", tid, dist);
 	}
+	
+	/*
 	else
 	{
 		cout << "get all filenames" << endl;
@@ -209,6 +208,7 @@ int main(int argc, char* argv[])
 
 		}
 	}
+	*/
 /*
 	for(i = 0; i < 18670; i++)
 	{

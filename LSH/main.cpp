@@ -62,7 +62,7 @@ int main(int argc, char * argv[])
 	for(j = 0; j < SigSize; j++)
 	{
 		RandomShuffle(pi);
-		for(k = 0; k < NumofTraj; k++)
+		for(k = 1; k < NumofTraj; k++)		//from 1
 		{
 			minhash = Dim;
 			Sigmatrix[k].resize(SigSize);
@@ -121,7 +121,7 @@ int main(int argc, char * argv[])
     psdlsh.reset(param_psd);
     std::cout << "Success" << std::endl;
 
-    for(i = 0; i < NumofTraj; i++)
+    for(i = 1; i < NumofTraj; i++)
     {
     	psdlsh.insert(i, Sigmatrix[i]);
     }
