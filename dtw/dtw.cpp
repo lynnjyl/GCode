@@ -90,16 +90,16 @@ double DTW(vector<GPSpoint> traj1, vector<GPSpoint> traj2)
 
 	
 	for(i = 0; i < size1; i++)
-		dtw[i][0] = Edistance(traj1[i].lat, traj1[i].lng, traj2[0].lat, traj2[0].lng);
+		dtw[i][0] = distance(traj1[i].lat, traj1[i].lng, traj2[0].lat, traj2[0].lng);
 	for(i = 0; i < size2; i++)
-		dtw[0][i] = Edistance(traj2[i].lat, traj2[i].lng, traj1[0].lat, traj1[0].lng);
+		dtw[0][i] = distance(traj2[i].lat, traj2[i].lng, traj1[0].lat, traj1[0].lng);
 
 	for(i = 1; i < size1; i++)
 	{
 		for(j = 1; j < size2; j++)
 		{
 			mm = min(min(dtw[i-1][j], dtw[i-1][j-1]), dtw[i][j-1]);
-			dtw[i][j] = mm + Edistance(traj1[i].lat, traj1[i].lng, traj2[j].lat, traj2[j].lng);
+			dtw[i][j] = mm + distance(traj1[i].lat, traj1[i].lng, traj2[j].lat, traj2[j].lng);
 			//cout << "dtw " << i << " " << j << ": " << dtw[i][j] << endl;
 		}
 	}
@@ -130,29 +130,41 @@ bool less_len(const candidate & c1, const candidate &c2)
 
 int main(int argc, char* argv[])
 {
-	FILE *fp = fopen("index.txt", "r");
+	//FILE *fp = fopen("index.txt", "r");
 	vector<GPSpoint> traj1;
 	vector<GPSpoint> traj2;
 	string queryfile = argv[1];
+	string cantfile = argv[2];
+	int tid = atoi(argv[3]);
 	//vector <string> filenames;
-	string filenames[18670];
-	string name;
+	//string filenames[18670];
+	//string name;
 	//vector <int> fileids;
-	double dist, max_dist;
-	int num = atoi(argv[2]);
-	candidate *cant = new candidate[num];
-	candidate cant_temp;
-	int i, j, id, k(0);
+	double dist/*, max_dist*/;
+	//int num = atoi(argv[2]);
+	//candidate *cant = new candidate[num];
+	//candidate cant_temp;
+	//int i, j, id, k(0);
 	char filename[30];
 
 	cout << "begin to read" << endl;
 	
-	GetAllFilenames(filenames);
+	//GetAllFilenames(filenames);
 	//cout << filenames[0] << endl;
 	ReadFile(queryfile, traj1);
 
 	cout << "read finished" << endl;
 
+
+	if(queryfile != cantfile)
+	{
+		ReadFile(cantfile, traj2);
+		dist = DTW(traj1, traj2);
+		string output = "candidate_" + queryfile;
+		FILE *fp2 = fopen(output.c_str(), "a");
+		fprintf(fp2, "%d %lf\n", tid, dist);
+	}
+/*
 	for(i = 0; i < 18670; i++)
 	{
 		//cout << filenames[i] << endl;
@@ -186,10 +198,10 @@ int main(int argc, char* argv[])
 					cant[num-1] = cant_temp;
 				}
 			}
-			/*
+			
 			for(j = 0; j < num; j++)
 				cout << cant[j].id << " " << cant[j].dist << endl;
-			cout << "**************************" << endl;*/
+			cout << "**************************" << endl;
 			traj2.clear();
 		}
 		
@@ -197,7 +209,7 @@ int main(int argc, char* argv[])
 	//cout << cant[0].id << " " << cant[0].dist << endl;
  
 	string output = "candidate_" + queryfile;
-	FILE *fp2 = fopen(output.c_str(), "w");
+	FILE *fp2 = fopen(output.c_str(), "a");
 
 	for(j = 0; j < num; j++)
 	{
@@ -206,7 +218,7 @@ int main(int argc, char* argv[])
 	fclose(fp2);
 	fclose(fp);
 
-
+*/
 	//ReadFile(file2, traj2);
 
 	//cout << "read finished" << endl;
