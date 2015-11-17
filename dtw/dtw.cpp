@@ -118,7 +118,7 @@ void GetAllFilenames(/*vector <int> &fileids, */string *filenames)
 	{	
 			//fileids.push_back(id);
 			//cout << name << endl;
-			filenames[id-1] = string(name);
+			filenames[id] = string(name);
 	}
 	fclose(fp);
 	return;
@@ -134,7 +134,7 @@ void GetAllCandidates(vector <int> &candid)
 	FILE *fp = fopen("cant.txt", "r");
 	int id;
 	while(fscanf(fp, "%d\n", &id) != EOF)
-		candid.push_back(id);
+		candid.push_back(id+1);			//LSH part id set from 0
 	return;
 }
 int main(int argc, char* argv[])
@@ -147,7 +147,7 @@ int main(int argc, char* argv[])
 	int tid = atoi(argv[3]);
 	int mode = atoi(argv[4]);
 	//vector <string> filenames;
-	string filenames[18670];
+	string filenames[18671];
 	string name;
 	//vector <int> fileids;
 	double dist/*, max_dist*/;
@@ -160,7 +160,7 @@ int main(int argc, char* argv[])
 	vector <int> candid;
 
 	ReadFile(queryfile, traj1);
-	
+
 	if(mode == 1)
 	{	
 		/*cout << "begin to read" << endl;
@@ -203,7 +203,7 @@ int main(int argc, char* argv[])
 				dist = DTW(traj1, traj2);	cout << dist << endl;
 				string output = "cant_" + queryfile;
 				FILE *fp2 = fopen(output.c_str(), "a");
-				fprintf(fp2, "%d %lf\n", tid, dist);
+				fprintf(fp2, "%d %lf\n", candid[i], dist);
 				fclose(fp2);
 			}
 
