@@ -88,8 +88,11 @@ int main(int argc, char * argv[])
 	{
 		double t1 = wallclock();
 		RandomShuffle(pi);
+<<<<<<< HEAD
 		double t2 = wallclock();
 		cout << t2 - t1 << endl;
+=======
+>>>>>>> c60ec2d1794433039f68350acbc812a72adef774
 		for(k = 1; k < NumofTraj; k++)		//from 1
 		{
 			minhash = Dim;
@@ -281,6 +284,10 @@ int main(int argc, char * argv[])
     std::cout << "Success in psdlsh" << std::endl;
 
     for(i = 1; i < NumofTraj; i++)
+<<<<<<< HEAD
+=======
+    {
+>>>>>>> c60ec2d1794433039f68350acbc812a72adef774
     	psdlsh.insert(i, Sigmatrix[i]);
     
   
@@ -310,6 +317,7 @@ int main(int argc, char * argv[])
 
 	//set <unsigned> candidates;
 
+<<<<<<< HEAD
 	candidates = rhplsh.query(Sigmatrix[QueryID]);
 	cout << "traj " << QueryID << " has " << candidates.size() << " candidates." << endl;
 
@@ -343,6 +351,18 @@ int main(int argc, char * argv[])
                 param_th.Min = Sigmatrix[i][j];
             }
         }
+=======
+    set <unsigned> candidates;
+    for(i = 0; i < 1; i++)
+    {
+    	candidates = psdlsh.query(Sigmatrix[i]);
+    	cout << "traj " << i << "has " << candidates.size() << " candidates." << endl;
+    	
+    	FILE *fp = fopen("cant.txt", "w");
+    	for(set <unsigned>::iterator it = candidates.begin(); it != candidates.end(); ++it)
+    		fprintf(fp, "%d\n", *it);
+    	candidates.clear();
+>>>>>>> c60ec2d1794433039f68350acbc812a72adef774
     }
     thlsh.reset(param_th);
 
