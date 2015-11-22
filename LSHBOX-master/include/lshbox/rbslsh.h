@@ -120,10 +120,10 @@ public:
             {
                 if ((*it % param.C) <= unsigned(domin[*it / param.C]))
                 {
-                    std::cout << *it/param.C << std::endl;
-                    std::cout << domin[*it / param.C]<< std::endl;
-                    int a;
-                    std::cin >> a;
+                    //std::cout << *it/param.C << std::endl;
+                    //std::cout << domin[*it / param.C]<< std::endl;
+                    //int a;
+                    //std::cin >> a;
                     sum += rndArray[i][seq];
                 }
                 ++seq;

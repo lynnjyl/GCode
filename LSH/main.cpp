@@ -3,6 +3,10 @@
 #include <vector>
 #include <cstring>
 #include <ctime>
+#include <sstream>
+#include <limits>
+#include <sys/time.h>
+#include <functional> 
 #include "lsh.h"
 
 using namespace std;
@@ -27,15 +31,37 @@ void RandomShuffle(vector <int> &a)
     return;
 }
 
+ 
+
+double wallclock(void) 
+{
+	struct timeval tv;
+	struct timezone tz; 
+	double t; 
+	gettimeofday(&tv, &tz);
+	t = (double)tv.tv_sec*1000;
+	t += ((double)tv.tv_usec)/1000.0;
+	return t;
+}
+
+template <typename T>
+string NumberToString ( T Number )
+{
+	stringstream ss;
+	ss << Number;
+	return ss.str();
+}
+
 int main(int argc, char * argv[])
 {
-	FILE *fp = fopen("matrix.txt", "r");
+	FILE *fp = fopen("matrix.txt", "r");		// the file stores the original matrix
 	int TrajID, GridID, i, j, k, CurrentTraj(1);
 	int Dim(488600), NumofTraj(18671);
-	int SigSize = atoi(argv[1]);
-	int bands = atoi(argv[2]);
+	int SigSize = atoi(argv[1]); 
+	int QueryID = atoi(argv[2]);
+	//int mode = atoi(argv[3]);
 	int maxid = 0, num = 0;
-	vector <int> pi;					//vector for min-hashing
+	vector <int> pi;							//vector for min-hashing
 	vector < vector<int> > matrix;
 	//unsigned Sigmatrix[NumofTraj][SigSize];
 	vector < vector<unsigned> > Sigmatrix;
@@ -43,12 +69,9 @@ int main(int argc, char * argv[])
 	matrix.resize(NumofTraj);
 	pi.resize(Dim);
 	Sigmatrix.resize(NumofTraj);
+	string filename;
 
-	cout << "size of pi : " << sizeof(pi) << endl;
-	cout << "size of matrix : " << sizeof(matrix) << endl;
-	cout << "size of Sigmatrix : " << sizeof(Sigmatrix) << endl;
-	//cout << "begin " << endl;
-	
+
 	// set pi array
 	for(i = 0; i < Dim; i++)
 		pi[i] = i;
@@ -57,11 +80,16 @@ int main(int argc, char * argv[])
 	while(fscanf(fp, "%d %d\n", &TrajID, &GridID) != EOF)
 		matrix[TrajID].push_back(GridID);
 	
-	cout << "read finished" << endl;
+	cout << "Read Finished" << endl;
+	fclose(fp);
+
 	//get signature matrix
 	for(j = 0; j < SigSize; j++)
 	{
+		double t1 = wallclock();
 		RandomShuffle(pi);
+		double t2 = wallclock();
+		cout << t2 - t1 << endl;
 		for(k = 1; k < NumofTraj; k++)		//from 1
 		{
 			minhash = Dim;
@@ -75,15 +103,149 @@ int main(int argc, char * argv[])
 			Sigmatrix[k][j] = minhash;
 		}
 	}
-	cout << "get sigmatrix" << endl;
-//////////////////////////////////////////////////////////////////////////
-
-	
+	cout << "Get Sigmatrix" << endl;
+//////////////////////////////////////////////////////////////////////////	
 	matrix.clear();
 	for(j = 0; j < NumofTraj; j++)
 		vector <int>().swap(matrix[i]);
+//////////////////////////////////////////////////////////////////////////
+	set <unsigned> candidates;
+	// begin lsh;
+	/*switch(mode)
+	{
+		case 1:
+		{
+			// rbslsh
+			rbsLsh mylsh;
+			Parameter_rbslsh param;
+			param.M = 521;              // Hash table size
+		    param.L = 5;                // Number of hash tables
+		    param.D = SigSize;    		// Dimension of the vector, it can be obtained from the instance of Matrix
+		    param.C = Dim; //×î´óÖµ       // The Difference between upper and lower bound of each dimension
+		    param.N = 20;               // Binary code bytes
+		    mylsh.reset(param);
+		    std::cout << "Success in rbslsh" << std::endl;
 
-/*	// rbslsh
+
+		    for(i = 1; i < NumofTraj; i++)
+		    	mylsh.insert(i, Sigmatrix[i]);
+		    	
+
+	    	candidates = mylsh.query(Sigmatrix[QueryID]);
+	    	cout << "Traj " << QueryID << " has " << candidates.size() << " candidates." << endl;
+	    	
+	    	filename = "./RbsLsh/cant_" + NumberToString(QueryID) + ".txt";
+	    	fp = fopen(filename.c_str(), "w");
+	    	for(set <unsigned>::iterator it = candidates.begin(); it != candidates.end(); ++it)
+	    		fprintf(fp, "%d\n", *it);
+	    	candidates.clear();
+	    	fclose(fp);
+		}
+		break;
+		case 2:
+		{
+			psdLsh psdlsh;
+		    Parameter_psdlsh param_psd;
+		    param_psd.M = 521;
+		    param_psd.L = 5;
+		    param_psd.D = SigSize;
+		    param_psd.T = GAUSSIAN;
+		    param_psd.W = 0.5;
+		    psdlsh.reset(param_psd);
+		    std::cout << "Success in psdlsh" << std::endl;
+
+		    for(i = 1; i < NumofTraj; i++)
+		    	psdlsh.insert(i, Sigmatrix[i]);
+		    
+		  
+	    	candidates = psdlsh.query(Sigmatrix[QueryID]);
+	    	cout << "traj " << i << " has " << candidates.size() << " candidates." << endl;
+	    	
+	    	filename = "./PsdLsh/cant_" + NumberToString(QueryID) + ".txt";
+	    	fp = fopen(filename.c_str(), "w");
+	    	for(set <unsigned>::iterator it = candidates.begin(); it != candidates.end(); ++it)
+	    		fprintf(fp, "%d\n", *it);
+	    	candidates.clear();
+	    	fclose(fp);
+		    //}
+		}
+		break;
+		case 3:
+		{
+			rhpLsh rhplsh;
+			Parameter_rhplsh param_rhp;
+			param_rhp.M = 521;
+			param_rhp.L = 5;
+			param_rhp.D = SigSize;
+			param_rhp.N = 6;
+			rhplsh.reset(param_rhp);
+			std::cout << "Success in rhplsh" << std::endl;
+
+			for(i = 1; i < NumofTraj; i++)
+				rhplsh.insert(i, Sigmatrix[i]);
+			//cout << "ok";
+
+			//set <unsigned> candidates;
+
+			candidates = rhplsh.query(Sigmatrix[QueryID]);
+	    	cout << "traj " << i << " has " << candidates.size() << " candidates." << endl;
+
+	    	filename = "./RhpLsh/cant_" + NumberToString(QueryID) + ".txt";
+	    	fp = fopen(filename.c_str(), "w");
+	    	for(set <unsigned>::iterator it = candidates.begin(); it != candidates.end(); ++it)
+	    		fprintf(fp, "%d\n", *it);
+	    	candidates.clear();
+	    	fclose(fp);
+		}
+		break;
+		case 4:
+		{
+			thLsh thlsh;
+			Parameter_thlsh param_th;
+			param_th.M = 521;
+			param_th.L = 5;
+			param_th.D = SigSize;
+			param_th.N = 12;
+			param_th.Max = std::numeric_limits<float>::max();
+			param_th.Min = - std::numeric_limits<float>::max();
+			//cout << "begin to set max and min" << endl;
+			for (i = 1; i != NumofTraj; ++i)
+	        {
+	            for (j = 0; j != SigSize; ++j)
+	            {
+	                if (Sigmatrix[i][j] > param_th.Max)
+	                {
+	                    param_th.Max = Sigmatrix[i][j];
+	                }
+	                if (Sigmatrix[i][j] < param_th.Min)
+	                {
+	                    param_th.Min = Sigmatrix[i][j];
+	                }
+	            }
+	        }
+	        thlsh.reset(param_th);
+
+	        for(i = 1; i < NumofTraj; i++)
+				thlsh.insert(i, Sigmatrix[i]);
+			std::cout << "Success in thlsh" << std::endl;
+			//set <unsigned> candidates;
+
+			candidates = thlsh.query(Sigmatrix[QueryID]);
+	    	cout << "traj " << i << " has " << candidates.size() << " candidates." << endl;
+
+	    	filename = "./ThLsh/cant_" + NumberToString(QueryID) + ".txt";
+	    	fp = fopen(filename.c_str(), "w");
+	    	for(set <unsigned>::iterator it = candidates.begin(); it != candidates.end(); ++it)
+	    		fprintf(fp, "%d\n", *it);
+	    	candidates.clear();
+	    	fclose(fp);
+
+
+		}
+		break;
+	}*/
+
+	//rbslsh part
 	rbsLsh mylsh;
 	Parameter_rbslsh param;
 	param.M = 521;              // Hash table size
@@ -92,25 +254,22 @@ int main(int argc, char * argv[])
     param.C = Dim; //×î´óÖµ       // The Difference between upper and lower bound of each dimension
     param.N = 20;               // Binary code bytes
     mylsh.reset(param);
-    std::cout << "Success" << std::endl;
+    std::cout << "Success in rbslsh" << std::endl;
 
-
-    for(i = 0; i < NumofTraj; i++)
-    {
+    for(i = 1; i < NumofTraj; i++)
     	mylsh.insert(i, Sigmatrix[i]);
-    }
-    cout << "ok" << endl;
+    	
+	candidates = mylsh.query(Sigmatrix[QueryID]);
+	cout << "Traj " << QueryID << " has " << candidates.size() << " candidates." << endl;
+	
+	filename = "./RbsLsh/cant_" + NumberToString(QueryID) + ".txt";
+	fp = fopen(filename.c_str(), "w");
+	for(set <unsigned>::iterator it = candidates.begin(); it != candidates.end(); ++it)
+		fprintf(fp, "%d\n", *it);
+	candidates.clear();
+	fclose(fp);
 
-    set <unsigned> candidates;
-    for(i = 0; i < NumofTraj; i++)
-    {
-    	candidates = mylsh.query(Sigmatrix[i]);
-    	cout << "traj " << i << "has " << candidates.size() << " candidates." << endl;
-    	candidates.clear();
-    }
-*/
-
-    //psdlsh
+    //psdlsh part
     psdLsh psdlsh;
     Parameter_psdlsh param_psd;
     param_psd.M = 521;
@@ -119,25 +278,90 @@ int main(int argc, char * argv[])
     param_psd.T = GAUSSIAN;
     param_psd.W = 0.5;
     psdlsh.reset(param_psd);
-    std::cout << "Success" << std::endl;
+    std::cout << "Success in psdlsh" << std::endl;
 
     for(i = 1; i < NumofTraj; i++)
-    {
     	psdlsh.insert(i, Sigmatrix[i]);
-    }
-    cout << "ok" << endl;
+    
+  
+	candidates = psdlsh.query(Sigmatrix[QueryID]);
+	cout << "traj " << QueryID << " has " << candidates.size() << " candidates." << endl;
+	
+	filename = "./PsdLsh/cant_" + NumberToString(QueryID) + ".txt";
+	fp = fopen(filename.c_str(), "w");
+	for(set <unsigned>::iterator it = candidates.begin(); it != candidates.end(); ++it)
+		fprintf(fp, "%d\n", *it);
+	candidates.clear();
+	fclose(fp);
 
-    set <unsigned> candidates;
-    for(i = 0; i < 1; i++)
+	//rhplsh part
+	rhpLsh rhplsh;
+	Parameter_rhplsh param_rhp;
+	param_rhp.M = 521;
+	param_rhp.L = 5;
+	param_rhp.D = SigSize;
+	param_rhp.N = 6;
+	rhplsh.reset(param_rhp);
+	std::cout << "Success in rhplsh" << std::endl;
+
+	for(i = 1; i < NumofTraj; i++)
+		rhplsh.insert(i, Sigmatrix[i]);
+	//cout << "ok";
+
+	//set <unsigned> candidates;
+
+	candidates = rhplsh.query(Sigmatrix[QueryID]);
+	cout << "traj " << QueryID << " has " << candidates.size() << " candidates." << endl;
+
+	filename = "./RhpLsh/cant_" + NumberToString(QueryID) + ".txt";
+	fp = fopen(filename.c_str(), "w");
+	for(set <unsigned>::iterator it = candidates.begin(); it != candidates.end(); ++it)
+		fprintf(fp, "%d\n", *it);
+	candidates.clear();
+	fclose(fp);
+
+	//thlsh part
+	thLsh thlsh;
+	Parameter_thlsh param_th;
+	param_th.M = 521;
+	param_th.L = 5;
+	param_th.D = SigSize;
+	param_th.N = 12;
+	param_th.Max = std::numeric_limits<float>::max();
+	param_th.Min = - std::numeric_limits<float>::max();
+	//cout << "begin to set max and min" << endl;
+	for (i = 1; i != NumofTraj; ++i)
     {
-    	candidates = psdlsh.query(Sigmatrix[i]);
-    	cout << "traj " << i << "has " << candidates.size() << " candidates." << endl;
-    	
-    	FILE *fp = fopen("cant.txt", "w");
-    	for(set <unsigned>::iterator it = candidates.begin(); it != candidates.end(); ++it)
-    		fprintf(fp, "%d\n", *it);
-    	candidates.clear();
+        for (j = 0; j != SigSize; ++j)
+        {
+            if (Sigmatrix[i][j] > param_th.Max)
+            {
+                param_th.Max = Sigmatrix[i][j];
+            }
+            if (Sigmatrix[i][j] < param_th.Min)
+            {
+                param_th.Min = Sigmatrix[i][j];
+            }
+        }
     }
+    thlsh.reset(param_th);
+
+    for(i = 1; i < NumofTraj; i++)
+		thlsh.insert(i, Sigmatrix[i]);
+	std::cout << "Success in thlsh" << std::endl;
+	//set <unsigned> candidates;
+
+	candidates = thlsh.query(Sigmatrix[QueryID]);
+	cout << "traj " << QueryID << " has " << candidates.size() << " candidates." << endl;
+
+	filename = "./ThLsh/cant_" + NumberToString(QueryID) + ".txt";
+	fp = fopen(filename.c_str(), "w");
+	for(set <unsigned>::iterator it = candidates.begin(); it != candidates.end(); ++it)
+		fprintf(fp, "%d\n", *it);
+	candidates.clear();
+	fclose(fp);
+
+    
 
 	return 0;
 }

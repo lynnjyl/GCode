@@ -91,20 +91,42 @@ double DTW(vector<GPSpoint> traj1, vector<GPSpoint> traj2)
 
 	
 	for(i = 0; i < size1; i++)
-		dtw[i][0] = distance(traj1[i].lat, traj1[i].lng, traj2[0].lat, traj2[0].lng);
+		dtw[i][0] = Edistance(traj1[i].lat, traj1[i].lng, traj2[0].lat, traj2[0].lng);
 	for(i = 0; i < size2; i++)
-		dtw[0][i] = distance(traj2[i].lat, traj2[i].lng, traj1[0].lat, traj1[0].lng);
+		dtw[0][i] = Edistance(traj2[i].lat, traj2[i].lng, traj1[0].lat, traj1[0].lng);
 
 	for(i = 1; i < size1; i++)
 	{
 		for(j = 1; j < size2; j++)
 		{
 			mm = min(min(dtw[i-1][j], dtw[i-1][j-1]), dtw[i][j-1]);
-			dtw[i][j] = mm + distance(traj1[i].lat, traj1[i].lng, traj2[j].lat, traj2[j].lng);
+			dtw[i][j] = mm + Edistance(traj1[i].lat, traj1[i].lng, traj2[j].lat, traj2[j].lng);
 			//cout << "dtw " << i << " " << j << ": " << dtw[i][j] << endl;
 		}
 	}
-	return dtw[size1-1][size2-1];
+
+	cout << dtw[size1 -1][size2-1] << endl;
+
+	int k, m, count(0);
+	k = size1 - 1;
+	m = size2 - 1;
+
+	while(k != 0 && m != 0)
+	{
+		mm = min(min(dtw[k-1][m], dtw[k-1][m-1]), dtw[k][m-1]);
+
+		if(mm == dtw[k][m-1])
+			m=m-1;
+		else
+		{
+			if(mm == dtw[k-1][m-1])
+				m = m-1;
+			k = k-1;
+		}
+		count++;
+	}
+
+	return dtw[size1-1][size2-1]/count;
 }
 
 void GetAllFilenames(/*vector <int> &fileids, */string *filenames)
@@ -142,41 +164,38 @@ int main(int argc, char* argv[])
 	//FILE *fp = fopen("index.txt", "r");
 	vector<GPSpoint> traj1;
 	vector<GPSpoint> traj2;
-	string queryfile = argv[1];
-	string cantfile = argv[2];
-	int tid = atoi(argv[3]);
+	string queryfile = argv[1];			//	query file name
+	string cantfile = argv[2];			//  file to be compared
+	int tid = atoi(argv[3]);			// 	Trajectory ID
 	//int mode = atoi(argv[4]);
 	//vector <string> filenames;
-	string filenames[18671];
+	//string filenames[18671];
 	string name;
 	//vector <int> fileids;
 	double dist/*, max_dist*/;
-	//int num = atoi(argv[2]);
-	//candidate *cant = new candidate[num];
-	//candidate cant_temp;
-	//int i, j, id, k(0);
 	int i;
-	char filename[30];
-	vector <int> candid;
 
 	ReadFile(queryfile, traj1);
 
-		/*cout << "begin to read" << endl;
-	
-		//GetAllFilenames(filenames);
-		//cout << filenames[0] << endl;
-		
+	int k = queryfile.find_last_of("/");
+	k++;
+	name = queryfile.substr(k, queryfile.length()-k);
+	cout << name << endl;
 
-		cout << "read finished" << endl;
-*/
+	string output = "./DTWResult/candidate_" + name;
+	cout << output << endl;
+
 
 	if(queryfile != cantfile)
 	{
 		ReadFile(cantfile, traj2);
+		cout << "get distance" << endl;
 		dist = DTW(traj1, traj2);
-		string output = "candidate_" + queryfile;
+		cout << dist << endl;
+		
 		FILE *fp2 = fopen(output.c_str(), "a");
 		fprintf(fp2, "%d %lf\n", tid, dist);
+		fclose(fp2);
 	}
 	
 	/*
