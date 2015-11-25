@@ -164,7 +164,6 @@ int main(int argc, char* argv[])
 	//FILE *fp = fopen("index.txt", "r");
 	vector<GPSpoint> traj1;
 	vector<GPSpoint> traj2;
-<<<<<<< HEAD
 	string queryfile = argv[1];			//	query file name
 	string cantfile = argv[2];			//  file to be compared
 	int tid = atoi(argv[3]);			// 	Trajectory ID

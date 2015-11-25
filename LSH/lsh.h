@@ -156,7 +156,9 @@ public:
                 }
                 ++seq;
             }
+            //std::cout <<sum << std::endl;
             unsigned hashVal = sum % param.M;
+            //std::cout << hashVal << std::endl;
             if (tables[i].find(hashVal) != tables[i].end())
             {
                 unsigned num(0);

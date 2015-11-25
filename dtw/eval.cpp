@@ -41,10 +41,8 @@ int main(int argc, char * argv[])
 		LSHResult.push_back(id);
 	}
 
-<<<<<<< HEAD
 	cout << "LSH Result has " << LSHResult.size() << " elements" << endl;
-=======
->>>>>>> c60ec2d1794433039f68350acbc812a72adef774
+
 
 	for(i = 0; i < num; i++)
 	{
