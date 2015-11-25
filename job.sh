@@ -1,8 +1,9 @@
 #! bin/bash
 
-for ((i=100;i<182;i++))
+for ((i=0;i<30;i++))
 do
-    Number="${i}"
-    mkdir ./result/${Number}
-    ./g ${Number} ~/Downloads/Geolife\ Trajectories\ 1.3/Data/
+	cd ./LSH
+	./m 1000 15822
+	cd ..
+	./dtw/eval 300 ./dtw/RateResult/candidate_15320100127234004_sort.plt ./LSH/RbsLsh/cant_15822.txt
 done

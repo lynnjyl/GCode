@@ -1,41 +1,36 @@
 #!/bin/bash
 
 trajid=1;
-<<<<<<< HEAD
-queryfile="../result/15320100127234004.plt"
-=======
-queryfile="00020081023025304.plt"
->>>>>>> c60ec2d1794433039f68350acbc812a72adef774
+queryfile="../result/00020081023025304.plt"
+
 
 cd ../result/
+querylist=$(ls 000*)
 filelist=$(ls)
 cd ../dtw
 
+:<<BLOCK
 for kfile in $filelist
 do
-<<<<<<< HEAD
-=======
 	echo $trajid
->>>>>>> c60ec2d1794433039f68350acbc812a72adef774
 	filename="../result/"$kfile
-	./dtw $queryfile $filename $trajid
+	./main $queryfile $filename $trajid 10
 	trajid=$((trajid+1))
 done
 <<<<<<< HEAD
+BLOCK
 
-:<<BLOCK
-for kfile in $filelist
+
+for kfile in $querylist
 do
 	trajid=1
 	queryfile="../result/"$kfile
 	for jfile in $filelist
 	do
 		filename="../result/"$jfile
-		./dtw $queryfile $filename $trajid
+		./main $queryfile $filename $trajid 10
 		trajid=$((trajid+1))
 	done
 	
 done
-BLOCK
-=======
->>>>>>> c60ec2d1794433039f68350acbc812a72adef774
+
