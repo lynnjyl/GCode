@@ -117,7 +117,7 @@ int main(int argc, char * argv[])
 	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>rbslsh part
 	rbsLsh mylsh;
 	Parameter_rbslsh param;
-	param.M = 400;              // Hash table size
+	param.M = 1000;              // Hash table size
     param.L = 10;                // Number of hash tables
     param.D = SigSize;    		// Dimension of the vector, it can be obtained from the instance of Matrix
     param.C = Dim; //×î´óÖµ       // The Difference between upper and lower bound of each dimension
