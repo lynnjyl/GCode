@@ -1,0 +1,150 @@
+LSH Result has 3666 elements
+count = 245
+Accuracy = 0.816667
+LSH Result has 6684 elements
+count = 252
+Accuracy = 0.84
+LSH Result has 7860 elements
+count = 244
+Accuracy = 0.813333
+LSH Result has 3405 elements
+count = 245
+Accuracy = 0.816667
+LSH Result has 4467 elements
+count = 249
+Accuracy = 0.83
+LSH Result has 3922 elements
+count = 239
+Accuracy = 0.796667
+LSH Result has 11470 elements
+count = 264
+Accuracy = 0.88
+LSH Result has 2606 elements
+count = 225
+Accuracy = 0.75
+LSH Result has 4198 elements
+count = 245
+Accuracy = 0.816667
+LSH Result has 4757 elements
+count = 245
+Accuracy = 0.816667
+LSH Result has 7069 elements
+count = 212
+Accuracy = 0.706667
+LSH Result has 7268 elements
+count = 256
+Accuracy = 0.853333
+LSH Result has 2666 elements
+count = 214
+Accuracy = 0.713333
+LSH Result has 7271 elements
+count = 256
+Accuracy = 0.853333
+LSH Result has 4635 elements
+count = 239
+Accuracy = 0.796667
+LSH Result has 4176 elements
+count = 239
+Accuracy = 0.796667
+LSH Result has 11538 elements
+count = 272
+Accuracy = 0.906667
+LSH Result has 9389 elements
+count = 251
+Accuracy = 0.836667
+LSH Result has 10982 elements
+count = 264
+Accuracy = 0.88
+LSH Result has 4035 elements
+count = 242
+Accuracy = 0.806667
+LSH Result has 6111 elements
+count = 244
+Accuracy = 0.813333
+LSH Result has 10093 elements
+count = 265
+Accuracy = 0.883333
+LSH Result has 3850 elements
+count = 246
+Accuracy = 0.82
+LSH Result has 3305 elements
+count = 242
+Accuracy = 0.806667
+LSH Result has 4269 elements
+count = 247
+Accuracy = 0.823333
+LSH Result has 5220 elements
+count = 249
+Accuracy = 0.83
+LSH Result has 5639 elements
+count = 253
+Accuracy = 0.843333
+LSH Result has 4228 elements
+count = 249
+Accuracy = 0.83
+LSH Result has 7674 elements
+count = 254
+Accuracy = 0.846667
+LSH Result has 5150 elements
+count = 249
+Accuracy = 0.83
+LSH Result has 4748 elements
+count = 242
+Accuracy = 0.806667
+LSH Result has 3413 elements
+count = 227
+Accuracy = 0.756667
+LSH Result has 3610 elements
+count = 247
+Accuracy = 0.823333
+LSH Result has 4882 elements
+count = 248
+Accuracy = 0.826667
+LSH Result has 3450 elements
+count = 239
+Accuracy = 0.796667
+LSH Result has 6538 elements
+count = 253
+Accuracy = 0.843333
+LSH Result has 5365 elements
+count = 249
+Accuracy = 0.83
+LSH Result has 5658 elements
+count = 244
+Accuracy = 0.813333
+LSH Result has 6011 elements
+count = 252
+Accuracy = 0.84
+LSH Result has 4957 elements
+count = 249
+Accuracy = 0.83
+LSH Result has 3798 elements
+count = 245
+Accuracy = 0.816667
+LSH Result has 5943 elements
+count = 252
+Accuracy = 0.84
+LSH Result has 3469 elements
+count = 219
+Accuracy = 0.73
+LSH Result has 7552 elements
+count = 246
+Accuracy = 0.82
+LSH Result has 3704 elements
+count = 246
+Accuracy = 0.82
+LSH Result has 4007 elements
+count = 248
+Accuracy = 0.826667
+LSH Result has 2643 elements
+count = 230
+Accuracy = 0.766667
+LSH Result has 5488 elements
+count = 249
+Accuracy = 0.83
+LSH Result has 6794 elements
+count = 256
+Accuracy = 0.853333
+LSH Result has 5945 elements
+count = 253
+Accuracy = 0.843333
