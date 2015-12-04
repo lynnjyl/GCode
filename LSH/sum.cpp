@@ -29,7 +29,8 @@ int main(int argc, char * argv[])
 
 	while(fscanf(fp, "%d %d %lf\n", &id1, &id2,&rate)!= EOF)
 	{
-
+		sttemp[i].id = id1;
+		sttemp[i] 
 		//numbers[id1]++;
 	}	
 
