@@ -229,7 +229,7 @@ int main(int argc, char * argv[])
 
 
     //still in one trajectory file, but delete the stay regions.
-    output = "./trajectory" + filename + ".txt";
+    output = "./trajectory" + filename + ".plt";
     FILE *fp = fopen(output.c_str(), "w");
     for(i = 0; i < parts; i++)
     {
