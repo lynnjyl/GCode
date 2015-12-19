@@ -8,6 +8,12 @@
 using namespace std;
 
 
+struct GPSpoint
+{
+	double lat;
+	double lng;
+};
+
 // six circle of Beijing
 double minlat = 39.688;
 double minlng = 116.093;
@@ -18,11 +24,21 @@ int lat_num = (maxlat - minlat)/differ + 1;
 int lng_num = (maxlng - minlng)/differ + 1;
 int size = int(lat_num * lng_num) + 1;
 
+
+double edist(double lat1, double lng1, double lat2, double lng2)
+{
+	double a = lat2 - lat1;
+	double b = lng2 - lng1;
+
+	return sqrt(a*a + b*b);
+}
+
+
 int main(int argc, char * argv[])
 {
-	
+	GPSpoint nw, ne, sw, se;
 	double *GridWeight = new double[size];
-	double lat, lng, lat_differ, lng_differ;
+	double lat, lng, lat_differ, lng_differ, differ_temp, cornerdiffer;
 	char time[20];
 	int lat_id, lng_id, grid_id;
 	int grid_temp;
@@ -32,6 +48,7 @@ int main(int argc, char * argv[])
 	string filename = argv[2];
 	FILE * fp = fopen(filename.c_str(), "r");
 	cout << trajid << " " << filename <<  endl;
+	cornerdiffer = sqrt(differ*differ*2);
 
 	//cout << lat_num << " " << lng_num << endl;
 	
@@ -44,6 +61,11 @@ int main(int argc, char * argv[])
 		grid_id = lat_id*lng_num + lng_id;
 		GridWeight[grid_id] = 1;
 		//cout << lat_id << " " << lng_id << " " << grid_id << endl;
+		//set four corner point
+		ne.lat = nw.lat = (lat_id + 1) * differ + minlat;
+		se.lng = ne.lng = (lng_id + 1) * differ + minlng;
+		sw.lng = nw.lng = lng_id * differ + minlng;
+		sw.lat = se.lat = lat_id * differ + minlat;
 
 		//distance to the boundary
 		// the northern side
@@ -83,6 +105,36 @@ int main(int argc, char * argv[])
 		if(grid_temp < size & value > 0)
 			GridWeight[grid_temp] = max(value, GridWeight[grid_temp]);
 		//cout << grid_temp << " " << value << endl;
+
+
+		// to four corner grids
+		// the northwest
+		differ_temp = edist(lat, lng, nw.lat, nw.lng);
+		grid_temp = (lat_id + 1) * differ + minlat - lat - 1;
+		value = 1 - differ_temp/cornerdiffer;
+		if(grid_temp > 0 & value > 0)
+			GridWeight[grid_temp] = max(value, GridWeight[grid_temp]);
+
+		//the northeast
+		differ_temp = edist(lat, lng, ne.lat, ne.lng);
+		grid_temp = (lat_id + 1) * differ + minlat - lat + 1;
+		value = 1 - differ_temp/cornerdiffer;
+		if(grid_temp < size & value > 0)
+			GridWeight[grid_temp] = max(value, GridWeight[grid_temp]);
+
+		// the southeast
+		differ_temp = edist(lat, lng, se.lat, se.lng);
+		grid_temp = lat - (lat_id * differ + minlat) + 1;
+		value = 1 - differ_temp/cornerdiffer;
+		if(grid_temp <size & value > 0)
+			GridWeight[grid_temp] = max(value, GridWeight[grid_temp]);
+
+		// the southwest
+		differ_temp = edist(lat, lng, sw.lat, sw.lng);
+		grid_temp = lat - (lat_id * differ + minlat) - 1;
+		value = 1 - differ_temp/cornerdiffer;
+		if(grid_temp > 0  & value > 0)
+			GridWeight[grid_temp] = max(value, GridWeight[grid_temp]);
 	}
 	fclose(fp);
 
