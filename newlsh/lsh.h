@@ -7,6 +7,15 @@
 #include <set>
 
 
+using namespace std;
+
+struct element
+{
+    int gid;
+    double val;
+};
+
+
 struct Parameter_rbslsh
 {
 	/// Hash table size
@@ -349,7 +358,7 @@ public:
      * @param key   The sequence number of vector
      * @param domin The pointer to the vector
      */
-    void insert(unsigned key, std::vector <unsigned> domin)
+    void insert(unsigned key, vector<element>  domin)
     {
         for (unsigned i = 0; i != param.L; ++i)
         {
@@ -357,10 +366,15 @@ public:
             for (unsigned j = 0; j != param.N; ++j)
             {
                 float flag(0);
-                for (unsigned k = 0; k != param.D; ++k)
+              /*  for (unsigned k = 0; k != param.D; ++k)
                 {
                     flag += uosArray[i][j][k] * domin[k];
-                }
+                }*/
+                 int size = domin.size();
+                    for(unsigned k = 0; k < size; k++)
+                    {
+                        flag += uosArray[i][j][domin[k].gid] * domin[k].val;
+                    }
                 if (flag > 0)
                 {
                     sum += rndArray[i][j];
@@ -374,7 +388,7 @@ public:
      * Query the approximate nearest neighborholds.
      */
     //template <typename SCANNER>
-    std::set <unsigned> query(std::vector <unsigned> domin)
+    std::set <unsigned> query(std::vector <element>  domin)
     {
         std::set <unsigned> candidates;
         for (unsigned i = 0; i != param.L; ++i)
@@ -383,10 +397,15 @@ public:
             for (unsigned j = 0; j != param.N; ++j)
             {
                 float flag(0);
-                for (unsigned k = 0; k != param.D; ++k)
+                /*for (unsigned k = 0; k != param.D; ++k)
                 {
                     flag += uosArray[i][j][k] * domin[k];
-                }
+                }*/
+                 int size = domin.size();
+                    for(unsigned k = 0; k < size; k++)
+                    {
+                        flag += uosArray[i][j][domin[k].gid] * domin[k].val;
+                    }
                 if (flag > 0)
                 {
                     sum += rndArray[i][j];

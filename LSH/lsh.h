@@ -270,7 +270,7 @@ public:
      * @param scanner Top-K scanner, use for scan the approximate nearest neighborholds
      */
     //template <typename SCANNER>
-    std::set <unsigned> query(std::vector <unsigned> domin)
+    std::set <unsigned> query(std::vector <double> domin)
     {
         std::set <unsigned> candidates;
         for (unsigned i = 0; i != param.L; ++i)

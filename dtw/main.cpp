@@ -53,7 +53,7 @@ double distance(double &lat1, double &lon1, double &lat2, double &lon2)
 
 void ReadFile(string filename, vector<GPSpoint> & traj)
 {
-	cout << "in read file" << endl;
+	//cout << "in read file" << endl;
 	FILE *fp = fopen(filename.c_str(), "r");
 	cout << filename << endl;
 	double latitude, longitude;
@@ -112,7 +112,7 @@ void GetAllFilenames(/*vector <int> &fileids, */string *filenames)
 	char name[30];
 	int id;
 
-	cout << "here" << endl;
+	//cout << "here" << endl;
 	while(fscanf(fp, "%d %s\n", &id, name) != EOF)
 	{	
 			//fileids.push_back(id);
@@ -153,10 +153,10 @@ double GetRate(double **dtw, int size1, int size2, double Thresdist)
 	}
 
 	int num = cants.size();
-	cout << num << endl;
-	cout << size1 << endl;
+	//cout << num << endl;
+	//cout << size1 << endl;
 	double rate = double(num)/double(size1);
-	cout << rate << endl;
+	//cout << rate << endl;
 
 	return rate;
 }
@@ -185,10 +185,10 @@ int main(int argc, char* argv[])
 	int k = queryfile.find_last_of("/");
 	k++;
 	name = queryfile.substr(k, queryfile.length()-k);
-	cout << name << endl;
+	//cout << name << endl;
 
 	string output = "./RateResult/candidate_" + name;
-	cout << output << endl;
+	//cout << output << endl;
 
 
 	if(queryfile != cantfile)

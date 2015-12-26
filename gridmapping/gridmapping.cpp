@@ -139,7 +139,7 @@ int main(int argc, char * argv[])
 	fclose(fp);
 
 
-	fp = fopen("matrix.txt", "a");
+	fp = fopen("matrix_sub.txt", "a");
 	for(int i = 0; i < size; i++)
 	{
 		if(GridWeight[i] != 0)
