@@ -38,6 +38,7 @@ int main(int argc, char * argv[])
 	fp2 = fopen(lsh.c_str(), "r");
 	while(fscanf(fp, "%d\n", &id)!=EOF)
 	{
+        //cout << id <<endl;
 		LSHResult.push_back(id);
 	}
 
@@ -46,7 +47,9 @@ int main(int argc, char * argv[])
 
 	for(i = 0; i < num; i++)
 	{
+	//	cout << "No." << i << " : " << DTWResult[i] << endl;
 		it = find(LSHResult.begin(), LSHResult.end(), DTWResult[i]);
+		//cout << "it = " << *it << endl;
 		if(it != LSHResult.end())
 			count++;
 	}
