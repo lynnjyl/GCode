@@ -4,7 +4,7 @@
 #include <string>
 #include <set>
 #include "lsh.h"
-
+#include <sys/time.h>
 using namespace std;
 
 /*struct element
@@ -12,6 +12,19 @@ using namespace std;
     int gid;
     double val;
 };*/
+
+
+double wallclock(void) 
+{
+	struct timeval tv;
+	struct timezone tz;
+	double t;
+	gettimeofday(&tv, &tz);
+	t = (double)tv.tv_sec*1000;
+	t += ((double)tv.tv_usec)/1000.0;
+	return t;
+}
+
 
 int main(int argc, char * argv[])
 {
@@ -30,7 +43,7 @@ int main(int argc, char * argv[])
 
     int queryid = atoi(argv[1]);
     
-    
+    double t1 = wallclock();
     //read the matrix into matrix;
     while(fscanf(fp, "%d %d %lf\n", &TrajID, &GridID, &value) != EOF)
     {
@@ -39,6 +52,7 @@ int main(int argc, char * argv[])
         matrix[TrajID].push_back(ele);
     }
     fclose(fp);
+    double t2 = wallclock();
     
     rhpLsh rhplsh;
     Parameter_rhplsh param_rhp;
@@ -67,7 +81,9 @@ int main(int argc, char * argv[])
         rhplsh.insert(i, matrix[i]);
     }
     cout << "finished" << endl;
-    
+double t3 = wallclock();   
+
+
     set <unsigned> candidates;
     //int queryid = 1;
    /* for(int j = 0; j < matrix[queryid].size(); j++)
@@ -77,6 +93,7 @@ int main(int argc, char * argv[])
     
     string filename;
     candidates = rhplsh.query(matrix[queryid]);
+	double t4 = wallclock();
     cout << "traj " << queryid << " has " << candidates.size() << " candidates." << endl;
     filename = "./RhpLsh/cant_" + to_string(queryid)  + ".txt";
     fp = fopen(filename.c_str(), "w");
@@ -84,6 +101,13 @@ int main(int argc, char * argv[])
         fprintf(fp, "%d\n", *it);
     candidates.clear();
     fclose(fp);
+	
+	cout << "*********************************" << endl;
+	cout << "Read matrix time: " << t2 - t1 << endl;
+	cout << "create hash tables: " << t3 - t2 << endl;
+	cout << "query time : " << t4 - t3 << endl;
+	cout << "*********************************" << endl;
+
 
     return 0;
 }
