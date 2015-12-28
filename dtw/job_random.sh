@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for ((k=0;k<10;k++))
+for ((k=0;k<36;k++))
 do
 
 
@@ -22,7 +22,7 @@ cd ../../dtw
 
 for kfile in $filelist
 do
-	#echo $trajid
+#	echo $trajid
 	filename="../Data/subtrajectory/"$kfile
 	./main $queryfile $filename $trajid 10
 	trajid=$((trajid+1))

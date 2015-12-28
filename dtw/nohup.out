@@ -14,3 +14,65 @@ finish 0
 13823_22
 30725
 14290_31
+10329
+1140_12
+1:66478 0.025000
+Success in rhplsh
+finished
+traj 10329 has 10578 candidates.
+*********************************
+Read matrix time: 3275.38
+create hash tables: 7686.33
+query time : 16.9819
+*********************************
+finish 0
+4639
+10803_01
+4:13666 0.458333
+Success in rhplsh
+finished
+traj 4639 has 11696 candidates.
+*********************************
+Read matrix time: 4360.42
+create hash tables: 9543.23
+query time : 18.825
+*********************************
+finish 1
+14597
+12069_02
+67:17442 0.473684
+Success in rhplsh
+finished
+traj 14597 has 12002 candidates.
+*********************************
+Read matrix time: 5013.01
+create hash tables: 11689.3
+query time : 25.939
+*********************************
+finish 2
+14992
+12105_04
+34:16643 0.491667
+Success in rhplsh
+finished
+traj 14992 has 11629 candidates.
+*********************************
+Read matrix time: 4521.82
+create hash tables: 11074.5
+query time : 23.52
+*********************************
+finish 3
+18948
+12613_01
+9:27855 0.491667
+Success in rhplsh
+finished
+traj 18948 has 12260 candidates.
+*********************************
+Read matrix time: 5929.36
+create hash tables: 11880.4
+query time : 23.949
+*********************************
+finish 4
+29555
+1410_03

@@ -56,7 +56,7 @@ int main(int argc, char * argv[])
     
     rhpLsh rhplsh;
     Parameter_rhplsh param_rhp;
-    param_rhp.M = 1000;                 // hash table size
+    param_rhp.M = 2000;                 // hash table size
     param_rhp.L = 5;                        // number of hash tables
     param_rhp.D = size;                 // dimension
     param_rhp.N = 6;                        // binary code byte
@@ -96,9 +96,10 @@ double t3 = wallclock();
 	double t4 = wallclock();
     cout << "traj " << queryid << " has " << candidates.size() << " candidates." << endl;
     filename = "./RhpLsh/cant_" + to_string(queryid)  + ".txt";
-    fp = fopen(filename.c_str(), "w");
+    fp = fopen(filename.c_str(), "w");  cout << "fileopen" << endl;
     for(set <unsigned>::iterator it = candidates.begin(); it != candidates.end(); ++it)
         fprintf(fp, "%d\n", *it);
+    cout << "finish writing" << endl;
     candidates.clear();
     fclose(fp);
 	
