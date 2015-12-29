@@ -14,3 +14,109 @@ finish 0
 13823_22
 30725
 14290_31
+73:5439 0.491667
+Success in rhplsh
+finished
+traj 26954 has 9708 candidates.
+*********************************
+Read matrix time: 5670.07
+create hash tables: 17522.1
+query time : 8.75513
+*********************************
+finish 1
+2951
+1059_08
+1:129545 0.425000
+Success in rhplsh
+finished
+traj 2951 has 8597 candidates.
+*********************************
+Read matrix time: 6009.72
+create hash tables: 17541.8
+query time : 7.79395
+*********************************
+finish 2
+24922
+13479_12
+200:28292 0.491667
+Success in rhplsh
+finished
+traj 24922 has 11021 candidates.
+*********************************
+Read matrix time: 5934.12
+create hash tables: 17517.7
+query time : 10.0598
+*********************************
+finish 3
+6458
+11076_22
+85:59151 0.491667
+Success in rhplsh
+finished
+traj 6458 has 9805 candidates.
+*********************************
+Read matrix time: 5962.32
+create hash tables: 17608
+query time : 8.73706
+*********************************
+finish 4
+12630
+1184_12
+53:3020 0.491667
+Success in rhplsh
+finished
+traj 12630 has 11769 candidates.
+*********************************
+Read matrix time: 6045.05
+create hash tables: 17514.3
+query time : 10.5811
+*********************************
+finish 5
+8320
+1111_00
+3:113316 0.416667
+Success in rhplsh
+finished
+traj 8320 has 11327 candidates.
+*********************************
+Read matrix time: 5996.11
+create hash tables: 17527.6
+query time : 10.1738
+*********************************
+finish 6
+19654
+12679_53
+51:81623 0.491667
+Success in rhplsh
+finished
+traj 19654 has 12439 candidates.
+*********************************
+Read matrix time: 5790.94
+create hash tables: 17520.2
+query time : 11.0471
+*********************************
+finish 7
+1793
+10344_03
+3:129471 0.441667
+Success in rhplsh
+finished
+traj 1793 has 10384 candidates.
+*********************************
+Read matrix time: 5716.99
+create hash tables: 17524.5
+query time : 9.39014
+*********************************
+finish 8
+31699
+14352_03
+2:101596 0.233333
+Success in rhplsh
+finished
+traj 31699 has 11028 candidates.
+*********************************
+Read matrix time: 5835.82
+create hash tables: 17512.2
+query time : 11.4951
+*********************************
+finish 9
