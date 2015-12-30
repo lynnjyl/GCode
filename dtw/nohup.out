@@ -1,0 +1,72 @@
+3874
+10638_17
+25:28551 0.483333
+Success in rhplsh
+finished
+traj 3874 has 11650 candidates.
+fileopen
+finish writing
+*********************************
+Read matrix time: 24917.6
+create hash tables: 17542.5
+query time : 10.2939
+*********************************
+finish 0
+4041
+10648_44
+174:52017 0.491667
+Success in rhplsh
+finished
+traj 4041 has 10858 candidates.
+fileopen
+finish writing
+*********************************
+Read matrix time: 6005.74
+create hash tables: 17502.2
+query time : 9.80396
+*********************************
+finish 1
+28394
+1392_00
+4:26744 0.458333
+Success in rhplsh
+finished
+traj 28394 has 11067 candidates.
+fileopen
+finish writing
+*********************************
+Read matrix time: 5952.09
+create hash tables: 17562.2
+query time : 9.72607
+*********************************
+finish 2
+29913
+14158_02
+30:68060 0.461538
+Success in rhplsh
+finished
+traj 29913 has 11052 candidates.
+fileopen
+finish writing
+*********************************
+Read matrix time: 6058.82
+create hash tables: 17535.9
+query time : 9.69702
+*********************************
+finish 3
+25714
+13583_04
+2:99999 0.000000
+Success in rhplsh
+finished
+traj 25714 has 9559 candidates.
+fileopen
+finish writing
+*********************************
+Read matrix time: 5908.2
+create hash tables: 17518.4
+query time : 8.48901
+*********************************
+finish 4
+10509
+11447_00

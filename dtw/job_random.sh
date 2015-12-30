@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for ((k=1;k<10;k++))
+for ((k=0;k<10;k++))
 do
 
 
@@ -10,10 +10,12 @@ id=$(($RANDOM%131246))
 echo $id
 
 file=$(sed -n "$id, 1p" ../Data/index_sub.txt | awk '{print $2}')
+echo $id $file >> ../dtw/Query.txt
 echo $file
 
+
 queryfile="../Data/subtrajectory/"$file
-echo $queryfile
+#echo $queryfile
 
 
 cd ../Data/subtrajectory/
@@ -22,15 +24,23 @@ cd ../../dtw
 
 for kfile in $filelist
 do
-	echo $trajid
+#	echo $trajid
 	filename="../Data/subtrajectory/"$kfile
 	./main $queryfile $filename $trajid 10
 	trajid=$((trajid+1))
 done
-echo $id
+#echo $id
 
+result="./RateResult/candidate_"$file
+sorted=$result"sort"
+
+sort -n -r -k 2 $result > $sorted
+
+cat $sorted | grep -n '\(0\.\)'[0-4] | awk 'NR==1{print}'
 cd ../newlsh
-./main $id
+./r $id
 
+
+echo "finish "$k
 done
 

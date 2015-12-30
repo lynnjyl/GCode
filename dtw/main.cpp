@@ -55,7 +55,7 @@ void ReadFile(string filename, vector<GPSpoint> & traj)
 {
 	//cout << "in read file" << endl;
 	FILE *fp = fopen(filename.c_str(), "r");
-	cout << filename << endl;
+	//cout << filename << endl;
 	double latitude, longitude;
 	char temp[50];
 	GPSpoint p;
@@ -194,7 +194,7 @@ int main(int argc, char* argv[])
 	if(queryfile != cantfile)
 	{
 		ReadFile(cantfile, traj2);
-		cout << "get distance" << endl;
+//		cout << "get distance" << endl;
 		dtw = DTW(traj1, traj2);
 		//cout << traj1[1].lat << " " << traj1[1].lng << endl;
 		//cout << traj2[1].lat << " " << traj2[1].lng << endl;
@@ -203,7 +203,7 @@ int main(int argc, char* argv[])
 		rate = GetRate(dtw, traj1.size(), traj2.size(), Thresdist);
 
 		//cout << dist << endl;
-		cout << rate << endl;
+//		cout << rate << endl;
 		
 		FILE *fp2 = fopen(output.c_str(), "a");
 		fprintf(fp2, "%d %lf\n", tid, rate);
