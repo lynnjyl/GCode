@@ -9,14 +9,31 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <string.h>
 
 using namespace std;
 
 int main(int argc, char * argv[])
 {
+    /*
 	int num = atoi(argv[1]);
 	string dtw = argv[2];
 	string lsh = argv[3];
+     */
+    
+    int num;
+    char trajid[20];
+    char trajname[20];
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 	int i(0), id;
 	char temp[50];
 	vector <int> DTWResult;
@@ -25,9 +42,20 @@ int main(int argc, char * argv[])
 	FILE *fp2;
 	vector <int>::iterator it;
 	int count(0);
+    string dtwname, lshname;
 	
+    FILE *file = fopen("q.txt", "r");
+    
+    while(fscanf(file, "%d %s %s\n", &num, trajid, trajname) != EOF)
+    {
+        dtwname = "./RateResult/candidate_"+ string(trajname) + "sort";
+        lshname = "../newlsh/RhpLsh/cant_" + string(trajid) + ".txt";
+        //cout << dtwname << endl;
+        //cout << lshname << endl;
+    
+        count = 0;
 	//read first num id from the sorted.txt to form the DTWResult
-	fp = fopen(dtw.c_str(), "r");
+	fp = fopen(dtwname.c_str(), "r");
 	for(i = 0; i < num; i++)
 	{
 		fscanf(fp, "%d %s\n", &id, temp);
@@ -35,7 +63,7 @@ int main(int argc, char * argv[])
 	}
 	fclose(fp);
 
-	fp2 = fopen(lsh.c_str(), "r");
+	fp2 = fopen(lshname.c_str(), "r");
 	while(fscanf(fp, "%d\n", &id)!=EOF)
 	{
         //cout << id <<endl;
@@ -57,6 +85,10 @@ int main(int argc, char * argv[])
 	cout << "count = " << count << endl;
 	double Accuracy = (double)count/num;
 	cout << "Accuracy = " << Accuracy << endl;
+        
+        LSHResult.clear();
+        DTWResult.clear();
 
+    }
 	return 0;
 }
