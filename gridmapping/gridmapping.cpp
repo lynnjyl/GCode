@@ -38,6 +38,7 @@ int main(int argc, char * argv[])
 {
 	GPSpoint nw, ne, sw, se;
 	double *GridWeight = new double[size];
+	fill_n(GridWeight, size, 0);
 	double lat, lng, lat_differ, lng_differ, differ_temp, cornerdiffer;
 	char time[20];
 	int lat_id, lng_id, grid_id;
@@ -51,8 +52,9 @@ int main(int argc, char * argv[])
 	cornerdiffer = sqrt(differ*differ*2);
 
 	//cout << lat_num << " " << lng_num << endl;
-	
+	int counter = 1;
 
+	//cout << GridWeight[1] << endl;
 	while(fscanf(fp, "%lf %lf %s\n", &lat, &lng, time) != EOF)
 	{
 		//fscanf(fp, "%lf %lf %s\n", &lat, &lng, time);
@@ -60,7 +62,7 @@ int main(int argc, char * argv[])
 		lng_id = ceil((lng - minlng)/differ);
 		grid_id = lat_id*lng_num + lng_id;
 		GridWeight[grid_id] = 1;
-		//cout << lat_id << " " << lng_id << " " << grid_id << endl;
+		//cout <<counter << ": "  << lat_id << " " << lng_id << " " << grid_id << endl;
 		//set four corner point
 		ne.lat = nw.lat = (lat_id + 1) * differ + minlat;
 		se.lng = ne.lng = (lng_id + 1) * differ + minlng;
@@ -110,34 +112,43 @@ int main(int argc, char * argv[])
 		// to four corner grids
 		// the northwest
 		differ_temp = edist(lat, lng, nw.lat, nw.lng);
-		grid_temp = (lat_id + 1) * differ + minlat - lat - 1;
+		//grid_temp = (lat_id + 1) * differ + minlat - lat - 1;
+		grid_temp = grid_id + lng_num -1;
 		value = 1 - differ_temp/cornerdiffer;
 		if(grid_temp > 0 & value > 0)
 			GridWeight[grid_temp] = max(value, GridWeight[grid_temp]);
+		//cout << grid_temp << " " << value << endl;
 
 		//the northeast
 		differ_temp = edist(lat, lng, ne.lat, ne.lng);
-		grid_temp = (lat_id + 1) * differ + minlat - lat + 1;
+		//grid_temp = (lat_id + 1) * differ + minlat - lat + 1;
+		grid_temp = grid_id + lng_num +1;
 		value = 1 - differ_temp/cornerdiffer;
 		if(grid_temp < size & value > 0)
 			GridWeight[grid_temp] = max(value, GridWeight[grid_temp]);
+		//cout << grid_temp << " " << value << endl;
 
 		// the southeast
 		differ_temp = edist(lat, lng, se.lat, se.lng);
-		grid_temp = lat - (lat_id * differ + minlat) + 1;
+		//grid_temp = lat - (lat_id * differ + minlat) + 1;
+		grid_temp = grid_id - lng_num + 1;
 		value = 1 - differ_temp/cornerdiffer;
 		if(grid_temp <size & value > 0)
 			GridWeight[grid_temp] = max(value, GridWeight[grid_temp]);
+		//cout << grid_temp << " " << value << endl;
 
 		// the southwest
 		differ_temp = edist(lat, lng, sw.lat, sw.lng);
-		grid_temp = lat - (lat_id * differ + minlat) - 1;
+		//grid_temp = lat - (lat_id * differ + minlat) - 1;
+		grid_temp = grid_id - lng_num - 1;
 		value = 1 - differ_temp/cornerdiffer;
 		if(grid_temp > 0  & value > 0)
 			GridWeight[grid_temp] = max(value, GridWeight[grid_temp]);
+		//cout << grid_temp << " " << value << endl;
+		//cout << GridWeight[1] << endl;
 	}
 	fclose(fp);
-
+	//cout << GridWeight[1] << endl;
 
 	fp = fopen("matrix_sub.txt", "a");
 	for(int i = 0; i < size; i++)
