@@ -70,3 +70,48 @@ query time : 8.48901
 finish 4
 10509
 11447_00
+35:9972 0.491667
+Success in rhplsh
+finished
+traj 10509 has 9937 candidates.
+fileopen
+finish writing
+*********************************
+Read matrix time: 5912.97
+create hash tables: 17463.3
+query time : 9.05811
+*********************************
+finish 5
+7243
+11087_04
+575:96173 0.491667
+Success in rhplsh
+finished
+traj 7243 has 9602 candidates.
+fileopen
+finish writing
+*********************************
+Read matrix time: 5990.8
+create hash tables: 17388
+query time : 8.52881
+*********************************
+finish 6
+7159
+11085_21
+21:62892 0.491667
+Success in rhplsh
+finished
+traj 7159 has 10827 candidates.
+fileopen
+finish writing
+*********************************
+Read matrix time: 5995.99
+create hash tables: 17450.3
+query time : 9.448
+*********************************
+finish 7
+868
+1014_15
+sh: job: 没有那个文件或目录
+7406
+11090_13
