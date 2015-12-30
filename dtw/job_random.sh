@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for ((k=0;k<36;k++))
+for ((k=0;k<10;k++))
 do
 
 
@@ -10,7 +10,9 @@ id=$(($RANDOM%131246))
 echo $id
 
 file=$(sed -n "$id, 1p" ../Data/index_sub.txt | awk '{print $2}')
+echo $id $file >> ../dtw/Query.txt
 echo $file
+
 
 queryfile="../Data/subtrajectory/"$file
 #echo $queryfile
