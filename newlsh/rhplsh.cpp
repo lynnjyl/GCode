@@ -62,8 +62,8 @@ int main(int argc, char * argv[])
     
     rhpLsh rhplsh;
     Parameter_rhplsh param_rhp;
-    param_rhp.M = 2000;                 // hash table size
-    param_rhp.L = 5;                        // number of hash tables
+    param_rhp.M = atoi(argv[2]);                 // hash table size
+    param_rhp.L = atoi(argv[3]);                        // number of hash tables
     param_rhp.D = size;                 // dimension
     param_rhp.N = 6;                        // binary code byte
     rhplsh.reset(param_rhp);
@@ -86,7 +86,7 @@ int main(int argc, char * argv[])
         //cout  << i << endl;
         rhplsh.insert(i, matrix[i]);
     }
-    cout << "finished" << endl;
+  //  cout << "finished" << endl;
 double t3 = wallclock();   
 
 
@@ -106,11 +106,12 @@ double t3 = wallclock();
         candidates = rhplsh.query(matrix[queryid]);
         //double t4 = wallclock();
         cout << "traj " << queryid << " has " << candidates.size() << " candidates." << endl;
+        cout << queryid << " " << candidates.size() << endl;
         filename = "./RhpLsh/cant_" + to_string(queryid)  + ".txt";
-        fp = fopen(filename.c_str(), "w");  cout << "fileopen" << endl;
+        fp = fopen(filename.c_str(), "w");  //cout << "fileopen" << endl;
         for(set <unsigned>::iterator it = candidates.begin(); it != candidates.end(); ++it)
             fprintf(fp, "%d\n", *it);
-        cout << "finish writing" << endl;
+        //cout << "finish writing" << endl;
         
         fclose(fp);
         
@@ -119,12 +120,13 @@ double t3 = wallclock();
         fclose(fp);
         candidates.clear();
 	
-	cout << "*********************************" << endl;
+	//cout << "*********************************" << endl;
 //	cout << "Read matrix time: " << t2 - t1 << endl;
 //	cout << "create hash tables: " << t3 - t2 << endl;
 //	cout << "query time : " << t4 - t3 << endl;
 //	cout << "*********************************" << endl;
 
     }
+    cout << "finished " << endl;
     return 0;
 }

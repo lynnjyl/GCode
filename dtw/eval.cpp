@@ -24,16 +24,8 @@ int main(int argc, char * argv[])
     int num;
     char trajid[20];
     char trajname[20];
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+ 
 	int i(0), id;
 	char temp[50];
 	vector <int> DTWResult;
@@ -70,7 +62,7 @@ int main(int argc, char * argv[])
 		LSHResult.push_back(id);
 	}
 
-	cout << "LSH Result has " << LSHResult.size() << " elements" << endl;
+	//cout << "LSH Result has " << LSHResult.size() << " elements" << endl;
 
 
 	for(i = 0; i < num; i++)
@@ -82,9 +74,10 @@ int main(int argc, char * argv[])
 			count++;
 	}
 
-	cout << "count = " << count << endl;
+	//cout << "count = " << count << endl;
 	double Accuracy = (double)count/num;
-	cout << "Accuracy = " << Accuracy << endl;
+	//cout << "Accuracy = " << Accuracy << endl;
+	cout << trajid << " " << LSHResult.size() << " " << Accuracy << endl;
         
         LSHResult.clear();
         DTWResult.clear();

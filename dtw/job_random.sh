@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for ((k=0;k<10;k++))
+for ((k=0;k<25;k++))
 do
 
 

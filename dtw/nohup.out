@@ -188,3 +188,91 @@ sh: job: 没有那个文件或目录
 7406
 11090_13
 >>>>>>> d27c2e658957925fd3ad4d43a856e6c27a052712
+21559
+12980_21
+7:78385 0.391667
+Success in rhplsh
+finished
+traj 2536 has 10015 candidates.
+fileopen
+finish writing
+*********************************
+traj 9565 has 9851 candidates.
+fileopen
+finish writing
+*********************************
+traj 1151 has 12096 candidates.
+fileopen
+finish writing
+*********************************
+traj 31660 has 10676 candidates.
+fileopen
+finish writing
+*********************************
+traj 32505 has 10897 candidates.
+fileopen
+finish writing
+*********************************
+traj 4041 has 10677 candidates.
+fileopen
+finish writing
+*********************************
+traj 7243 has 11536 candidates.
+fileopen
+finish writing
+*********************************
+finish 0
+5110
+1088_20
+1:28099 0.358333
+Success in rhplsh
+traj 2536 has 11595 candidates.
+2536 11595
+traj 9565 has 10680 candidates.
+9565 10680
+traj 1151 has 13216 candidates.
+1151 13216
+traj 31660 has 10831 candidates.
+31660 10831
+traj 32505 has 12660 candidates.
+32505 12660
+traj 4041 has 11273 candidates.
+4041 11273
+traj 7243 has 10814 candidates.
+7243 10814
+finished 
+finish 1
+9692
+11249_21
+1:96535 0.116667
+Success in rhplsh
+traj 2536 has 9941 candidates.
+2536 9941
+traj 9565 has 9179 candidates.
+9565 9179
+traj 1151 has 10547 candidates.
+1151 10547
+traj 31660 has 11508 candidates.
+31660 11508
+traj 32505 has 12184 candidates.
+32505 12184
+traj 4041 has 11764 candidates.
+4041 11764
+traj 7243 has 10085 candidates.
+7243 10085
+finished 
+finish 2
+14279
+12044_08
+4566
+10793_00
+2:4805 0.491667
+job_random.sh: 行 45:  7788 段错误               (核心已转储) ./r $id
+finish 0
+11684
+11677_00
+1:72043 0.466667
+job_random.sh: 行 45: 10872 段错误               (核心已转储) ./r $id
+finish 1
+3279
+10615_55
