@@ -28,7 +28,12 @@ double wallclock(void)
 
 int main(int argc, char * argv[])
 {
-    FILE *fp = fopen("../../matrix_sub.txt", "r");
+    int mode = atoi(argv[1]);
+    FILE *fp;
+    if(mode == 1)
+        fp = fopen("../../matrix_sub.txt", "r");
+    else
+        fp = fopen("../../matrix_sub_normalize.txt", "r");
     int TrajID, GridID;
     double value;
     
@@ -41,7 +46,8 @@ int main(int argc, char * argv[])
     matrix.resize(numoftraj);   // record trajectories 1-14939
     element ele;
 
-    int queryid = atoi(argv[1]);
+    //int queryid = atoi(argv[1]);
+    int queryid;
     
     double t1 = wallclock();
     //read the matrix into matrix;
@@ -92,23 +98,33 @@ double t3 = wallclock();
     }*/
     
     string filename;
-    candidates = rhplsh.query(matrix[queryid]);
-	double t4 = wallclock();
-    cout << "traj " << queryid << " has " << candidates.size() << " candidates." << endl;
-    filename = "./RhpLsh/cant_" + to_string(queryid)  + ".txt";
-    fp = fopen(filename.c_str(), "w");  cout << "fileopen" << endl;
-    for(set <unsigned>::iterator it = candidates.begin(); it != candidates.end(); ++it)
-        fprintf(fp, "%d\n", *it);
-    cout << "finish writing" << endl;
-    candidates.clear();
-    fclose(fp);
+    
+    FILE *fp2 = fopen("query.txt", "r");
+    
+    while(fscanf(fp2, "%d", &queryid) != EOF)
+    {
+        candidates = rhplsh.query(matrix[queryid]);
+        //double t4 = wallclock();
+        cout << "traj " << queryid << " has " << candidates.size() << " candidates." << endl;
+        filename = "./RhpLsh/cant_" + to_string(queryid)  + ".txt";
+        fp = fopen(filename.c_str(), "w");  cout << "fileopen" << endl;
+        for(set <unsigned>::iterator it = candidates.begin(); it != candidates.end(); ++it)
+            fprintf(fp, "%d\n", *it);
+        cout << "finish writing" << endl;
+        
+        fclose(fp);
+        
+        fp = fopen("result.txt", "a");
+        fprintf(fp, "%d %lu\n", queryid, candidates.size());
+        fclose(fp);
+        candidates.clear();
 	
 	cout << "*********************************" << endl;
-	cout << "Read matrix time: " << t2 - t1 << endl;
-	cout << "create hash tables: " << t3 - t2 << endl;
-	cout << "query time : " << t4 - t3 << endl;
-	cout << "*********************************" << endl;
+//	cout << "Read matrix time: " << t2 - t1 << endl;
+//	cout << "create hash tables: " << t3 - t2 << endl;
+//	cout << "query time : " << t4 - t3 << endl;
+//	cout << "*********************************" << endl;
 
-
+    }
     return 0;
 }
