@@ -1,72 +1,140 @@
-3874
-10638_17
-25:28551 0.483333
+11640
+11673_17
+1:57465 0.483333
 Success in rhplsh
 finished
-traj 3874 has 11650 candidates.
+traj 11640 has 8697 candidates.
 fileopen
 finish writing
 *********************************
-Read matrix time: 24917.6
-create hash tables: 17542.5
-query time : 10.2939
+Read matrix time: 6545.43
+create hash tables: 20281.3
+query time : 7.83008
 *********************************
 finish 0
-4041
-10648_44
-174:52017 0.491667
+13274
+11961_01
+98:13639 0.491667
 Success in rhplsh
 finished
-traj 4041 has 10858 candidates.
+traj 13274 has 10097 candidates.
 fileopen
 finish writing
 *********************************
-Read matrix time: 6005.74
-create hash tables: 17502.2
-query time : 9.80396
+Read matrix time: 6014.8
+create hash tables: 20194.4
+query time : 8.88208
 *********************************
 finish 1
-28394
-1392_00
-4:26744 0.458333
+24295
+13348_06
+10:27274 0.491667
 Success in rhplsh
 finished
-traj 28394 has 11067 candidates.
+traj 24295 has 9912 candidates.
 fileopen
 finish writing
 *********************************
-Read matrix time: 5952.09
-create hash tables: 17562.2
-query time : 9.72607
+Read matrix time: 5823.5
+create hash tables: 20182.2
+query time : 8.64209
 *********************************
 finish 2
-29913
-14158_02
-30:68060 0.461538
+17197
+12381_04
+10:42228 0.491667
 Success in rhplsh
 finished
-traj 29913 has 11052 candidates.
+traj 17197 has 10621 candidates.
 fileopen
 finish writing
 *********************************
-Read matrix time: 6058.82
-create hash tables: 17535.9
-query time : 9.69702
+Read matrix time: 5844.46
+create hash tables: 20107.8
+query time : 9.32495
 *********************************
 finish 3
-25714
-13583_04
-2:99999 0.000000
+23127
+13178_03
+50:5870 0.491667
 Success in rhplsh
 finished
-traj 25714 has 9559 candidates.
+traj 23127 has 9702 candidates.
 fileopen
 finish writing
 *********************************
-Read matrix time: 5908.2
-create hash tables: 17518.4
-query time : 8.48901
+Read matrix time: 5997.59
+create hash tables: 20129.6
+query time : 8.48999
 *********************************
 finish 4
-10509
-11447_00
+14271
+12044_00
+7:16111 0.475000
+Success in rhplsh
+finished
+traj 14271 has 11433 candidates.
+fileopen
+finish writing
+*********************************
+Read matrix time: 6027.43
+create hash tables: 20165.1
+query time : 10.022
+*********************************
+finish 5
+33
+10006_02
+1:24380 0.216667
+Success in rhplsh
+finished
+traj 33 has 11570 candidates.
+fileopen
+finish writing
+*********************************
+Read matrix time: 5887.18
+create hash tables: 20138.7
+query time : 10.512
+*********************************
+finish 6
+2536
+10507_05
+824:992 0.416667
+Success in rhplsh
+finished
+traj 2536 has 9976 candidates.
+fileopen
+finish writing
+*********************************
+Read matrix time: 6054.74
+create hash tables: 20173.3
+query time : 8.84302
+*********************************
+finish 7
+1885
+10361_22
+1:113064 0.358333
+Success in rhplsh
+finished
+traj 1885 has 12810 candidates.
+fileopen
+finish writing
+*********************************
+Read matrix time: 5836.4
+create hash tables: 20158.4
+query time : 11.249
+*********************************
+finish 8
+8494
+11135_11
+1:111289 0.450000
+Success in rhplsh
+finished
+traj 8494 has 12133 candidates.
+fileopen
+finish writing
+*********************************
+Read matrix time: 5814.84
+create hash tables: 20069.5
+query time : 10.5188
+*********************************
+finish 9
