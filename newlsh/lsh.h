@@ -410,10 +410,14 @@ public:
                 {
                     sum += rndArray[i][j];
                 }
+               /* else
+                    std::cout << "flag < 0" << std::endl;*/
             }
             unsigned hashVal = sum % param.M;
+            //std::cout << hashVal << std::endl;
             if (tables[i].find(hashVal) != tables[i].end())
             {
+               // std::cout << tables[i][hashVal].size() << std::endl;
                 for (std::vector<unsigned>::iterator iter = tables[i][hashVal].begin(); iter != tables[i][hashVal].end(); ++iter)
                 {
                     candidates.insert(*iter);
