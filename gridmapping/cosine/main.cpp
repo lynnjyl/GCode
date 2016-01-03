@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <math.h>
 
 using namespace std;
 
@@ -70,7 +71,7 @@ double cosine(vector <element> v1, vector <element> v2)
 	//cout << product << endl;
 	//cout << len1 << " " << len2 << endl;
 	//cos = product/(len1 * len2);
-	cos = product;
+	cos = product/(sqrt(len1)*sqrt(len2));
 	return cos;
 }
 
