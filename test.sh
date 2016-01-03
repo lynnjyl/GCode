@@ -4,7 +4,7 @@ echo "1 2000 5 6"
 for ((i=0;i<10;i++))
 do
 cd ./newlsh
-./r 1 1000 5 6
+./r 1 2000 5 6
 cd ../dtw
 ./eval 
 cd ..
@@ -15,7 +15,7 @@ echo "1 2000 10 6"
 for ((i=0;i<10;i++))
 do
 cd ./newlsh
-./r 1 1000 10 6
+./r 1 2000 10 6
 cd ../dtw
 ./eval 
 cd ..
@@ -26,7 +26,7 @@ echo "1 2000 15 6"
 for ((i=0;i<10;i++))
 do
 cd ./newlsh
-./r 1 1000 15 6
+./r 1 2000 15 6
 cd ../dtw
 ./eval 
 cd ..
@@ -37,7 +37,7 @@ echo "1 2000 20 6"
 for ((i=0;i<10;i++))
 do
 cd ./newlsh
-./r 1 1000 20 6
+./r 1 2000 20 6
 cd ../dtw
 ./eval 
 cd ..
