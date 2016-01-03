@@ -1,278 +1,86 @@
-11640
-11673_17
-1:57465 0.483333
-Success in rhplsh
-finished
-traj 11640 has 8697 candidates.
-fileopen
-finish writing
-*********************************
-Read matrix time: 6545.43
-create hash tables: 20281.3
-query time : 7.83008
-*********************************
+29617
+14108_14
+7:17638 0.466667
 finish 0
-13274
-11961_01
-98:13639 0.491667
-Success in rhplsh
-finished
-traj 13274 has 10097 candidates.
-fileopen
-finish writing
-*********************************
-Read matrix time: 6014.8
-create hash tables: 20194.4
-query time : 8.88208
-*********************************
+2309
+10454_05
+57:83644 0.491667
 finish 1
-24295
-13348_06
-10:27274 0.491667
-Success in rhplsh
-finished
-traj 24295 has 9912 candidates.
-fileopen
-finish writing
-*********************************
-Read matrix time: 5823.5
-create hash tables: 20182.2
-query time : 8.64209
-*********************************
+23563
+13258_08
+206:28048 0.492537
 finish 2
-17197
-12381_04
-10:42228 0.491667
-Success in rhplsh
-finished
-traj 17197 has 10621 candidates.
-fileopen
-finish writing
-*********************************
-Read matrix time: 5844.46
-create hash tables: 20107.8
-query time : 9.32495
-*********************************
+32212
+14394_19
+53:90406 0.491667
 finish 3
-23127
-13178_03
-50:5870 0.491667
-Success in rhplsh
-finished
-traj 23127 has 9702 candidates.
-fileopen
-finish writing
-*********************************
-Read matrix time: 5997.59
-create hash tables: 20129.6
-query time : 8.48999
-*********************************
+29731
+141_27
+5:126998 0.433333
 finish 4
-<<<<<<< HEAD
-14271
-12044_00
-7:16111 0.475000
-Success in rhplsh
-finished
-traj 14271 has 11433 candidates.
-fileopen
-finish writing
-*********************************
-Read matrix time: 6027.43
-create hash tables: 20165.1
-query time : 10.022
-*********************************
+24119
+13324_02
+135:5633 0.491667
 finish 5
-33
-10006_02
-1:24380 0.216667
-Success in rhplsh
-finished
-traj 33 has 11570 candidates.
-fileopen
-finish writing
-*********************************
-Read matrix time: 5887.18
-create hash tables: 20138.7
-query time : 10.512
-*********************************
+27924
+13894_03
+6:24847 0.483333
 finish 6
-2536
-10507_05
-824:992 0.416667
-Success in rhplsh
-finished
-traj 2536 has 9976 candidates.
-fileopen
-finish writing
-*********************************
-Read matrix time: 6054.74
-create hash tables: 20173.3
-query time : 8.84302
-*********************************
+19123
+12625_32
+2:48881 0.483333
 finish 7
-1885
-10361_22
-1:113064 0.358333
-Success in rhplsh
-finished
-traj 1885 has 12810 candidates.
-fileopen
-finish writing
-*********************************
-Read matrix time: 5836.4
-create hash tables: 20158.4
-query time : 11.249
-*********************************
+18070
+1245_06
+12:25766 0.454545
 finish 8
-8494
-11135_11
-1:111289 0.450000
-Success in rhplsh
-finished
-traj 8494 has 12133 candidates.
-fileopen
-finish writing
-*********************************
-Read matrix time: 5814.84
-create hash tables: 20069.5
-query time : 10.5188
-*********************************
+22264
+13060_02
+395:30459 0.400000
 finish 9
-=======
-10509
-11447_00
-35:9972 0.491667
-Success in rhplsh
-finished
-traj 10509 has 9937 candidates.
-fileopen
-finish writing
-*********************************
-Read matrix time: 5912.97
-create hash tables: 17463.3
-query time : 9.05811
-*********************************
-finish 5
-7243
-11087_04
-575:96173 0.491667
-Success in rhplsh
-finished
-traj 7243 has 9602 candidates.
-fileopen
-finish writing
-*********************************
-Read matrix time: 5990.8
-create hash tables: 17388
-query time : 8.52881
-*********************************
-finish 6
-7159
-11085_21
-21:62892 0.491667
-Success in rhplsh
-finished
-traj 7159 has 10827 candidates.
-fileopen
-finish writing
-*********************************
-Read matrix time: 5995.99
-create hash tables: 17450.3
-query time : 9.448
-*********************************
-finish 7
-868
-1014_15
-sh: job: 没有那个文件或目录
-7406
-11090_13
->>>>>>> d27c2e658957925fd3ad4d43a856e6c27a052712
-21559
-12980_21
-7:78385 0.391667
-Success in rhplsh
-finished
-traj 2536 has 10015 candidates.
-fileopen
-finish writing
-*********************************
-traj 9565 has 9851 candidates.
-fileopen
-finish writing
-*********************************
-traj 1151 has 12096 candidates.
-fileopen
-finish writing
-*********************************
-traj 31660 has 10676 candidates.
-fileopen
-finish writing
-*********************************
-traj 32505 has 10897 candidates.
-fileopen
-finish writing
-*********************************
-traj 4041 has 10677 candidates.
-fileopen
-finish writing
-*********************************
-traj 7243 has 11536 candidates.
-fileopen
-finish writing
-*********************************
-finish 0
-5110
-1088_20
-1:28099 0.358333
-Success in rhplsh
-traj 2536 has 11595 candidates.
-2536 11595
-traj 9565 has 10680 candidates.
-9565 10680
-traj 1151 has 13216 candidates.
-1151 13216
-traj 31660 has 10831 candidates.
-31660 10831
-traj 32505 has 12660 candidates.
-32505 12660
-traj 4041 has 11273 candidates.
-4041 11273
-traj 7243 has 10814 candidates.
-7243 10814
-finished 
-finish 1
-9692
-11249_21
-1:96535 0.116667
-Success in rhplsh
-traj 2536 has 9941 candidates.
-2536 9941
-traj 9565 has 9179 candidates.
-9565 9179
-traj 1151 has 10547 candidates.
-1151 10547
-traj 31660 has 11508 candidates.
-31660 11508
-traj 32505 has 12184 candidates.
-32505 12184
-traj 4041 has 11764 candidates.
-4041 11764
-traj 7243 has 10085 candidates.
-7243 10085
-finished 
-finish 2
-14279
-12044_08
-4566
-10793_00
-2:4805 0.491667
-job_random.sh: 行 45:  7788 段错误               (核心已转储) ./r $id
-finish 0
-11684
-11677_00
-1:72043 0.466667
-job_random.sh: 行 45: 10872 段错误               (核心已转储) ./r $id
-finish 1
-3279
-10615_55
+24005
+13310_04
+1:24168 0.475000
+finish 10
+20205
+12754_00
+1:24905 0.425000
+finish 11
+13096
+11937_00
+1:48491 0.466667
+finish 12
+13714
+12004_05
+93:26915 0.491667
+finish 13
+6254
+1105_07
+1:9081 0.375000
+finish 14
+2842
+10569_01
+4:29715 0.425000
+finish 15
+25946
+13608_40
+70:25975 0.491667
+finish 16
+3013
+1060_07
+6:1718 0.458333
+finish 17
+24759
+1345_04
+2:19676 0.491667
+finish 18
+11630
+11673_07
+1:76100 0.491667
+finish 19
+17220
+12381_26
+32:22261 0.491667
+finish 20
+22702
+13115_07

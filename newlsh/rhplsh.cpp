@@ -65,7 +65,7 @@ int main(int argc, char * argv[])
     param_rhp.M = atoi(argv[2]);                 // hash table size
     param_rhp.L = atoi(argv[3]);                        // number of hash tables
     param_rhp.D = size;                 // dimension
-    param_rhp.N = 6;                        // binary code byte
+    param_rhp.N = atoi(argv[4]);                        // binary code byte
     rhplsh.reset(param_rhp);
     cout << "Success in rhplsh" << endl;
 

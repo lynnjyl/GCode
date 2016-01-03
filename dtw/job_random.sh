@@ -37,8 +37,8 @@ sorted=$result"sort"
 sort -n -r -k 2 $result > $sorted
 
 cat $sorted | grep -n '\(0\.\)'[0-4] | awk 'NR==1{print}'
-cd ../newlsh
-./r $id
+# cd ../newlsh
+# ./r $id
 
 
 echo "finish "$k
