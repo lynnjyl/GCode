@@ -71,14 +71,15 @@ double cosine(vector <element> v1, vector <element> v2)
 	//cout << product << endl;
 	//cout << len1 << " " << len2 << endl;
 	//cos = product/(len1 * len2);
-	cos = product/(sqrt(len1)*sqrt(len2));
+	//cos = product/(sqrt(len1)*sqrt(len2));
+	cos = product;
 	return cos;
 }
 
 int main()
 {
 
-	int trajid, gid, queryid = 2536;
+	int trajid, gid, queryid = 31660;
 	double value;
 	element temp;
 	vector < vector <element> > matrix;

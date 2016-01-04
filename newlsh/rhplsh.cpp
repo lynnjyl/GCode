@@ -99,7 +99,7 @@ double t3 = wallclock();
     
     string filename;
     
-    FILE *fp2 = fopen("query.txt", "r");
+    FILE *fp2 = fopen("query1.txt", "r");
     
     while(fscanf(fp2, "%d", &queryid) != EOF)
     {
@@ -107,7 +107,8 @@ double t3 = wallclock();
         //double t4 = wallclock();
         cout << "traj " << queryid << " has " << candidates.size() << " candidates." << endl;
         cout << queryid << " " << candidates.size() << endl;
-        filename = "./RhpLsh/cant_" + to_string(queryid)  + ".txt";
+        //filename = "./RhpLsh/cant_" + to_string(queryid)  + ".txt";
+        filename = "./cant_" + to_string(queryid) + ".txt";
         fp = fopen(filename.c_str(), "w");  //cout << "fileopen" << endl;
         for(set <unsigned>::iterator it = candidates.begin(); it != candidates.end(); ++it)
             fprintf(fp, "%d\n", *it);
