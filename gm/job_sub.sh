@@ -5,14 +5,14 @@ before="";
 
 cd ../Data/subtrajectory
 filelist=$(ls)
-cd ../../gridmapping
+cd ../../gm
 for kfile in $filelist
 do
 	echo $trajid
 	echo $kfile
-	echo "$trajid $kfile" >> index_sub.txt
+	echo "$trajid $kfile" >> index_sub_gm.txt
 	filename="../Data/subtrajectory/"$kfile	
-	./g $trajid $filename
+	./gm $trajid $filename
 	trajid=$((trajid+1))
 done
 

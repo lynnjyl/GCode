@@ -1,7 +1,21 @@
+/*
+	get the innerproduct  or cosine value of the query vector and all the other vectors in the matrix.
+
+	input:
+
+	argv[1]: mode. mode = 0: cosine value; else: innerproduct;
+	argv[2]: queryid;
+*/
+
+
+
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <math.h>
+#include <stdlib.h>
+#include <string>
+#include <string.h>
 
 using namespace std;
 
@@ -11,7 +25,7 @@ struct element
 	double val;
 };
 
-double cosine(vector <element> v1, vector <element> v2)
+double cosine(vector <element> v1, vector <element> v2, int mode)
 {
 	double cos;
 	double product = 0;
@@ -71,20 +85,25 @@ double cosine(vector <element> v1, vector <element> v2)
 	//cout << product << endl;
 	//cout << len1 << " " << len2 << endl;
 	//cos = product/(len1 * len2);
-	//cos = product/(sqrt(len1)*sqrt(len2));
-	cos = product;
+
+	if(mode == 0)
+		cos = product/(sqrt(len1)*sqrt(len2));
+	else
+		cos = product;
 	return cos;
 }
 
-int main()
+int main(int argc, char * argv[])
 {
 
-	int trajid, gid, queryid = 31660;
+	int trajid, gid;
 	double value;
 	element temp;
 	vector < vector <element> > matrix;
 	matrix.resize(131247);
-	FILE *fp = fopen("../../../matrix_sub.txt", "r");
+	FILE *fp = fopen("../../../matrix_sub_gm.txt", "r");
+	int mode = atoi(argv[1]);
+	int queryid = atoi(argv[2]);
 
 	while(fscanf(fp, "%d %d %lf\n", &trajid, &gid, &value) != EOF)
 	{
@@ -93,17 +112,29 @@ int main()
 		matrix[trajid].push_back(temp);
 	}
 
-	double cos = cosine(matrix[1], matrix[2]);
+	fclose(fp);
+	double cos = cosine(matrix[1], matrix[2], mode);
 	//cout << cos << endl;
 
+	string output;
+	if(mode == 0)
+		output = to_string(queryid) + "_cosine";
+	else
+		output = to_string(queryid) + "_innerproduct";
+
+	FILE *fp2 = fopen(output.c_str(), "w");
 
 	for(int i = 1; i < 131247; i++)
 	{
-		cos = cosine(matrix[i], matrix[queryid]);
-		cout << i << " " << cos << endl;
+		cos = cosine(matrix[i], matrix[queryid], mode);
+		//cout << i << " " << cos << endl;
+		fprintf(fp2, "%d %lf\n", i, cos);
 	}
 
 /*	cos = cosine(matrix[2536], matrix[105534]);
 	cout << cos <<endl;*/
+
+
+
 	return 0;
 }
