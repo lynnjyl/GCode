@@ -1,0 +1,10 @@
+	sort -r -n -k 2 $kfile  > $filename
+for kfile  in $filelist
+	filename=$kfile"_sort"
+filelist=$(ls)
+done
+do 
+#! bin/bash
+
+
+

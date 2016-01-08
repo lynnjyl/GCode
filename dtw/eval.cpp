@@ -1,7 +1,5 @@
 /*
-	argv[1]: the number of trajectories selected from the sorted file.
-	argv[2]: sorted file produced from dtw process.
-	argv[3]: LSH result.
+	trajectory id  and trajectory filename are read from the q.txt file;
 
 */
 

@@ -1,10 +1,10 @@
 /*
-	get the innerproduct  or cosine value of the query vector and all the other vectors in the matrix.
+	get the innerproduct  and cosine value of the query vector and all the other vectors in the matrix.
 
 	input:
 
-	argv[1]: mode. mode = 0: cosine value; else: innerproduct;
-	argv[2]: queryid;
+	
+	argv[1]: queryid;
 */
 
 
@@ -53,8 +53,6 @@ double cosine(vector <element> v1, vector <element> v2, int mode)
 			cout << "v2 : " << v2[index2].Gid << " " << v2[index2].val << endl;
 			cout << "*************" << endl;*/
 			product += (v1[index1].val)*(v2[index2].val);
-			//len1 += (v1[index1].val)*(v1[index1].val);
-			///len2 += (v2[index2].val)*(v2[index2].val);
 			index1++;
 			index2++;
 
@@ -63,28 +61,19 @@ double cosine(vector <element> v1, vector <element> v2, int mode)
 		{
 			if(v1[index1].Gid > v2[index2].Gid)
 			{
-				//len2 += (v2[index2].val)*(v2[index2].val);
 				index2++;
 			}
 			else
 			{
-				//len1 += (v1[index1].val)*(v1[index1].val);
 				index1++;
 			}
 		}
-		//len1 += (v1[index1].val)*(v1[index1].val);
-		//len2 += (v2[index2].val)*(v2[index2].val);
 	}
 
 	for(index1 = 0; index1 < v1.size(); index1++)
 		len1 += (v1[index1].val)*(v1[index1].val);
 	for(index2 = 0; index2 < v2.size(); index2++)
 		len2 += (v2[index2].val)*(v2[index2].val);
-	//cout << v1.size() << endl;
-	//cout << v2.size() << endl;
-	//cout << product << endl;
-	//cout << len1 << " " << len2 << endl;
-	//cos = product/(len1 * len2);
 
 	if(mode == 0)
 		cos = product/(sqrt(len1)*sqrt(len2));
@@ -102,8 +91,8 @@ int main(int argc, char * argv[])
 	vector < vector <element> > matrix;
 	matrix.resize(131247);
 	FILE *fp = fopen("../../../matrix_sub_gm.txt", "r");
-	int mode = atoi(argv[1]);
-	int queryid = atoi(argv[2]);
+	//int mode = atoi(argv[1]);
+	int queryid = atoi(argv[1]);
 
 	while(fscanf(fp, "%d %d %lf\n", &trajid, &gid, &value) != EOF)
 	{
@@ -113,28 +102,23 @@ int main(int argc, char * argv[])
 	}
 
 	fclose(fp);
-	double cos = cosine(matrix[1], matrix[2], mode);
-	//cout << cos << endl;
+	
+	double cos, prod;
+	string output1, output2;
 
-	string output;
-	if(mode == 0)
-		output = to_string(queryid) + "_cosine";
-	else
-		output = to_string(queryid) + "_innerproduct";
-
-	FILE *fp2 = fopen(output.c_str(), "w");
-
+	output1 = to_string(queryid) + "_cosine";
+	output2 = to_string(queryid) + "_product";
+	FILE *fp2 = fopen(output1.c_str(), "w");
+	FILE *fp3 = fopen(output2.c_str(), "w");
 	for(int i = 1; i < 131247; i++)
 	{
-		cos = cosine(matrix[i], matrix[queryid], mode);
-		//cout << i << " " << cos << endl;
+		cos = cosine(matrix[i], matrix[queryid], 0);
+		prod = cosine(matrix[i], matrix[queryid], 1);
 		fprintf(fp2, "%d %lf\n", i, cos);
+		fprintf(fp3, "%d %lf\n", i, prod);
 	}
-
-/*	cos = cosine(matrix[2536], matrix[105534]);
-	cout << cos <<endl;*/
-
-
+	fclose(fp2);
+	fclose(fp3);
 
 	return 0;
 }
