@@ -106,8 +106,8 @@ int main(int argc, char * argv[])
 	double cos, prod;
 	string output1, output2;
 
-	output1 = to_string(queryid) + "_cosine";
-	output2 = to_string(queryid) + "_product";
+	output1 = "./result/"+ to_string(queryid) + "_cosine";
+	output2 = "./result/" + to_string(queryid) + "_product";
 	FILE *fp2 = fopen(output1.c_str(), "w");
 	FILE *fp3 = fopen(output2.c_str(), "w");
 	for(int i = 1; i < 131247; i++)
