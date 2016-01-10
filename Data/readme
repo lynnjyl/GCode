@@ -1,0 +1,4 @@
+result: all the GPS files
+trajectory: the GPS files which are in Beijing
+subtrajectory: sub trajectories which are divided as 120;
+subtrajectory2: filter other travel tool and make all the trajectories 120;
