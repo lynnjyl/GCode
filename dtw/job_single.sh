@@ -1,7 +1,7 @@
 #!/bin/bash
 
 trajid=1;
-file="10507_05"
+file="10208_03"
 queryfile="../Data/subtrajectory/"$file
 
 
@@ -11,7 +11,7 @@ cd ../../dtw
 
 for kfile in $filelist
 do
-	echo $trajid
+	#echo $trajid
 	filename="../Data/subtrajectory/"$kfile
 	./main $queryfile $filename $trajid 10
 	trajid=$((trajid+1))
