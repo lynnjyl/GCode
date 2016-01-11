@@ -10,9 +10,9 @@ for kfile in $filelist
 do
 	echo $trajid
 	echo $kfile
-	echo "$trajid $kfile" >> index_sub_gm_110.txt
+	echo "$trajid $kfile" >> index_sub_gm_111.txt
 	filename="../Data/subtrajectory/"$kfile	
-	./gm $trajid $filename
+	./gm2 $trajid $filename
 	trajid=$((trajid+1))
 done
 
