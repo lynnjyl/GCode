@@ -45,7 +45,7 @@ int main(int argc, char * argv[])
 		cout << i << ": " << cosid[i] << ", Cosine Value = " << cosval[i] << endl;
 		cout << "DTW index = " << (it-dtwid.begin()) << ", DTW Value = " << dtwval[it-dtwid.begin()] << endl;
 		cout << "*********************************" <<endl;
-		if(dtwval[it-dtwid.begin()] < 0.2)
+		if(dtwval[it-dtwid.begin()] < 0.4)
 			count++;
 	}
 	double per = (double)count/(double)num;

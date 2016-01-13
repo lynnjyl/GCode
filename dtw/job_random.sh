@@ -9,7 +9,7 @@ trajid=1;
 id=$(($RANDOM%131246))
 echo $id
 
-file=$(sed -n "$id, 1p" ../Data/index_sub_gm.txt | awk '{print $2}')
+file=$(sed -n "$id, 1p" ../Data/index_sub.txt | awk '{print $2}')
 echo $id $file >> ../dtw/Query.txt
 echo $file
 
