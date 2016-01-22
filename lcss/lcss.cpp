@@ -59,11 +59,10 @@ int main(int argc, char *argv[])
 	vector <GPSPoint> query, cant;
 	GPSPoint point;
 	int m, n, i, j;
-	m = n = 120;
+//	m = n = 120;
 	int *lcs;
 
-	//int i;
-
+/*
 
 	for(i = 0; i < m; i++)
 	{
@@ -72,7 +71,9 @@ int main(int argc, char *argv[])
 		fscanf(fp2, "%lf %lf %s", &point.lat, &point.lng, temp);
 		cant.push_back(point);
 	}
-/*
+*/
+
+	cout << "begin to read" << endl;
 	i = j = 0;
 	while(fscanf(fp1, "%lf %lf %s\n", &point.lat, &point.lng, temp) != EOF)
 	{
@@ -89,7 +90,7 @@ int main(int argc, char *argv[])
 	//	cout << j << endl;
 	}
 	n = j;
-*/
+
 	fclose(fp1);
 	fclose(fp2);
 	lcs = new int [(m+1)*(n+1)];
@@ -104,16 +105,35 @@ int main(int argc, char *argv[])
 	{
 		for(j = 1; j <= n; j++)
 		{
+
 			dist = distance(query[i].lat, query[i].lng, cant[j].lat, cant[j].lng);
 			//cout << i << " " << j << " " << dist << endl;
-			if(dist <= epsilon /*&& abs(m-n)*/)
+			if(dist <= epsilon && abs(m-n))
+			{
+				cout << i << " " << j << endl;
+				cout << "query: " << query[i].lat << " " << query[i].lng << endl;
+				cout << "cant: " << cant[j].lat << " " << cant[j].lng << endl;
+				cout << "distance : " << dist << endl; 
 				lcs[i*(n+1)+j] = lcs[(i-1)*(n+1) + (j-1)] + 1;
+			}
 			else
 			{
 				lcs[i*(n+1)+j] = max(lcs[(i-1)*(n+1) + j], lcs[i*(n+1) + j - 1]);
 			}
 		}
 	}
+
+	for(i = 1; i <= m; i++)
+	{
+		for(j = 1; j <= n; j++)
+		{
+			cout<< lcs[i*(n+1)+j] << " ";
+		}
+		cout << endl;
+	}
+
+
+
 
 
 	string queryfile = argv[1];
@@ -125,13 +145,16 @@ int main(int argc, char *argv[])
 	k = cantfile.find_last_of("/");
 	k++;
 	string name2 = cantfile.substr(k, cantfile.length()-k);
-	//cout << name << endl;
+	cout << name << endl;
 
 	string output = "./result/candidate_" + name; 
 	fp1 = fopen(output.c_str(), "a");
-	double rate = (double)lcs[(m+1)*(n+1)-1]/120;
+	cout << lcs[(m+1)*(n+1)-1] << endl;
+	double rate = (double)lcs[(m+1)*(n+1)-1]/120; 
+	fprintf(fp1, "%d\n", tid);
 	fprintf(fp1, "%d %s %d %lf\n", tid, name2.c_str(), lcs[(m+1)*(n+1)-1], rate);
-	//cout << lcs[121*121-1] << " " << rate << endl;
+	cout << "i" << endl;
+	cout << lcs[(m+1)*(n+1)-1] << " " << rate << endl;
 	
 	
 	return 0;
