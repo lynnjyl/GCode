@@ -33,15 +33,16 @@ cd ../../lcss
 
 for kfile in $filelist
 do
-	#echo $trajid
+#	echo $trajid
 	filename="../Data/subtrajectory/"$kfile
+#	echo $filename
 	./lcss $queryfile $filename $trajid 10 10
 	trajid=$((trajid+1))
 done
 
 result="./result/candidate_"${file[i]}
 sorted=$result"sort"
-sort -n -r -k 2 $result > $sorted
+sort -n -r -k 4 $result > $sorted
 echo "*********"${file[i]}"**********"
 cat $sorted | grep -n '\(0\.\)'[0-4] | awk 'NR==1{print}'
 cat $sorted | grep -n '\(0\.\)'[0-5] | awk 'NR==1{print}'

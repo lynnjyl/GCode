@@ -59,19 +59,20 @@ int main(int argc, char *argv[])
 	vector <GPSPoint> query, cant;
 	GPSPoint point;
 	int m, n, i, j;
-	//m = n = 120;
+	m = n = 120;
 	int *lcs;
 
 	//int i;
 
+
 	for(i = 0; i < m; i++)
 	{
-		fscanf(fp1, "%lf %lf %s\n", &point.lat, &point.lng, temp);
+		fscanf(fp1, "%lf %lf %s", &point.lat, &point.lng, temp);
 		query.push_back(point);
-		fscanf(fp2, "%lf %lf %s\n", &point.lat, &point.lng, temp);
+		fscanf(fp2, "%lf %lf %s", &point.lat, &point.lng, temp);
 		cant.push_back(point);
 	}
-
+/*
 	i = j = 0;
 	while(fscanf(fp1, "%lf %lf %s\n", &point.lat, &point.lng, temp) != EOF)
 	{
@@ -80,16 +81,17 @@ int main(int argc, char *argv[])
 	}
 	m = i;
 
+	cout << "ok" << endl;
 	while(fscanf(fp2, "%lf %lf %s\n", &point.lat, &point.lng, temp) != EOF)
 	{
 		cant.push_back(point);
 		j++;
+	//	cout << j << endl;
 	}
 	n = j;
-
+*/
 	fclose(fp1);
 	fclose(fp2);
-
 	lcs = new int [(m+1)*(n+1)];
 
 	for(i = 1; i <= m; i++)
