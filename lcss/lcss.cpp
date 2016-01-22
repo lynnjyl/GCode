@@ -102,16 +102,35 @@ int main(int argc, char *argv[])
 	{
 		for(j = 1; j <= n; j++)
 		{
+
 			dist = distance(query[i].lat, query[i].lng, cant[j].lat, cant[j].lng);
 			//cout << i << " " << j << " " << dist << endl;
-			if(dist <= epsilon /*&& abs(m-n)*/)
+			if(dist <= epsilon && abs(m-n))
+			{
+				cout << i << " " << j << endl;
+				cout << "query: " << query[i].lat << " " << query[i].lng << endl;
+				cout << "cant: " << cant[j].lat << " " << cant[j].lng << endl;
+				cout << "distance : " << dist << endl; 
 				lcs[i*(n+1)+j] = lcs[(i-1)*(n+1) + (j-1)] + 1;
+			}
 			else
 			{
 				lcs[i*(n+1)+j] = max(lcs[(i-1)*(n+1) + j], lcs[i*(n+1) + j - 1]);
 			}
 		}
 	}
+
+	for(i = 1; i <= m; i++)
+	{
+		for(j = 1; j <= n; j++)
+		{
+			cout<< lcs[i*121+j] << " ";
+		}
+		cout << endl;
+	}
+
+
+
 
 
 	string queryfile = argv[1];
@@ -129,7 +148,7 @@ int main(int argc, char *argv[])
 	fp1 = fopen(output.c_str(), "a");
 	double rate = (double)lcs[(m+1)*(n+1)-1]/120;
 	fprintf(fp1, "%d %s %d %lf\n", tid, name2.c_str(), lcs[(m+1)*(n+1)-1], rate);
-	//cout << lcs[121*121-1] << " " << rate << endl;
+	cout << lcs[121*121-1] << " " << rate << endl;
 	
 	
 	return 0;
