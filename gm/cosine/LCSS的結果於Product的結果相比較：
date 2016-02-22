@@ -1,0 +1,5 @@
+LCSS的結果於Product的結果相比較：
+1.Jaccard similarity （取top－k進行比較）
+結果：30%－40％
+原因：兩種方法（LCSS和Product）的結果排序後會有差別，top-k中k的取值也對結果會有影響。
+例如，LCSS值大的軌跡

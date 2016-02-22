@@ -90,7 +90,7 @@ int main(int argc, char * argv[])
 	element temp;
 	vector < vector <element> > matrix;
 	matrix.resize(131247);
-	FILE *fp = fopen("../../../matrix_sub_gm.txt", "r");
+	FILE *fp = fopen("../matrix_130.txt", "r");
 	//int mode = atoi(argv[1]);
 	int queryid = atoi(argv[1]);
 

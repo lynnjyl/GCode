@@ -3,16 +3,23 @@
 trajid=1;
 before="";
 
-cd ../Data/subtrajectory
-filelist=$(ls)
-cd ../../gm
-for kfile in $filelist
+#cd ../Data/newtrajectory
+#filelist=$(ls)
+#cd ../../gm
+#for kfile in $filelist
+#do
+	#echo $trajid
+#	echo $kfile
+	#echo "$trajid $kfile" >> index_127.txt
+#	filename="../Data/newtrajectory/"$kfile	
+#	./gm2 $trajid $filename
+#	trajid=$((trajid+1))
+#done
+
+for ((i=1;i<=131246;i++))
 do
-	echo $trajid
-	echo $kfile
-	echo "$trajid $kfile" >> index_sub_gm_121.txt
-	filename="../Data/subtrajectory/"$kfile	
-	./gm2 $trajid $filename
-	trajid=$((trajid+1))
+	echo $i
+	filename="../Data/newtrajectory/"$i
+	./gm2 $i $filename
 done
 

@@ -1,27 +1,28 @@
 #!/bin/bash
-file ="11087_04"
+file=$1
 
 
 
-trajid=1;
+#trajid=1;
 
-queryfile="../Data/subtrajectory/"$file
+queryfile="../Data/newtrajectory/"$file
 echo $queryfile
 
-cd ../Data/subtrajectory/
-filelist=$(ls)
-cd ../../lcss
+#cd ../Data/newtrajectory/
+#filelist=$(ls)
+#cd ../../lcss
 
-for kfile in $filelist
+for ((i=1;i<=131246;i++))
 do
-	#echo $trajid
-	filename="../Data/subtrajectory/"$kfile
-	./lcss $queryfile $filename $trajid 10 10
-	trajid=$((trajid+1))
+	#trajid=$(cat ../Data/index_sub.txt | grep $kfile | awk '{print $1}')
+	echo $i
+	filename="../Data/newtrajectory/"$i
+	./lcss $queryfile $filename $i 120 30
+	#trajid=$((trajid+1))
 done
 
-result="./candidate_"$file
-sorted=$result"sort"
+result="./result/lcss_"$file
+sorted=$result"_sort"
 sort -n -r -k 3 $result > $sorted
 
 

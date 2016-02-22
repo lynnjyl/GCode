@@ -25,7 +25,7 @@ double minlat = 39.688;
 double minlng = 116.093;
 double maxlat = 40.178;
 double maxlng = 116.708;
-double differ = 0.0005;
+double differ = 0.0001;
 int lat_num = (maxlat - minlat)/differ + 1;
 int lng_num = (maxlng - minlng)/differ + 1;
 int size = int(lat_num * lng_num) + 1;
@@ -162,7 +162,10 @@ int main(int argc, char * argv[])
 		{
 			value[i] = value[i]/sum;
 			if(centersid[i] > 0 && centersid[i] < size)
+			{
+//				GridWeight[centersid[i]] += value[i];
 				GridWeight[centersid[i]] = max(value[i], GridWeight[centersid[i]]);
+			}
 		}
 
 
@@ -205,7 +208,7 @@ int main(int argc, char * argv[])
 	}
 	fclose(fp);
 
-	fp = fopen("matrix_sub_gm_2.txt", "a");
+	fp = fopen("matrix_133.txt", "a");
 	for(int i = 0; i < size; i++)
 	{
 		if(GridWeight[i] != 0)
