@@ -23,8 +23,27 @@ struct element
 {
 	int Gid;
 	double val;
+	vector <double> angles;
 };
+double anglediff;
 
+
+bool GetDirection(element ele1, element ele2)
+{
+	double differ;
+	for(int i = 0; i < ele1.angles.size(); i++)
+	{
+		for(int j = 0; j < ele2.angles.size(); j++)
+		{
+			differ = fabs(ele1.angles[i]-ele2.angles[j]);
+			if(differ > 180)
+				differ = 360-differ;
+			if(differ < anglediff)
+				return true;
+		}
+	}
+	return false;
+}
 double cosine(vector <element> v1, vector <element> v2, int mode)
 {
 	double cos;
@@ -34,6 +53,7 @@ double cosine(vector <element> v1, vector <element> v2, int mode)
 
 	int index1, index2;
 	index1 = index2 = 0;
+	bool same = false;
 	
 	//vector <element>::iterator it1 = v1.begin();
 	//vector <element>::iterator it2 = v2.begin();
@@ -41,21 +61,15 @@ double cosine(vector <element> v1, vector <element> v2, int mode)
 
 	while(index1 != v1.size() && index2 != v2.size())
 	{
-		/*cout << "index1 = " << index1 << endl;
-		cout << "index2 = " << index2 << endl;
-		cout << "v1.Gid = " << v1[index1].Gid << endl;
-		cout << "v2.Gid = " << v2[index2].Gid << endl;
-		cout << "===============================" << endl;*/
 		if(v1[index1].Gid == v2[index2].Gid)
 		{
-		/*	cout << index1 << " " << index2 << " " << v1[index1].Gid << endl;
-			cout << "v1 : " << v1[index1].Gid << " " << v1[index1].val << endl;
-			cout << "v2 : " << v2[index2].Gid << " " << v2[index2].val << endl;
-			cout << "*************" << endl;*/
-			product += (v1[index1].val)*(v2[index2].val);
+			same = GetDirection(v1[index1], v2[index2]);
+			//if (same)
+			//{
+				product += (v1[index1].val)*(v2[index2].val);
+			//}
 			index1++;
 			index2++;
-
 		}
 		else
 		{
@@ -85,22 +99,37 @@ double cosine(vector <element> v1, vector <element> v2, int mode)
 int main(int argc, char * argv[])
 {
 
-	int trajid, gid;
-	double value;
+	int trajid, gid, c;
+	double value, an;
 	element temp;
 	vector < vector <element> > matrix;
 	matrix.resize(131247);
-	FILE *fp = fopen("../matrix_130.txt", "r");
+	FILE *fp = fopen(argv[1], "r");
 	//int mode = atoi(argv[1]);
-	int queryid = atoi(argv[1]);
+	int queryid = atoi(argv[2]);
+	anglediff = atof(argv[3]);
 
-	while(fscanf(fp, "%d %d %lf\n", &trajid, &gid, &value) != EOF)
+	while(fscanf(fp, "%d %d %lf", &trajid, &gid, &value) != EOF)
 	{
 		temp.Gid = gid;
 		temp.val = value;
+		//cout << trajid << " " << gid << " " << endl;
+			
+		c = getc(fp);
+		while(c != 10)
+		{
+			fscanf(fp, "%lf", &an);
+		//	m[trajid][i].angles.push_back(an);
+			temp.angles.push_back(an);
+			c = getc(fp);
+		//	cout << " " << an;
+		}
+		temp.angles.resize(temp.angles.size());
+		//cout << endl;
 		matrix[trajid].push_back(temp);
+		temp.angles.erase(temp.angles.begin(), temp.angles.end());
 	}
-
+	cout << "finish reading" << endl;
 	fclose(fp);
 	
 	double cos, prod;
@@ -112,8 +141,8 @@ int main(int argc, char * argv[])
 	FILE *fp3 = fopen(output2.c_str(), "w");
 	for(int i = 1; i < 131247; i++)
 	{
-		cos = cosine(matrix[i], matrix[queryid], 0);
-		prod = cosine(matrix[i], matrix[queryid], 1);
+		cos = cosine(matrix[i], matrix[queryid], 0);	// get cosine
+		prod = cosine(matrix[i], matrix[queryid], 1);	// get product
 		fprintf(fp2, "%d %lf\n", i, cos);
 		fprintf(fp3, "%d %lf\n", i, prod);
 	}
