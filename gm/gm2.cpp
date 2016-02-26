@@ -129,7 +129,7 @@ int main(int argc, char * argv[])
 		centers[0].lng = minlng + differ * (lng_id -1) + differ/2;
 		centersid[0] = grid_id;
 
-		cout << lat << " " << lng << " " << grid_id << endl;
+//		cout << lat << " " << lng << " " << grid_id << endl;
 		
 		/*angle part*/
 		if(now_grid == 0)
@@ -140,31 +140,31 @@ int main(int argc, char * argv[])
 
 		if(now_grid == grid_id)
 		{
-			cout << "the same, push back" << endl;
+			//cout << "the same, push back" << endl;
 			grid_point.push_back(temp_point);
 		}
 		else
 		{
 		//	cout << old_grid << " grid_point size " << grid_point.size() << endl;
-			cout << "not the same" << endl;
+			//cout << "not the same" << endl;
 			if(grid_point.size() != 0)
 			{
-				cout << "not equal to zero " << endl;
+				//cout << "not equal to zero " << endl;
 				if(grid_point.size() == 1)
 					angle = GetAngle(grid_point[0].lat, grid_point[0].lng, lat, lng);
 				else
 					angle = GetAngle(grid_point[0].lat, grid_point[0].lng, grid_point[grid_point.size()-1].lat, grid_point[grid_point.size()-1].lng);
 			
-			cout << angle << endl;
-			grid_angle[now_grid].push_back(angle);
-			grid_angle[now_grid+1].push_back(angle);
-			grid_angle[now_grid-1].push_back(angle);
-			grid_angle[now_grid+lng_num].push_back(angle);
-			grid_angle[now_grid+lng_num+1].push_back(angle);
-			grid_angle[now_grid+lng_num-1].push_back(angle);
-			grid_angle[now_grid-lng_num].push_back(angle);
-			grid_angle[now_grid-lng_num+1].push_back(angle);
-			grid_angle[now_grid-lng_num-1].push_back(angle);
+                //cout << angle << endl;
+                grid_angle[now_grid].push_back(angle);
+                grid_angle[now_grid+1].push_back(angle);
+                grid_angle[now_grid-1].push_back(angle);
+                grid_angle[now_grid+lng_num].push_back(angle);
+                grid_angle[now_grid+lng_num+1].push_back(angle);
+                grid_angle[now_grid+lng_num-1].push_back(angle);
+                grid_angle[now_grid-lng_num].push_back(angle);
+                grid_angle[now_grid-lng_num+1].push_back(angle);
+                grid_angle[now_grid-lng_num-1].push_back(angle);
 			}
 			old_grid = now_grid;
 			now_grid = grid_id;
@@ -230,28 +230,25 @@ int main(int argc, char * argv[])
 	}
 
 	if(grid_point.size() != 1)
-	{
 		angle = GetAngle(grid_point[0].lat, grid_point[0].lng, grid_point[grid_point.size()-1].lat, grid_point[grid_point.size()-1].lng);
-		
-	}
 	else
 		angle = grid_angle[old_grid][grid_angle[old_grid].size()-1];
-		cout << angle << endl;
-		grid_angle[now_grid].push_back(angle);
-		grid_angle[now_grid+1].push_back(angle);
-		grid_angle[now_grid-1].push_back(angle);
-		grid_angle[now_grid+lng_num].push_back(angle);
-		grid_angle[now_grid+lng_num+1].push_back(angle);
-		grid_angle[now_grid+lng_num-1].push_back(angle);
-		grid_angle[now_grid-lng_num].push_back(angle);
-		grid_angle[now_grid-lng_num+1].push_back(angle);
-		grid_angle[now_grid-lng_num-1].push_back(angle);
+    //cout << angle << endl;
+    grid_angle[now_grid].push_back(angle);
+    grid_angle[now_grid+1].push_back(angle);
+    grid_angle[now_grid-1].push_back(angle);
+    grid_angle[now_grid+lng_num].push_back(angle);
+    grid_angle[now_grid+lng_num+1].push_back(angle);
+    grid_angle[now_grid+lng_num-1].push_back(angle);
+    grid_angle[now_grid-lng_num].push_back(angle);
+    grid_angle[now_grid-lng_num+1].push_back(angle);
+    grid_angle[now_grid-lng_num-1].push_back(angle);
 	
 	fclose(fp);
 
 	//cout << "here" << endl;
 
-	cout << grid_angle[799964].size() << endl;
+	//cout << grid_angle[799964].size() << endl;
 	fp = fopen("matrix_225.txt", "a");
 	FILE *anglefile = fopen("angle_225.txt", "a");
 	for(int i = 0; i < size; i++)
@@ -260,7 +257,7 @@ int main(int argc, char * argv[])
 			fprintf(fp, "%d %d %lf\n", trajid, i, GridWeight[i]);
 		if(grid_angle[i].size()!=0)
 		{
-			cout << i << endl;
+			//cout << i << endl;
 			fprintf(anglefile, "%d %d", trajid, i);
 			for(int j = 0; j < grid_angle[i].size(); j++)
 				fprintf(anglefile, " %lf", grid_angle[i][j]);

@@ -64,10 +64,10 @@ double cosine(vector <element> v1, vector <element> v2, int mode)
 		if(v1[index1].Gid == v2[index2].Gid)
 		{
 			same = GetDirection(v1[index1], v2[index2]);
-			//if (same)
-			//{
+			if (same)
+			{
 				product += (v1[index1].val)*(v2[index2].val);
-			//}
+			}
 			index1++;
 			index2++;
 		}

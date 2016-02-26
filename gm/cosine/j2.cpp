@@ -78,6 +78,7 @@ int main(int argc, char *argv[])
 	for (auto k : differ) cout << k << " ";
 		cout << endl;
 	cout << uni.size() << endl;
+    cout << differ.size() << endl;
 	cout << num1+num2-uni.size() << endl;
 
 	double rate = (double)(num1+num2)/uni.size() - 1;
