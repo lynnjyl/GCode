@@ -96,9 +96,9 @@ int main(int argc, char * argv[])
 	char time[20];
 	int lat_id, lng_id, grid_id;
 	int i;
-	double dist, value[4], sum;
-	GPSpoint centers[4], temp_point;			// the 4 related grids.
-	int centersid[4];
+	double dist, value[9], sum;
+	GPSpoint centers[9], temp_point;			// the 4 related grids.
+	int centersid[9];
 	vector <GPSpoint> grid_point;
 	int old_grid = 0, now_grid = 0;
 	vector < vector <double> > grid_angle;
@@ -125,9 +125,9 @@ int main(int argc, char * argv[])
 		lng_id = ceil((lng - minlng)/differ);
 		grid_id = lat_id*lng_num + lng_id;		//Id of the grid which the GPS point is in.
  
-		centers[0].lat =  minlat + differ * (lat_id - 1) + differ/2;
-		centers[0].lng = minlng + differ * (lng_id -1) + differ/2;
-		centersid[0] = grid_id;
+		centers[4].lat =  minlat + differ * (lat_id - 1) + differ/2;
+		centers[4].lng = minlng + differ * (lng_id -1) + differ/2;
+		centersid[4] = grid_id;
 
 //		cout << lat << " " << lng << " " << grid_id << endl;
 		
@@ -176,7 +176,7 @@ int main(int argc, char * argv[])
 */
 		/**************************/
 
-
+/*
 		centers[1].lng = centers[0].lng;
 		if(lat > centers[0].lat)
 		{
@@ -209,21 +209,40 @@ int main(int argc, char * argv[])
 		else
 			centersid[3] = centersid[1] - 1;
 		//cout << "centers[3]: " << centersid[3] << " " << centers[3].lat << " " << centers[3].lng << endl;
+*/
+		centers[1].lng = centers[7].lng = centers[4].lng;
+		centers[0].lng = centers[3].lng = centers[6].lng = centers[4].lng - differ;
+		centers[2].lng = centers[5].lng = centers[8].lng = centers[4].lng + differ;
+		centers[0].lat = centers[1].lat = centers[2].lat = centers[4].lat + differ;
+		centers[3].lat = centers[5].lat = centers[4].lat;
+		centers[6].lat = centers[7].lat = centers[8].lat = centers[4].lat - differ;
+ 
+		centersid[1] = centersid[4] + lng_num;
+		centersid[7] = centersid[4] - lng_num;
 
-		for(i = 0; i < 4; i++)
+		centersid[0] = centersid[1] - 1;
+		centersid[2] = centersid[1] + 1;
+
+		centersid[3] = centersid[4] - 1;
+		centersid[5] = centersid[4] + 1;
+
+		centersid[6] = centersid[7] - 1;
+		centersid[8] = centersid[7] + 1;
+
+		for(i = 0; i < 9; i++)
 		{
 			dist = distance(lat, lng, centers[i].lat, centers[i].lng);
 			value[i] = 1/dist;
 			sum += value[i];
 		}
 
-		for(i = 0; i < 4; i++)
+		for(i = 0; i < 9; i++)
 		{
-	//		value[i] = value[i]/sum;
+			value[i] = value[i]/sum;
 			if(centersid[i] > 0 && centersid[i] < size)
 			{
-				GridWeight[centersid[i]] += value[i];
-//				GridWeight[centersid[i]] = max(value[i], GridWeight[centersid[i]]);
+//				GridWeight[centersid[i]] += value[i];
+				GridWeight[centersid[i]] = max(value[i], GridWeight[centersid[i]]);
 			}
 		}
 
@@ -249,8 +268,8 @@ int main(int argc, char * argv[])
 	//cout << "here" << endl;
 
 	//cout << grid_angle[799964].size() << endl;
-	fp = fopen("matrix_232.txt", "a");
-	FILE *anglefile = fopen("angle_232.txt", "a");
+	fp = fopen("matrix_230.txt", "a");
+	FILE *anglefile = fopen("angle_230.txt", "a");
 	for(int i = 0; i < size; i++)
 	{
 		if(GridWeight[i] != 0)

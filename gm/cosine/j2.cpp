@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 	double val;
 	//vector <int> v1 ,v2, uni, inter;
 	//set <int> uni, inter;
-	set <int> s1, s2, uni, inter, differ;
+	set <int> s1, s2, uni, inter, differ1, differ2;
 	char name[20];
 	//string *p;
 	//uni.resize(num1+num2);
@@ -46,7 +46,31 @@ int main(int argc, char *argv[])
 	}
 
 	set_union(s1.begin(), s1.end(), s2.begin(), s2.end(),inserter(uni, uni.begin()));
-	set_difference(s1.begin(), s1.end(), s2.begin(), s2.end(),inserter(differ, differ.begin()));
+	//set_difference(s1.begin(), s1.end(), s2.begin(), s2.end(),inserter(differ, differ.begin()));
+	set_intersection(s1.begin(),s1.end(),s2.begin(), s2.end(),inserter(inter,inter.begin()));
+
+
+	cout << "union size        = " << uni.size() << endl;
+	cout << "intersection size = " << inter.size() << endl;
+	cout << "*******************************" << endl;
+
+	cout << "element appear in set1 but not in set2:" << endl;
+	set_difference(s1.begin(), s1.end(), inter.begin(),inter.end(),inserter(differ1,differ1.begin()));
+	for(auto k:differ1) cout << k << " ";
+		cout << endl;
+
+	cout << endl;
+	cout << "element appear in set2 but not in set1:" << endl;
+	set_difference(s2.begin(), s2.end(), inter.begin(),inter.end(),inserter(differ2,differ2.begin()));
+	for(auto k:differ2) cout << k << " ";
+		cout << endl;
+/*
+	cout << "********************************" << endl;
+	for (auto k:inter) cout << k << " ";
+		cout << endl;
+*/
+
+
 
 
 /*
@@ -74,7 +98,7 @@ int main(int argc, char *argv[])
 		//	cout << v1[i] << endl;
 	}
 */
-
+/*
 	for (auto k : differ) cout << k << " ";
 		cout << endl;
 	cout << uni.size() << endl;
@@ -83,7 +107,7 @@ int main(int argc, char *argv[])
 
 	double rate = (double)(num1+num2)/uni.size() - 1;
 	cout << rate << endl;
-
+*/
 
 
 
