@@ -53,9 +53,10 @@ int main(int argc, char *argv[])
 	cout << "*************Top " << num1 << "**************" << endl;
 	cout << "union size        = " << uni.size() << endl;
 	cout << "intersection size = " << inter.size() << endl;
-	//cout << "*******************************" << endl;
+	cout << "*******************************" << endl;
 
-/*
+	//cout << inter.size() << endl;
+
 	cout << "element appear in set1 but not in set2:" << endl;
 	set_difference(s1.begin(), s1.end(), inter.begin(),inter.end(),inserter(differ1,differ1.begin()));
 	for(auto k:differ1) cout << k << " ";
@@ -66,7 +67,7 @@ int main(int argc, char *argv[])
 	set_difference(s2.begin(), s2.end(), inter.begin(),inter.end(),inserter(differ2,differ2.begin()));
 	for(auto k:differ2) cout << k << " ";
 		cout << endl;
-*/
+
 /*
 	cout << "********************************" << endl;
 	for (auto k:inter) cout << k << " ";

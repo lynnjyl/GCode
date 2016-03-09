@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
 	}
 */
 
-//	cout << "begin to read" << endl;
+	cout << "begin to read" << endl;
 	i = j = 0;
 	while(fscanf(fp1, "%lf %lf %s\n", &point.lat, &point.lng, temp) != EOF)
 	{
@@ -94,6 +94,7 @@ int main(int argc, char *argv[])
 	fclose(fp1);
 	fclose(fp2);
 	lcs = new int [(m+1)*(n+1)];
+	cout << "ok" << endl;
 
 	for(i = 1; i <= m; i++)
 		lcs[i*(n+1)] = 0;

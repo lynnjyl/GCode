@@ -2,13 +2,13 @@
 
 
 
-./main ../../../GData/mix_232.txt 12639 45
-./main ../../../GData/mix_232.txt 22019 45
-./main ../../../GData/mix_232.txt 22026 45
-./main ../../../GData/mix_232.txt 22176 45
-./main ../../../GData/mix_232.txt 22246 45
-./main ../../../GData/mix_232.txt 22258 45
-./main ../../../GData/mix_232.txt 24090 45
+./main ../../../GData/mix_233.txt 12639 45
+./main ../../../GData/mix_233.txt 22019 45
+./main ../../../GData/mix_233.txt 22026 45
+./main ../../../GData/mix_233.txt 22176 45
+./main ../../../GData/mix_233.txt 22246 45
+./main ../../../GData/mix_233.txt 22258 45
+./main ../../../GData/mix_233.txt 24090 45
 
 cd ./result
 filelist=$(ls)

@@ -3,7 +3,7 @@ index=$1
 traj=$2
 num=$3
 
-file="./result_"$index"/"$traj"_cosine_sort"
+file="./result_"$index"/"$traj"_product_sort"
 lcss="../../lcss/result_120_30/lcss_"$traj"_sort"
 #./j2 $file $lcss $num $num
 

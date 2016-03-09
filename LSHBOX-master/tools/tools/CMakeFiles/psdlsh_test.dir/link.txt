@@ -1,1 +1,0 @@
-/usr/bin/c++    -std=c++11    CMakeFiles/psdlsh_test.dir/psdlsh_test.cpp.o  -o ../bin/linux/psdlsh_test -rdynamic 

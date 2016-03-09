@@ -268,8 +268,8 @@ int main(int argc, char * argv[])
 	//cout << "here" << endl;
 
 	//cout << grid_angle[799964].size() << endl;
-	fp = fopen("matrix_230.txt", "a");
-	FILE *anglefile = fopen("angle_230.txt", "a");
+	fp = fopen("matrix_308.txt", "a");
+	FILE *anglefile = fopen("angle_308.txt", "a");
 	for(int i = 0; i < size; i++)
 	{
 		if(GridWeight[i] != 0)

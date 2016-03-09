@@ -16,10 +16,10 @@ before="";
 #	trajid=$((trajid+1))
 #done
 
-for ((i=1;i<=131246;i++))
+for ((i=1;i<=58072;i++))
 do
 	echo $i
-	filename="../Data/newtrajectory/"$i
+	filename="../Data/newtraj/"$i
 	./gm $i $filename
 done
 
