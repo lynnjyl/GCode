@@ -16,7 +16,7 @@ before="";
 #	trajid=$((trajid+1))
 #done
 
-for ((i=1;i<=58072;i++))
+for ((i=1;i<=58181;i++))
 do
 	echo $i
 	filename="../Data/newtraj/"$i

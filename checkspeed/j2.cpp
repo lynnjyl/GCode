@@ -271,7 +271,7 @@ int main(int argc, char *argv[])
 		vector <GPSpoint> newtraj = Addpoints(ct, floor(qspd));
 
 
-		string newfile = "./12639new/new" + to_string(cantindex);
+		string newfile = "./" + query + "new/new" + to_string(cantindex);
 		FILE *nf = fopen(newfile.c_str(), "w");
 		for(i = 0; i < newtraj.size(); i++)
 		{
@@ -279,6 +279,13 @@ int main(int argc, char *argv[])
 		}
 		fclose(nf);
 		it++;
+
+		newfile = argv[5];
+		newfile = newfile + "_cant.txt";
+		nf = fopen(newfile.c_str(), "w");
+		for(auto k:differ1)
+			fprintf(nf, "%d\n", k);
+		fclose(nf);
 	}
 	/*for(auto k:differ1)
 	{

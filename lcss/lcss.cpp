@@ -94,6 +94,7 @@ int main(int argc, char *argv[])
 	fclose(fp1);
 	fclose(fp2);
 	lcs = new int [(m+1)*(n+1)];
+	delta = max(m,n);
 
 	for(i = 1; i <= m; i++)
 		lcs[i*(n+1)] = 0;
@@ -108,7 +109,7 @@ int main(int argc, char *argv[])
 
 			dist = distance(query[i].lat, query[i].lng, cant[j].lat, cant[j].lng);
 			//cout << i << " " << j << " " << dist << endl;
-			if(dist <= epsilon && abs(m-n) <= delta)
+			if(dist <= epsilon && abs(i-j) <= delta)
 			{
 			//	cout << i << " " << j << endl;
 			//	cout << "query: " << query[i].lat << " " << query[i].lng << endl;
@@ -150,7 +151,7 @@ int main(int argc, char *argv[])
 	string output = "./result/lcss_" + name; 
 	fp1 = fopen(output.c_str(), "a");
 //	cout << lcs[(m+1)*(n+1)-1] << endl;
-	double rate = (double)lcs[(m+1)*(n+1)-1]/120; 
+	double rate = (double)lcs[(m+1)*(n+1)-1]/m; 
 //	fprintf(fp1, "%d\n", tid);
 	fprintf(fp1, "%s %d %lf\n", name2.c_str(), lcs[(m+1)*(n+1)-1], rate);
 //	cout << "i" << endl;

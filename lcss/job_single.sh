@@ -5,18 +5,19 @@ file=$1
 
 #trajid=1;
 
-queryfile="../Data/newtrajectory/"$file
+#queryfile="../Data/newtrajectory/"$file
+queryfile="../Data/new/"$file
 echo $queryfile
 
 #cd ../Data/newtrajectory/
 #filelist=$(ls)
 #cd ../../lcss
 
-for ((i=1;i<=131246;i++))
+for ((i=1;i<=58181;i++))
 do
 	#trajid=$(cat ../Data/index_sub.txt | grep $kfile | awk '{print $1}')
-	echo $i
-	filename="../Data/newtrajectory/"$i
+	#echo $i
+	filename="../Data/new/"$i
 	./lcss $queryfile $filename $i 120 30
 	#trajid=$((trajid+1))
 done

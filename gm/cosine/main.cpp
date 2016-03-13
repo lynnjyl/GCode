@@ -103,7 +103,7 @@ int main(int argc, char * argv[])
 	double value, an;
 	element temp;
 	vector < vector <element> > matrix;
-	matrix.resize(131247);
+	matrix.resize(58182);
 	FILE *fp = fopen(argv[1], "r");
 	//int mode = atoi(argv[1]);
 	int queryid = atoi(argv[2]);
@@ -139,7 +139,7 @@ int main(int argc, char * argv[])
 	output2 = "./result/" + to_string(queryid) + "_product";
 	FILE *fp2 = fopen(output1.c_str(), "w");
 	FILE *fp3 = fopen(output2.c_str(), "w");
-	for(int i = 1; i < 131247; i++)
+	for(int i = 1; i < 58182; i++)
 	{
 		cos = cosine(matrix[i], matrix[queryid], 0);	// get cosine
 		prod = cosine(matrix[i], matrix[queryid], 1);	// get product
