@@ -105,9 +105,8 @@ int main(int argc, char * argv[])
 	vector < vector <element> > matrix;
 	matrix.resize(58182);
 	FILE *fp = fopen(argv[1], "r");
-	//int mode = atoi(argv[1]);
-	int queryid = atoi(argv[2]);
-	anglediff = atof(argv[3]);
+	//int queryid = atoi(argv[2]);
+	anglediff = atof(argv[2]);
 
 	while(fscanf(fp, "%d %d %lf", &trajid, &gid, &value) != EOF)
 	{
@@ -135,19 +134,23 @@ int main(int argc, char * argv[])
 	double cos, prod;
 	string output1, output2;
 
-	output1 = "./result/"+ to_string(queryid) + "_cosine";
-	output2 = "./result/" + to_string(queryid) + "_product";
-	FILE *fp2 = fopen(output1.c_str(), "w");
-	FILE *fp3 = fopen(output2.c_str(), "w");
-	for(int i = 1; i < 58182; i++)
+	for(int j = 193; j <= 250; j++)
 	{
-		cos = cosine(matrix[i], matrix[queryid], 0);	// get cosine
-		prod = cosine(matrix[i], matrix[queryid], 1);	// get product
-		fprintf(fp2, "%d %lf\n", i, cos);
-		fprintf(fp3, "%d %lf\n", i, prod);
-	}
-	fclose(fp2);
-	fclose(fp3);
+		cout << i << endl;
+		output1 = "./result/"+ to_string(j) + "_cosine";
+		//output2 = "./result/" + to_string(queryid) + "_product";
+		FILE *fp2 = fopen(output1.c_str(), "w");
+		//FILE *fp3 = fopen(output2.c_str(), "w");
+		for(int i = 1; i < 58182; i++)
+		{
+			cos = cosine(matrix[i], matrix[j], 0);	// get cosine
+//prod = cosine(matrix[i], matrix[queryid], 1);	// get product
+			fprintf(fp2, "%d %lf\n", i, cos);
+//fprintf(fp3, "%d %lf\n", i, prod);
+		}
+		fclose(fp2);
+	}	
+	//fclose(fp3);
 
 	return 0;
 }
