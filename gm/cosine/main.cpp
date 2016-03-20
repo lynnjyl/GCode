@@ -134,9 +134,9 @@ int main(int argc, char * argv[])
 	double cos, prod;
 	string output1, output2;
 
-	for(int j = 193; j <= 250; j++)
+	for(int j = 12001; j <= 13000; j++)
 	{
-		cout << i << endl;
+		cout << j << endl;
 		output1 = "./result/"+ to_string(j) + "_cosine";
 		//output2 = "./result/" + to_string(queryid) + "_product";
 		FILE *fp2 = fopen(output1.c_str(), "w");

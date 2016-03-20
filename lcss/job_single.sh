@@ -25,6 +25,7 @@ done
 result="./result/lcss_"$file
 sorted=$result"_sort"
 sort -n -r -k 3 $result > $sorted
+rm $result
 
 
 

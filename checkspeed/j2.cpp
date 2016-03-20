@@ -96,50 +96,6 @@ double GetSpeed(vector <GPSpoint> traj)
 
 	speed = floor(sum/traj.size());
 	return speed;
-
-	/*double speed = 0;
-	double dist, distsum = 0;
-	double timediff;
-	vector <double> slist;
-	int c = 0;
-	int i;
-
-	for(i = 1; i < traj.size(); i++)
-	{
-		dist = distance(traj[i].lat, traj[i].lng, traj[i-1].lat, traj[i-1].lng);
-		cout << traj[i].time << endl;
-		timediff = traj[i].time - traj[i-1].time;
-		//cout << dist/timediff << endl;
-		//speed += dist/timediff;
-		distsum += dist;
-		speed = dist/timediff;
-		slist.push_back(speed);
-	}
-
-	cout << "distsum is " << distsum << endl;
-	cout << "end time is " << traj[i-1].time << endl;
-	cout << "start time is " << traj.begin()->time << endl; 
-	cout << "speed = " << distsum/(traj[i-1].time - traj.begin()->time) << endl;
-
-	sort(slist.begin(), slist.end());
-	speed = 0;
-
-	for(i = 0; i < slist.size(); i++)
-	{
-		if(c < 10)
-		{
-			if(slist[i] != 0)
-			{
-				speed += slist[i];
-				c++;
-			}
-		}
-		else
-			break;
-	}
-
-	speed = speed/10;
-	return speed;*/
 }
 
 vector <GPSpoint> Addpoints(vector <GPSpoint> traj, int speed)

@@ -1,3 +1,5 @@
+
+/*divide the trajectory into several parts, each part is 10 minutes long;*/
 #include <iostream>
 #include <string>
 #include <stdio.h>

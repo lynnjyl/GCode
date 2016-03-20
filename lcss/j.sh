@@ -20,17 +20,46 @@
 #sh job_single.sh 14297_53
 #sh job_single.sh 12771_01
 #sh job_single.sh 13019_00
-sh job_single.sh 2145
-sh job_single.sh 30459
-sh job_single.sh 29538
-sh job_single.sh 2797
-sh job_single.sh 8010
-sh job_single.sh 13311
-sh job_single.sh 12063
-sh job_single.sh 30878
-sh job_single.sh 3423
-sh job_single.sh 30717
-sh job_single.sh 23269
-sh job_single.sh 18557
-sh job_single.sh 5664
+# sh job_single.sh 2145
+# sh job_single.sh 30459
+# sh job_single.sh 29538
+# sh job_single.sh 2797
+# sh job_single.sh 8010
+# sh job_single.sh 13311
+# sh job_single.sh 12063
+# sh job_single.sh 30878
+# sh job_single.sh 3423
+# sh job_single.sh 30717
+# sh job_single.sh 23269
+# sh job_single.sh 18557
+# sh job_single.sh 5664
+
+id=1;
+
+filename="../gm/cosine/record_0.8.txt"
+for i in `cat $filename`
+do
+	r=$((id%2));
+	if [ $r -eq 1 ]
+		then
+		echo $id $i
+		file="./result/lcss_"$i"_sort"
+		echo $file
+		if [ ! -f "$file" ]
+		then
+			echo "not existed"
+			sh job_single.sh $i
+		else
+			echo "existed"
+		fi
+	fi
+	# echo $i
+	id=$((id+1));
+
+	if [ $id -eq 200 ]
+		then
+		break
+	fi
+
+done
 

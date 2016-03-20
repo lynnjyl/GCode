@@ -1,3 +1,6 @@
+
+/* check if the gps SINGLE is broken for more than 10 minutes. If so, split the trajectory into 2 parts;*/
+
 #include <iostream>
 #include <string>
 #include <stdio.h>

@@ -1,3 +1,5 @@
+/*delete the points in the trajectory which is record less than 5 sec. make the points recorded in every 5 seconds*/
+
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>

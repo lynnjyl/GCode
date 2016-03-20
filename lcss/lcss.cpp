@@ -90,7 +90,8 @@ int main(int argc, char *argv[])
 	//	cout << j << endl;
 	}
 	n = j;
-
+//cout << "length of query trajectory is " << m << endl;
+//	cout << "length of cantdidate trajectory is  " << n << endl;
 	fclose(fp1);
 	fclose(fp2);
 	lcs = new int [(m+1)*(n+1)];
@@ -111,10 +112,10 @@ int main(int argc, char *argv[])
 			//cout << i << " " << j << " " << dist << endl;
 			if(dist <= epsilon && abs(i-j) <= delta)
 			{
-			//	cout << i << " " << j << endl;
-			//	cout << "query: " << query[i].lat << " " << query[i].lng << endl;
-			//	cout << "cant: " << cant[j].lat << " " << cant[j].lng << endl;
-			//	cout << "distance : " << dist << endl; 
+				/*cout << i << " " << j << endl;
+				cout << "query: " << query[i].lat << " " << query[i].lng << endl;
+				cout << "cant: " << cant[j].lat << " " << cant[j].lng << endl;
+				cout << "distance : " << dist << endl; */
 				lcs[i*(n+1)+j] = lcs[(i-1)*(n+1) + (j-1)] + 1;
 			}
 			else

@@ -24,7 +24,7 @@ do
 
 trajid=1;
 
-queryfile="../Data/newtraj/"${file[i]}
+queryfile="../Data/new/"${file[i]}
 echo $queryfile
 
 cd ../Data/newtraj/
@@ -43,13 +43,14 @@ done
 result="./result/lcss_"${file[i]}
 sorted=$result"_sort"
 sort -n -r -k 4 $result > $sorted
-echo "*********"${file[i]}"**********"
-cat $sorted | grep -n '\(0\.\)'[0-4] | awk 'NR==1{print}'
-cat $sorted | grep -n '\(0\.\)'[0-5] | awk 'NR==1{print}'
-cat $sorted | grep -n '\(0\.\)'[0-6] | awk 'NR==1{print}'
-cat $sorted | grep -n '\(0\.\)'[0-7] | awk 'NR==1{print}'
-cat $sorted | grep -n '\(0\.\)'[0-8] | awk 'NR==1{print}'
-cat $sorted | grep -n '\(0\.\)'[0-9] | awk 'NR==1{print}'
+rm $result
+# echo "*********"${file[i]}"**********"
+# cat $sorted | grep -n '\(0\.\)'[0-4] | awk 'NR==1{print}'
+# cat $sorted | grep -n '\(0\.\)'[0-5] | awk 'NR==1{print}'
+# cat $sorted | grep -n '\(0\.\)'[0-6] | awk 'NR==1{print}'
+# cat $sorted | grep -n '\(0\.\)'[0-7] | awk 'NR==1{print}'
+# cat $sorted | grep -n '\(0\.\)'[0-8] | awk 'NR==1{print}'
+# cat $sorted | grep -n '\(0\.\)'[0-9] | awk 'NR==1{print}'
 
 done
 
