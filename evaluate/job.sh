@@ -9,8 +9,9 @@ do
 	if [ $r -eq 1 ]
 		then
 		#echo $id $i
-		./eval $i
+		#./eval $i
 		#./avglcss $i
+		./recall 0.8 0.8 $i
 	fi
 	# echo $i
 	id=$((id+1));
