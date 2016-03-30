@@ -2,7 +2,7 @@
 
 id=1;
 
-filename="../gm/cosine/record_0.8.txt"
+filename="../gm/cosine/record_0.7.txt"
 for i in `cat $filename`
 do
 	r=$((id%2));

@@ -62,6 +62,7 @@ int main(int argc, char *argv[])
 //	m = n = 120;
 	int *lcs;
 
+	//cout << "ok" << endl;
 /*
 
 	for(i = 0; i < m; i++)
@@ -124,6 +125,7 @@ int main(int argc, char *argv[])
 			}
 		}
 	}
+//	cout << "ok" << endl;
 /*
 	for(i = 1; i <= m; i++)
 	{
@@ -151,7 +153,7 @@ int main(int argc, char *argv[])
 
 	string output = "./result/lcss_" + name; 
 	fp1 = fopen(output.c_str(), "a");
-//	cout << lcs[(m+1)*(n+1)-1] << endl;
+	//cout << lcs[(m+1)*(n+1)-1] << endl;
 	double rate = (double)lcs[(m+1)*(n+1)-1]/m; 
 //	fprintf(fp1, "%d\n", tid);
 	fprintf(fp1, "%s %d %lf\n", name2.c_str(), lcs[(m+1)*(n+1)-1], rate);
