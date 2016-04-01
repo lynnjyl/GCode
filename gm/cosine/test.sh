@@ -1,6 +1,6 @@
 #!bin/bash
 
-cd  ./result_310
+cd  ./result_309
 
 # for ((i=12001;i<=13000;i++))
 # do
@@ -18,4 +18,5 @@ for kfile in $filelist
 do
 	new=$kfile"_sort"
 	sort -r -n -k 2 $kfile > $new
+	rm $kfile
 done

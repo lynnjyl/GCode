@@ -67,8 +67,8 @@ double cosine(vector <element> v1, vector <element> v2, int mode)
 			if (same)
 			{
 				product += (v1[index1].val)*(v2[index2].val);
-				len1 += (v1[index1].val)*(v1[index1].val);
-				len2 += (v2[index2].val)*(v2[index2].val);
+			//	len1 += (v1[index1].val)*(v1[index1].val);
+			//	len2 += (v2[index2].val)*(v2[index2].val);
 			}
 			
 			index1++;
@@ -86,19 +86,14 @@ double cosine(vector <element> v1, vector <element> v2, int mode)
 			}
 		}
 	}
-	/*
+	
 	for(index1 = 0; index1 < v1.size(); index1++)
 		len1 += (v1[index1].val)*(v1[index1].val);
 	for(index2 = 0; index2 < v2.size(); index2++)
 		len2 += (v2[index2].val)*(v2[index2].val);
-*/
-	if(mode == 0)
-	{
-		if(len1 != 0 && len2 != 0)
-			cos = product/(sqrt(len1)*sqrt(len2));
-		else
-			cos = 0;
-	}
+
+	if(mode == 0)	
+		cos = product/(sqrt(len1)*sqrt(len2));
 	else
 		cos = product;
 	return cos;
@@ -125,11 +120,12 @@ int main(int argc, char * argv[])
 		fscanf(ids, "%d %d\n", &trajid, &gid);
 		qid.push_back(trajid);
 	}*/
-	while(fscanf(ids, "%d %d\n", &trajid, &gid) != EOF)
+	while(fscanf(ids, "%d\n", &trajid) != EOF)
 	{
 		qid.push_back(trajid);
 	}
 	fclose(ids);
+	cout << qid.size() << endl;
 
 	while(fscanf(fp, "%d %d %lf", &trajid, &gid, &value) != EOF)
 	{
