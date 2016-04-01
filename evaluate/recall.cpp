@@ -12,10 +12,12 @@ int main(int argc, char *argv[])
 	double lcssthres = atof(argv[1]);
 	double costhres = atof(argv[2]);
 	int trajid = atoi(argv[3]);
+	int cosnum = atoi(argv[4]);
+	int lcssnum = atoi(argv[5]);
 
 
-	string lcssname = "../lcss/result/lcss_" + to_string(trajid) + "_sort";
-	string cosname = "../gm/cosine/result/" + to_string(trajid) + "_cosine_sort";
+	string lcssname = "../lcss/result_"  + to_string(lcssnum) + "/lcss_" + to_string(trajid) + "_sort";
+	string cosname = "../gm/cosine/result_" + to_string(cosnum) + "/" + to_string(trajid) + "_cosine_sort";
 
 	FILE *lfile, *cfile;
 

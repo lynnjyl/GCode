@@ -1,8 +1,11 @@
 #! bin/bash
 
+cos=$1
+lcss=$2
+
 id=1;
 
-filename="../gm/cosine/record_0.8.txt"
+filename="../gm/cosine/query.txt"
 for i in `cat $filename`
 do
 	r=$((id%2));
@@ -11,12 +14,12 @@ do
 		#echo $id $i
 		#./eval $i
 		#./avglcss $i
-		./recall 0.8 0.8 $i
+		./recall 0.6 0.8 $i $cos $lcss
 	fi
 	# echo $i
 	id=$((id+1));
 
-	if [ $id -eq 200 ]
+	if [ $id -eq 274 ]
 		then
 		break
 	fi
