@@ -29,7 +29,7 @@ double minlat = 39.688;
 double minlng = 116.093;
 double maxlat = 40.178;
 double maxlng = 116.708;
-double differ = 0.0003;
+double differ = 0.0004;
 int lat_num = (maxlat - minlat)/differ + 1;
 int lng_num = (maxlng - minlng)/differ + 1;
 int size = int(lat_num * lng_num) + 1;
@@ -91,6 +91,8 @@ int main(int argc, char * argv[])
 	GPSpoint nw, ne, sw, se;
 	double *GridWeight = new double[size];
 	cout << "There are " << size << " grids." << endl;
+	cout << "lat_num = " << lat_num << endl;
+	cout << "lng_num = " << lng_num << endl;
 	fill_n(GridWeight, size, 0);
 	double lat, lng, lat_differ, lng_differ, differ_temp, cornerdiffer;
 	char time[20];
@@ -124,7 +126,8 @@ int main(int argc, char * argv[])
 		lat_id = floor((lat - minlat)/differ);
 		lng_id = ceil((lng - minlng)/differ);
 		grid_id = lat_id*lng_num + lng_id;		//Id of the grid which the GPS point is in.
- 
+ 		cout << lat << " " << lng << " " << grid_id << endl;
+ 		
 		centers[4].lat =  minlat + differ * (lat_id - 1) + differ/2;
 		centers[4].lng = minlng + differ * (lng_id -1) + differ/2;
 		centersid[4] = grid_id;

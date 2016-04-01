@@ -12,13 +12,13 @@ int main(int argc, char *argv[])
 	vector <int>trajid;
 	FILE *fp;
 
-	fp = fopen("./query.txt", "r");
+	/*fp = fopen("./query.txt", "r");
 	int a, b;
 	while(fscanf(fp, "%d %d\n", &a, &b) != EOF)
 	{
 		trajid.push_back(a);
 	}
-	fclose(fp);
+	fclose(fp);*/
 
 
 	string filename;
@@ -26,13 +26,14 @@ int main(int argc, char *argv[])
 	double maxlat(0), maxlng(0);
 	double minlat(10000), minlng(10000);
 	
-	for(int i = 0; i < trajid.size(); i++)
+	for(int i = 1; i < 58182; i++)
 	{
-		traj = trajid[i];
+		// traj = trajid[i];
+		traj = i;
 	filename = "./Data/new/" + to_string(traj);
 
 	fp = fopen(filename.c_str(), "r");
-
+	//cout << filename << endl;
 
 	
 	//cout << "ok" << endl;
