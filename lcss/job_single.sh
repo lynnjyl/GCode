@@ -18,7 +18,7 @@ do
 	#trajid=$(cat ../Data/index_sub.txt | grep $kfile | awk '{print $1}')
 	#echo $i
 	filename="../Data/new/"$i
-	./lcss $queryfile $filename $i 120 15
+	./lcss $queryfile $filename $i 120 20
 	#trajid=$((trajid+1))
 done
 

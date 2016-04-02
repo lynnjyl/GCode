@@ -1,400 +1,153 @@
-1 12870
-./result/lcss_12870_sort
+./result/lcss_132_sort
 not existed
-../Data/new/12870
-3 1027
-./result/lcss_1027_sort
+../Data/new/132
+./result/lcss_140_sort
 not existed
-../Data/new/1027
-5 1021
-./result/lcss_1021_sort
+../Data/new/140
+./result/lcss_175_sort
 not existed
-../Data/new/1021
-7 9842
-./result/lcss_9842_sort
+../Data/new/175
+./result/lcss_182_sort
 not existed
-../Data/new/9842
-9 12871
-./result/lcss_12871_sort
+../Data/new/182
+./result/lcss_183_sort
 not existed
-../Data/new/12871
-11 1155
-./result/lcss_1155_sort
+../Data/new/183
+./result/lcss_257_sort
 not existed
-../Data/new/1155
-13 1068
-./result/lcss_1068_sort
+../Data/new/257
+./result/lcss_276_sort
 not existed
-../Data/new/1068
-15 9131
-./result/lcss_9131_sort
+../Data/new/276
+./result/lcss_309_sort
 not existed
-../Data/new/9131
-17 6167
-./result/lcss_6167_sort
+../Data/new/309
+./result/lcss_347_sort
 not existed
-../Data/new/6167
-19 12984
-./result/lcss_12984_sort
+../Data/new/347
+./result/lcss_356_sort
 not existed
-../Data/new/12984
-21 3048
-./result/lcss_3048_sort
+../Data/new/356
+./result/lcss_409_sort
 not existed
-../Data/new/3048
-23 924
-./result/lcss_924_sort
+../Data/new/409
+./result/lcss_569_sort
 not existed
-../Data/new/924
-25 917
-./result/lcss_917_sort
-not existed
-../Data/new/917
-27 824
-./result/lcss_824_sort
-not existed
-../Data/new/824
-29 9570
-./result/lcss_9570_sort
-not existed
-../Data/new/9570
-31 9848
-./result/lcss_9848_sort
-not existed
-../Data/new/9848
-33 9602
-./result/lcss_9602_sort
-not existed
-../Data/new/9602
-35 1033
-./result/lcss_1033_sort
-not existed
-../Data/new/1033
-37 6273
-./result/lcss_6273_sort
-not existed
-../Data/new/6273
-39 12939
-./result/lcss_12939_sort
-not existed
-../Data/new/12939
-41 9595
-./result/lcss_9595_sort
-not existed
-../Data/new/9595
-43 857
-./result/lcss_857_sort
-not existed
-../Data/new/857
-45 13000
-./result/lcss_13000_sort
-not existed
-../Data/new/13000
-47 9841
-./result/lcss_9841_sort
-not existed
-../Data/new/9841
-49 604
-./result/lcss_604_sort
-not existed
-../Data/new/604
-51 4060
-./result/lcss_4060_sort
-not existed
-../Data/new/4060
-53 2376
-./result/lcss_2376_sort
-not existed
-../Data/new/2376
-55 9840
-./result/lcss_9840_sort
-not existed
-../Data/new/9840
-57 9629
-./result/lcss_9629_sort
-not existed
-../Data/new/9629
-59 9849
-./result/lcss_9849_sort
-not existed
-../Data/new/9849
-61 12948
-./result/lcss_12948_sort
-not existed
-../Data/new/12948
-63 5583
-./result/lcss_5583_sort
-not existed
-../Data/new/5583
-65 2187
-./result/lcss_2187_sort
-not existed
-../Data/new/2187
-67 12872
-./result/lcss_12872_sort
-not existed
-../Data/new/12872
-69 680
+../Data/new/569
 ./result/lcss_680_sort
+existed
+./result/lcss_755_sort
 not existed
-../Data/new/680
-71 1016
+../Data/new/755
+./result/lcss_780_sort
+not existed
+../Data/new/780
+./result/lcss_824_sort
+existed
+./result/lcss_857_sort
+existed
+./result/lcss_917_sort
+existed
+./result/lcss_924_sort
+existed
+./result/lcss_1008_sort
+not existed
+../Data/new/1008
 ./result/lcss_1016_sort
+existed
+./result/lcss_1021_sort
+existed
+./result/lcss_1027_sort
+existed
+./result/lcss_1033_sort
+existed
+./result/lcss_1068_sort
+existed
+./result/lcss_1121_sort
 not existed
-../Data/new/1016
-73 12940
-./result/lcss_12940_sort
+../Data/new/1121
+./result/lcss_1150_sort
 not existed
-../Data/new/12940
-75 9619
-./result/lcss_9619_sort
+../Data/new/1150
+./result/lcss_1155_sort
+existed
+./result/lcss_2114_sort
 not existed
-../Data/new/9619
-77 3721
-./result/lcss_3721_sort
+../Data/new/2114
+./result/lcss_2116_sort
 not existed
-../Data/new/3721
-79 265
-./result/lcss_265_sort
+../Data/new/2116
+./result/lcss_2217_sort
 not existed
-../Data/new/265
-81 3398
-./result/lcss_3398_sort
-not existed
-../Data/new/3398
-83 3426
-./result/lcss_3426_sort
-not existed
-../Data/new/3426
-85 3202
-./result/lcss_3202_sort
-not existed
-../Data/new/3202
-87 6316
-./result/lcss_6316_sort
-not existed
-../Data/new/6316
-89 12804
-./result/lcss_12804_sort
-not existed
-../Data/new/12804
-91 9273
-./result/lcss_9273_sort
-not existed
-../Data/new/9273
-93 3425
-./result/lcss_3425_sort
-not existed
-../Data/new/3425
-95 12927
-./result/lcss_12927_sort
-not existed
-../Data/new/12927
-97 9571
-./result/lcss_9571_sort
-not existed
-../Data/new/9571
-99 4597
-./result/lcss_4597_sort
-not existed
-../Data/new/4597
-101 4446
-./result/lcss_4446_sort
-not existed
-../Data/new/4446
-103 9573
-./result/lcss_9573_sort
-not existed
-../Data/new/9573
-105 5106
-./result/lcss_5106_sort
-not existed
-../Data/new/5106
-107 2271
-./result/lcss_2271_sort
-not existed
-../Data/new/2271
-109 10740
-./result/lcss_10740_sort
-not existed
-../Data/new/10740
-111 3767
-./result/lcss_3767_sort
-not existed
-../Data/new/3767
-113 311
-./result/lcss_311_sort
-not existed
-../Data/new/311
-115 2411
-./result/lcss_2411_sort
-not existed
-../Data/new/2411
-117 9613
-./result/lcss_9613_sort
-not existed
-../Data/new/9613
-119 5622
-./result/lcss_5622_sort
-not existed
-../Data/new/5622
-121 4502
-./result/lcss_4502_sort
-not existed
-../Data/new/4502
-123 3450
-./result/lcss_3450_sort
-not existed
-../Data/new/3450
-125 4972
-./result/lcss_4972_sort
-not existed
-../Data/new/4972
-127 11532
-./result/lcss_11532_sort
-not existed
-../Data/new/11532
-129 9603
-./result/lcss_9603_sort
-not existed
-../Data/new/9603
-131 6391
-./result/lcss_6391_sort
-not existed
-../Data/new/6391
-133 9304
-./result/lcss_9304_sort
-not existed
-../Data/new/9304
-135 4242
-./result/lcss_4242_sort
-not existed
-../Data/new/4242
-137 3428
-./result/lcss_3428_sort
-not existed
-../Data/new/3428
-139 9838
-./result/lcss_9838_sort
-not existed
-../Data/new/9838
-141 416
-./result/lcss_416_sort
-not existed
-../Data/new/416
-143 3872
-./result/lcss_3872_sort
-not existed
-../Data/new/3872
-145 2408
-./result/lcss_2408_sort
-not existed
-../Data/new/2408
-147 89
-./result/lcss_89_sort
-not existed
-../Data/new/89
-149 5343
-./result/lcss_5343_sort
-not existed
-../Data/new/5343
-151 4538
-./result/lcss_4538_sort
-not existed
-../Data/new/4538
-153 3545
-./result/lcss_3545_sort
-not existed
-../Data/new/3545
-155 3475
-./result/lcss_3475_sort
-not existed
-../Data/new/3475
-157 3073
-./result/lcss_3073_sort
-not existed
-../Data/new/3073
-159 3008
-./result/lcss_3008_sort
-not existed
-../Data/new/3008
-161 4565
-./result/lcss_4565_sort
-not existed
-../Data/new/4565
-163 2452
-./result/lcss_2452_sort
-not existed
-../Data/new/2452
-165 5981
-./result/lcss_5981_sort
-not existed
-../Data/new/5981
-167 5473
-./result/lcss_5473_sort
-not existed
-../Data/new/5473
-169 2273
+../Data/new/2217
 ./result/lcss_2273_sort
+existed
+./result/lcss_2349_sort
 not existed
-../Data/new/2273
-171 9839
-./result/lcss_9839_sort
-not existed
-../Data/new/9839
-173 2418
+../Data/new/2349
+./result/lcss_2376_sort
+existed
 ./result/lcss_2418_sort
+existed
+./result/lcss_2604_sort
 not existed
-../Data/new/2418
-175 3727
-./result/lcss_3727_sort
+../Data/new/2604
+./result/lcss_2633_sort
 not existed
-../Data/new/3727
-177 3423
-./result/lcss_3423_sort
+../Data/new/2633
+./result/lcss_3048_sort
+existed
+./result/lcss_3108_sort
 not existed
-../Data/new/3423
-179 271
-./result/lcss_271_sort
+../Data/new/3108
+./result/lcss_3121_sort
 not existed
-../Data/new/271
-181 12994
-./result/lcss_12994_sort
+../Data/new/3121
+./result/lcss_3414_sort
 not existed
-../Data/new/12994
-183 12986
-./result/lcss_12986_sort
+../Data/new/3414
+./result/lcss_3474_sort
 not existed
-../Data/new/12986
-185 6443
-./result/lcss_6443_sort
+../Data/new/3474
+./result/lcss_3588_sort
 not existed
-../Data/new/6443
-187 6151
-./result/lcss_6151_sort
+../Data/new/3588
+./result/lcss_3596_sort
 not existed
-../Data/new/6151
-189 3430
-./result/lcss_3430_sort
+../Data/new/3596
+./result/lcss_3631_sort
 not existed
-../Data/new/3430
-191 9628
-./result/lcss_9628_sort
+../Data/new/3631
+./result/lcss_3638_sort
 not existed
-../Data/new/9628
-193 3056
-./result/lcss_3056_sort
+../Data/new/3638
+./result/lcss_3639_sort
 not existed
-../Data/new/3056
-195 2444
-./result/lcss_2444_sort
+../Data/new/3639
+./result/lcss_3713_sort
 not existed
-../Data/new/2444
-197 4297
-./result/lcss_4297_sort
+../Data/new/3713
+./result/lcss_3732_sort
 not existed
-../Data/new/4297
-199 2412
-./result/lcss_2412_sort
+../Data/new/3732
+./result/lcss_3765_sort
 not existed
-../Data/new/2412
+../Data/new/3765
+./result/lcss_3803_sort
+not existed
+../Data/new/3803
+./result/lcss_3812_sort
+not existed
+../Data/new/3812
+./result/lcss_3865_sort
+not existed
+../Data/new/3865
+./result/lcss_4025_sort
+not existed
+../Data/new/4025
+./result/lcss_4133_sort
+not existed
+../Data/new/4133
+./result/lcss_4280_sort
+not existed
+../Data/new/4280

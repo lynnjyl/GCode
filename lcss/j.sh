@@ -2,13 +2,13 @@
 
 id=1;
 
-filename="../gm/cosine/record_0.7.txt"
+filename="../query.txt"
 for i in `cat $filename`
 do
-	r=$((id%2));
-	if [ $r -eq 1 ]
-		then
-		echo $id $i
+#	r=$((id%2));
+#	if [ $r -eq 1 ]
+#		then
+#		echo $id $i
 		file="./result/lcss_"$i"_sort"
 		echo $file
 		if [ ! -f "$file" ]
@@ -18,14 +18,14 @@ do
 		else
 			echo "existed"
 		fi
-	fi
+#	fi
 	# echo $i
-	id=$((id+1));
+#	id=$((id+1));
 
-	if [ $id -eq 200 ]
-		then
-		break
-	fi
+#	if [ $id -eq 200 ]
+#		then
+#		break
+#	fi
 
 done
 
