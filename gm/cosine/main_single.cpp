@@ -20,7 +20,7 @@
 using namespace std;
 
 struct element
-{
+{ 
 	int Gid;
 	double val;
 	vector <double> angles;
