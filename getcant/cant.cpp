@@ -8,8 +8,8 @@ using namespace std;
 
 int main ()
 {
-	FILE *fp = fopen("nolist.txt", "r");
-	FILE *fp2 = fopen("./gm/cosine/record_0.5.txt", "r");
+	FILE *fp = fopen("nolist2.txt", "r");
+	FILE *fp2 = fopen("../gm/cosine/record_0.5.txt", "r");
 
 	vector <int> list;
 	vector <int> no;

@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 	{
 		// traj = trajid[i];
 		traj = i;
-	filename = "./Data/new/" + to_string(traj);
+	filename = "../Data/new/" + to_string(traj);
 
 	fp = fopen(filename.c_str(), "r");
 	//cout << filename << endl;
@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
 				minlng = lng;
 	} 
 
-	if((maxlat - minlat) < 0.002 && (maxlng - minlng) < 0.002)
+	if((maxlat - minlat) < 0.002 || (maxlng - minlng) < 0.002)
 		cout << traj << endl;
 	
 	maxlat = maxlng = 0;
