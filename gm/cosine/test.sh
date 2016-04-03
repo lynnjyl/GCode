@@ -1,6 +1,6 @@
 #!bin/bash
 
-cd  ./result_309
+cd  ./result
 
 # for ((i=12001;i<=13000;i++))
 # do

@@ -8,7 +8,8 @@ do
 #	r=$((id%2));
 #	if [ $r -eq 1 ]
 #		then
-#		echo $id $i
+		file="./result/"$i"_cosine_sort"
+		echo $id $i
 		if [ ! -f "$file" ]
 		then
 			echo "not existed"
