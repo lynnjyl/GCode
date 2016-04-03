@@ -40,7 +40,7 @@ int main(int argc, char * argv[])
 
 	/*************************************************/
 	/*read the lcss file*/
-	lfile = "../lcss/result_30/lcss_" + to_string(id) + "_sort";
+	lfile = "../lcss/result_10/lcss_" + to_string(id) + "_sort";
 	//cout << lfile << endl;
 	fp = fopen(lfile.c_str(), "r");
 

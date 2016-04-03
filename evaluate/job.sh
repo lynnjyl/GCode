@@ -23,7 +23,8 @@ do
 	# 	then
 	# 	break
 	# fi
-	./avglcss $i
+	#./avglcss $i
+	./recall 0.6 0.9 $i $cos 30
 
 done
 
