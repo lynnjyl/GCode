@@ -23,7 +23,7 @@ int main(int argc, char * argv[])
     traj.resize(size);
     
     vector < vector <element> > matrix;
-    matrix.resize(14940);   // record trajectories 1-14939
+    matrix.resize(58181);   // record trajectories 1-14939
     element ele;
     
     

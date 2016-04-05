@@ -28,12 +28,14 @@ double wallclock(void)
 
 int main(int argc, char * argv[])
 {
-    int mode = atoi(argv[1]);
+   /* int mode = atoi(argv[1]);
     FILE *fp;
     if(mode == 1)
         fp = fopen("../../GData/mix_308.txt", "r");
     else
-        fp = fopen("../../matrix_sub_normalize.txt", "r");
+        fp = fopen("../../matrix_sub_normalize.txt", "r");*/
+
+    FILE *fp = fopen(argv[1], "r");
     int TrajID, GridID;
     double value;
     
