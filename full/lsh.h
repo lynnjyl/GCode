@@ -5,16 +5,10 @@
 #include <algorithm>
 #include <ctime>
 #include <set>
+#include "transfer.h"
 
 
 using namespace std;
-
-struct element
-{
-    int gid;
-    double val;
-    vector <double> angles;
-};
 
 
 struct Parameter_rbslsh
@@ -154,6 +148,7 @@ public:
     std::set<unsigned> query(std::vector <unsigned> domin)
     {
         //for each hash table
+      //  cout << "here" << endl;
         std::set <unsigned> candidates;
         for(unsigned i = 0; i != param.L; ++i)      
         {
@@ -179,8 +174,8 @@ public:
                     num++;
                 }
                 //std::cout << std::endl;
-                //std::cout << "There are " << candidates.size() << std::endl;                
-                //std::cout << "There are " << candidates.size() << " candidate for the trajectory" << std::endl;
+                std::cout << "There are " << candidates.size() << std::endl;                
+                std::cout << "There are " << candidates.size() << " candidate for the trajectory" << std::endl;
             }
             else
                 std::cout << "no matched" << std::endl;
@@ -391,6 +386,7 @@ public:
     //template <typename SCANNER>
     std::set <unsigned> query(std::vector <element>  domin)
     {
+        std::cout << "begin  query " <<endl;
         std::set <unsigned> candidates;
         for (unsigned i = 0; i != param.L; ++i)
         {
@@ -403,10 +399,13 @@ public:
                     flag += uosArray[i][j][k] * domin[k];
                 }*/
                  int size = domin.size();
+                // cout << "size = " << size << endl; 
                     for(unsigned k = 0; k < size; k++)
                     {
+                        //cout << k << endl;
                         flag += uosArray[i][j][domin[k].gid] * domin[k].val;
                     }
+                    //cout << flag << endl;
                 if (flag > 0)
                 {
                     sum += rndArray[i][j];
@@ -418,7 +417,7 @@ public:
             //std::cout << hashVal << std::endl;
             if (tables[i].find(hashVal) != tables[i].end())
             {
-               // std::cout << tables[i][hashVal].size() << std::endl;
+              // std::cout << tables[i][hashVal].size() << std::endl;
                 for (std::vector<unsigned>::iterator iter = tables[i][hashVal].begin(); iter != tables[i][hashVal].end(); ++iter)
                 {
                     candidates.insert(*iter);
