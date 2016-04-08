@@ -19,7 +19,8 @@ before="";
 for ((i=1;i<=58181;i++))
 do
 	echo $i
-	filename="../Data/newtraj/"$i
-	./gm $i $filename
+	filename="../Data/new_50/"$i
+	./gm3 $i $filename
 done
-
+mv matrix.txt matrix_18.txt
+mv angle.txt angle_18.txt

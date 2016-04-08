@@ -140,11 +140,11 @@ double t3 = wallclock();
         candidates.clear();
     }
 
-    /*cout << "*********************************" << endl;
+    cout << "*********************************" << endl;
      cout << "Read matrix time: " << t2 - t1 << endl;
      cout << "create hash tables: " << t3 - t2 << endl;
      cout << "query time : " << t4 - t3 << endl;
-     cout << "*********************************" << endl;*/
+     cout << "*********************************" << endl;
 
 
    // cout << "reading matrix time:"

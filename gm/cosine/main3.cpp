@@ -120,7 +120,8 @@ int main(int argc, char * argv[])
 		fscanf(ids, "%d %d\n", &trajid, &gid);
 		qid.push_back(trajid);
 	}*/
-	while(fscanf(ids, "%d\n", &trajid) != EOF)
+	int a;
+	while(fscanf(ids, "%d %d\n", &trajid, &a) != EOF)
 	{
 		qid.push_back(trajid);
 	}

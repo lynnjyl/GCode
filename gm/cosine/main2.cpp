@@ -8,7 +8,7 @@
 */
 
 
-
+#include <sys/time.h>
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -28,6 +28,16 @@ struct element
 double anglediff;
 
 
+double wallclock(void)
+{
+	struct timeval tv;
+	struct timezone tz;
+	double t;
+	gettimeofday(&tv, &tz);
+	t = (double) tv.tv_sec*1000;
+	t += ((double)tv.tv_usec)/1000.0;
+	return t;
+}
 bool GetDirection(element ele1, element ele2)
 {
 	double differ;
@@ -148,13 +158,18 @@ int main(int argc, char * argv[])
 	//output2 = "./result/" + to_string(queryid) + "_product";
 	FILE *fp2 = fopen(output1.c_str(), "w");
 	//FILE *fp3 = fopen(output2.c_str(), "w");
+	double t1, t2, t3(0);
 	for(int i = 1; i < 58182; i++)
 	{
+		t1 = wallclock();
 		cos = cosine(matrix[i], matrix[queryid], 0);	// get cosine
+		t2 = wallclock();
+		t3 += t2-t1;
 		//prod = cosine(matrix[i], matrix[queryid], 1);	// get product
 		fprintf(fp2, "%d %lf\n", i, cos);
 		//fprintf(fp3, "%d %lf\n", i, prod);
 	}
+	cout << t3 << endl;
 	fclose(fp2);
 	//fclose(fp3);
 

@@ -20,3 +20,4 @@ do
 	sort -r -n -k 2 $kfile > $new
 	rm $kfile
 done
+cd ..
