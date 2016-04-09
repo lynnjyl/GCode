@@ -138,11 +138,13 @@ int main(int argc, char * argv[])
 	set <unsigned> candidates;
 	double cos;
 	double transtime(0), lshtime(0), querytime(0), queryfull(0);
-	for(int i = 0; i < k; i++)
+	cout << "ok" << endl;
+	for(int j = 0; j < k; j++)
 	{	
 	        	trajid = rand()%58181 + 1;
+	        	cout << trajid << endl;
 	        	filename = "../Data/new/" + to_string(trajid);
-	        	
+	        	cout << "begin to transfer" << endl;
 	        	t1 = wallclock();
 	        	vec = transfer(filename);
 	        	t2 = wallclock();
