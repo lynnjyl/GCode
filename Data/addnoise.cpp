@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <vector>
 #include <iomanip>
+#include <ctime>
 
 using namespace std;
 
@@ -14,6 +15,7 @@ struct GPSpoint
 
 int main (int argc, char * argv[])
 {
+	srand((unsigned)time(0));
 	int per = atoi(argv[1]);
 	int trajid = atoi(argv[2]);
 
