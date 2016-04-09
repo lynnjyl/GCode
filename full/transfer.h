@@ -199,6 +199,7 @@ vector <element> transfer(string filename)
 		
 		
 	}
-	cout << vec.size() << endl;
+	fclose(fp);
+	//cout << vec.size() << endl;
 	return vec;
 }
