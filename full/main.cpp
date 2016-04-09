@@ -123,25 +123,25 @@ int main(int argc, char * argv[])
     	rhplsh.reset(param_rhp);
 
     	for(int i = 1; i < 58182; i++)
-        		rhplsh.insert(i, matrix[i]);
-        	cout << "create LSH finished" << endl;
+        	rhplsh.insert(i, matrix[i]);
+        cout << "create LSH finished" << endl;
 
-        	//read the query trajectory and transfer it to a vector;
-        	double t1 = wallclock();
-        	trajid = atoi(argv[3]);
-        	string filename = "../Data/new/" + to_string(trajid);
-        	vector <element> vec = transfer(filename);
-        	double t2 = wallclock();
-        	cout << "transfer part finished" << endl;
+        //read the query trajectory and transfer it to a vector;
+        double t1 = wallclock();
+        trajid = atoi(argv[3]);
+        string filename = "../Data/new/" + to_string(trajid);
+        vector <element> vec = transfer(filename);
+        double t2 = wallclock();
+        cout << "transfer part finished" << endl;
 
-        	double t3 = wallclock();
+        double t3 = wallclock();
         	//lsh part
-        	int mode = atoi(argv[4]);
+//        	int mode = atoi(argv[4]);
         	set <unsigned> candidates;
         	double cos;
         	double querytime;
-        	if(mode == 1)
-        	{
+  //      	if(mode == 1)
+   //     	{
         		cout << "begin lsh query" <<endl;
         		double t6 = wallclock();
         		candidates = rhplsh.query(vec);
@@ -154,16 +154,17 @@ int main(int argc, char * argv[])
         		double t4 = wallclock();
         		cout << candidates.size() << endl;
         		querytime = t4-t3;
-
-        	}
-        	else
-        	{	
+			cout << "query time with filtered set  = " << querytime << endl;
+     //   	}
+       // 	else
+        //	{	
         		t3 = wallclock();
         		for(int i = 0; i < 58182; i++)
         			cos = cosine(matrix[i], vec, 0);
         		double t5 = wallclock();
         		querytime = t5-t3;
-        	}
+			cout << "full query time with complete set = " << querytime << endl;
+        //	}
 
    	cout << "***********************" << endl;
    	cout << "transfer time : " << t2-t1 << endl;

@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <vector>
 #include <set>
-
+#include <algorithm>
 using namespace std;
 
 int main(int argc, char *argv[])
@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	//cout << qids.size() << endl;
 	for(int i = 0; i < qids.size(); i++)
 	{
-		standardf = "./result_10/lcss_" + to_string(qids[i]) + "_sort";
+		standardf = "./result_0/lcss_" + to_string(qids[i]) + "_sort";
 		noisyf = "./result_" + to_string(n) + "/lcss_" + to_string(qids[i]) + "_sort";
 		//cout << standardf << " " << noisyf << endl;
 
