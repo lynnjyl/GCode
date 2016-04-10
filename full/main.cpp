@@ -138,24 +138,24 @@ int main(int argc, char * argv[])
 	set <unsigned> candidates;
 	double cos;
 	double transtime(0), lshtime(0), querytime(0), queryfull(0);
-	cout << "ok" << endl;
+//	cout << "ok" << endl;
 	for(int j = 0; j < k; j++)
 	{	
 	        	trajid = rand()%58181 + 1;
-	        	cout << trajid << endl;
+//	        	cout << trajid << endl;
 	        	filename = "../Data/new/" + to_string(trajid);
-	        	cout << "begin to transfer" << endl;
+//	        	cout << "begin to transfer" << endl;
 	        	t1 = wallclock();
 	        	vec = transfer(filename);
 	        	t2 = wallclock();
-	       	cout << "transfer part finished" << endl;
+//	       	cout << "transfer part finished" << endl;
 	       	transtime += t2 - t1;
 
-	        	cout << "begin lsh query" <<endl;
+//	        	cout << "begin lsh query" <<endl;
 	        	t6 = wallclock();
 	        	candidates = rhplsh.query(vec);
 	        	t7 = wallclock();
-	        	cout << "query finished" << endl;
+//	        	cout << "query finished" << endl;
 	        	lshtime += t7 - t6;
 
 	        	t3 = wallclock();
@@ -164,7 +164,7 @@ int main(int argc, char * argv[])
 	        	t4 = wallclock();
 	        	
 	        	querytime += t4-t3;
-		cout << "query time with filtered set  = " << querytime << endl;
+//		cout << "query time with filtered set  = " << querytime << endl;
 
 	        	t3 = wallclock();
 	        	for(int i = 0; i < 58182; i++)

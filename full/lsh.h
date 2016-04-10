@@ -386,7 +386,7 @@ public:
     //template <typename SCANNER>
     std::set <unsigned> query(std::vector <element>  domin)
     {
-        std::cout << "begin  query " <<endl;
+        //std::cout << "begin  query " <<endl;
         std::set <unsigned> candidates;
         for (unsigned i = 0; i != param.L; ++i)
         {

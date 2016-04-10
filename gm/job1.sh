@@ -19,8 +19,35 @@ before="";
 for ((i=1;i<=58181;i++))
 do
 	echo $i
-	filename="../Data/new_10/"$i
+	filename="../Data/new_20/"$i
 	./gm5 $i $filename
 done
-mv matrix.txt matrix_4.txt
-mv angle.txt angle_4.txt
+mv matrix.txt matrix_7.txt
+mv angle.txt angle_7.txt
+
+for ((i=1;i<=58181;i++))
+do
+	echo $i
+	filename="../Data/new_30/"$i
+	./gm5 $i $filename
+done
+mv matrix.txt matrix_10.txt
+mv angle.txt angle_10.txt
+
+for ((i=1;i<=58181;i++))
+do
+	echo $i
+	filename="../Data/new_40/"$i
+	./gm5 $i $filename
+done
+mv matrix.txt matrix_13.txt
+mv angle.txt angle_13.txt
+
+for ((i=1;i<=58181;i++))
+do
+	echo $i
+	filename="../Data/new_50/"$i
+	./gm5 $i $filename
+done
+mv matrix.txt matrix_16.txt
+mv angle.txt angle_16.txt

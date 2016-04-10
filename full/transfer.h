@@ -200,6 +200,6 @@ vector <element> transfer(string filename)
 		
 	}
 	//fclose(fp);
-	cout << vec.size() << endl;
+//	cout << vec.size() << endl;
 	return vec;
 }
