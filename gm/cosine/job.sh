@@ -2,7 +2,7 @@
 
 id=1;
 
-filename="./query.txt"
+filename="./t.txt"
 for i in `cat $filename`
 do
 #	r=$((id%2));
@@ -13,7 +13,7 @@ do
 		if [ ! -f "$file" ]
 		then
 			echo "not existed"
-			./main2 ../../../GData/mix_309.txt $i 45
+			./main2 ../../../GData/mix_16.txt $i 45
 			result="./result/"$i"_cosine"
 			sorted=$result"_sort"
 			sort -n -r -k 2 $result > $sorted

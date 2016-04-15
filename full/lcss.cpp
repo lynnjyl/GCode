@@ -137,6 +137,7 @@ int main(int argc, char *argv[])
 			delete []lcs;
 		}
 		count--;
+		cout << tsum << endl;
 	}
 
 	cout << "lcss query time is :" << tsum/(double)num << endl;

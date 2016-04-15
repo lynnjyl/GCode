@@ -54,6 +54,8 @@ int main(int argc, char *argv[])
 		}
 		fclose(fp);
 
+		sort(stad.begin(),stad.end());
+		sort(noi.begin(),noi.end());
 		set_union(stad.begin(), stad.begin() + c1, noi.begin(), noi.begin() + c2, inserter(uni, uni.begin()));
 		set_intersection(stad.begin(), stad.begin() + c1, noi.begin(), noi.begin() + c2, inserter(inter, inter.begin()));
 
@@ -63,6 +65,8 @@ int main(int argc, char *argv[])
 
 		stad.erase(stad.begin(),stad.begin() + c1);
 		noi.erase(noi.begin(), noi.begin() + c2);
+		uni.erase(uni.begin(), uni.end());
+		inter.erase(inter.begin(), inter.end());
 		c1 = c2 = 0;
 	}
 	cout << "average = " << jsum/qids.size() << endl;
